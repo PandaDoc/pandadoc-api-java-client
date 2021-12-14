@@ -56,7 +56,7 @@ public class ContactsApi {
     }
 
     /**
-     * Build call for contactCreate
+     * Build call for createContact
      * @param contactCreateRequest  (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -70,7 +70,7 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactCreateCall(ContactCreateRequest contactCreateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createContactCall(ContactCreateRequest contactCreateRequest, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = contactCreateRequest;
 
         // create path and map variables
@@ -101,15 +101,15 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call contactCreateValidateBeforeCall(ContactCreateRequest contactCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createContactValidateBeforeCall(ContactCreateRequest contactCreateRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'contactCreateRequest' is set
         if (contactCreateRequest == null) {
-            throw new ApiException("Missing the required parameter 'contactCreateRequest' when calling contactCreate(Async)");
+            throw new ApiException("Missing the required parameter 'contactCreateRequest' when calling createContact(Async)");
         }
         
 
-        okhttp3.Call localVarCall = contactCreateCall(contactCreateRequest, _callback);
+        okhttp3.Call localVarCall = createContactCall(contactCreateRequest, _callback);
         return localVarCall;
 
     }
@@ -129,8 +129,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ContactDetailsResponse contactCreate(ContactCreateRequest contactCreateRequest) throws ApiException {
-        ApiResponse<ContactDetailsResponse> localVarResp = contactCreateWithHttpInfo(contactCreateRequest);
+    public ContactDetailsResponse createContact(ContactCreateRequest contactCreateRequest) throws ApiException {
+        ApiResponse<ContactDetailsResponse> localVarResp = createContactWithHttpInfo(contactCreateRequest);
         return localVarResp.getData();
     }
 
@@ -149,8 +149,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactDetailsResponse> contactCreateWithHttpInfo(ContactCreateRequest contactCreateRequest) throws ApiException {
-        okhttp3.Call localVarCall = contactCreateValidateBeforeCall(contactCreateRequest, null);
+    public ApiResponse<ContactDetailsResponse> createContactWithHttpInfo(ContactCreateRequest contactCreateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createContactValidateBeforeCall(contactCreateRequest, null);
         Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -171,15 +171,15 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactCreateAsync(ContactCreateRequest contactCreateRequest, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
+    public okhttp3.Call createContactAsync(ContactCreateRequest contactCreateRequest, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = contactCreateValidateBeforeCall(contactCreateRequest, _callback);
+        okhttp3.Call localVarCall = createContactValidateBeforeCall(contactCreateRequest, _callback);
         Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for contactDelete
+     * Build call for deleteContact
      * @param id Contact id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -194,7 +194,7 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactDeleteCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteContactCall(String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -226,15 +226,15 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call contactDeleteValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteContactValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling contactDelete(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteContact(Async)");
         }
         
 
-        okhttp3.Call localVarCall = contactDeleteCall(id, _callback);
+        okhttp3.Call localVarCall = deleteContactCall(id, _callback);
         return localVarCall;
 
     }
@@ -254,8 +254,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public void contactDelete(String id) throws ApiException {
-        contactDeleteWithHttpInfo(id);
+    public void deleteContact(String id) throws ApiException {
+        deleteContactWithHttpInfo(id);
     }
 
     /**
@@ -274,8 +274,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> contactDeleteWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = contactDeleteValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteContactWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = deleteContactValidateBeforeCall(id, null);
         return localVarApiClient.execute(localVarCall);
     }
 
@@ -296,14 +296,14 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactDeleteAsync(String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteContactAsync(String id, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = contactDeleteValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteContactValidateBeforeCall(id, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for contactDetails
+     * Build call for detailsContact
      * @param id Contact id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -318,7 +318,7 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactDetailsCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call detailsContactCall(String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -350,15 +350,15 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call contactDetailsValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call detailsContactValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling contactDetails(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling detailsContact(Async)");
         }
         
 
-        okhttp3.Call localVarCall = contactDetailsCall(id, _callback);
+        okhttp3.Call localVarCall = detailsContactCall(id, _callback);
         return localVarCall;
 
     }
@@ -379,8 +379,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ContactDetailsResponse contactDetails(String id) throws ApiException {
-        ApiResponse<ContactDetailsResponse> localVarResp = contactDetailsWithHttpInfo(id);
+    public ContactDetailsResponse detailsContact(String id) throws ApiException {
+        ApiResponse<ContactDetailsResponse> localVarResp = detailsContactWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -400,8 +400,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactDetailsResponse> contactDetailsWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = contactDetailsValidateBeforeCall(id, null);
+    public ApiResponse<ContactDetailsResponse> detailsContactWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = detailsContactValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -423,15 +423,15 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactDetailsAsync(String id, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
+    public okhttp3.Call detailsContactAsync(String id, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = contactDetailsValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = detailsContactValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for contactList
+     * Build call for listContacts
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -445,7 +445,7 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactListCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listContactsCall(final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -476,10 +476,10 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call contactListValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listContactsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = contactListCall(_callback);
+        okhttp3.Call localVarCall = listContactsCall(_callback);
         return localVarCall;
 
     }
@@ -499,8 +499,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public List<ContactDetailsResponse> contactList() throws ApiException {
-        ApiResponse<List<ContactDetailsResponse>> localVarResp = contactListWithHttpInfo();
+    public List<ContactDetailsResponse> listContacts() throws ApiException {
+        ApiResponse<List<ContactDetailsResponse>> localVarResp = listContactsWithHttpInfo();
         return localVarResp.getData();
     }
 
@@ -519,8 +519,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<List<ContactDetailsResponse>> contactListWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = contactListValidateBeforeCall(null);
+    public ApiResponse<List<ContactDetailsResponse>> listContactsWithHttpInfo() throws ApiException {
+        okhttp3.Call localVarCall = listContactsValidateBeforeCall(null);
         Type localVarReturnType = new TypeToken<List<ContactDetailsResponse>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -541,15 +541,15 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactListAsync(final ApiCallback<List<ContactDetailsResponse>> _callback) throws ApiException {
+    public okhttp3.Call listContactsAsync(final ApiCallback<List<ContactDetailsResponse>> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = contactListValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listContactsValidateBeforeCall(_callback);
         Type localVarReturnType = new TypeToken<List<ContactDetailsResponse>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for contactUpdate
+     * Build call for updateContact
      * @param id Contact id. (required)
      * @param contactUpdateRequest  (required)
      * @param _callback Callback for upload/download progress
@@ -564,7 +564,7 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactUpdateCall(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call updateContactCall(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = contactUpdateRequest;
 
         // create path and map variables
@@ -596,20 +596,20 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call contactUpdateValidateBeforeCall(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call updateContactValidateBeforeCall(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling contactUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling updateContact(Async)");
         }
         
         // verify the required parameter 'contactUpdateRequest' is set
         if (contactUpdateRequest == null) {
-            throw new ApiException("Missing the required parameter 'contactUpdateRequest' when calling contactUpdate(Async)");
+            throw new ApiException("Missing the required parameter 'contactUpdateRequest' when calling updateContact(Async)");
         }
         
 
-        okhttp3.Call localVarCall = contactUpdateCall(id, contactUpdateRequest, _callback);
+        okhttp3.Call localVarCall = updateContactCall(id, contactUpdateRequest, _callback);
         return localVarCall;
 
     }
@@ -630,8 +630,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ContactDetailsResponse contactUpdate(String id, ContactUpdateRequest contactUpdateRequest) throws ApiException {
-        ApiResponse<ContactDetailsResponse> localVarResp = contactUpdateWithHttpInfo(id, contactUpdateRequest);
+    public ContactDetailsResponse updateContact(String id, ContactUpdateRequest contactUpdateRequest) throws ApiException {
+        ApiResponse<ContactDetailsResponse> localVarResp = updateContactWithHttpInfo(id, contactUpdateRequest);
         return localVarResp.getData();
     }
 
@@ -651,8 +651,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactDetailsResponse> contactUpdateWithHttpInfo(String id, ContactUpdateRequest contactUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = contactUpdateValidateBeforeCall(id, contactUpdateRequest, null);
+    public ApiResponse<ContactDetailsResponse> updateContactWithHttpInfo(String id, ContactUpdateRequest contactUpdateRequest) throws ApiException {
+        okhttp3.Call localVarCall = updateContactValidateBeforeCall(id, contactUpdateRequest, null);
         Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -674,9 +674,9 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call contactUpdateAsync(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
+    public okhttp3.Call updateContactAsync(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = contactUpdateValidateBeforeCall(id, contactUpdateRequest, _callback);
+        okhttp3.Call localVarCall = updateContactValidateBeforeCall(id, contactUpdateRequest, _callback);
         Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**email** | **String** |  |  [optional]
+**email** | **String** |  | 
 **firstName** | **String** |  |  [optional]
 **lastName** | **String** |  |  [optional]
 **role** | **String** |  |  [optional]

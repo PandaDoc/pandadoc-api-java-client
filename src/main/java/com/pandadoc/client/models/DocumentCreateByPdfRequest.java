@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.DocumentCreateByPdfRequestRecipients;
+import com.pandadoc.client.models.DocumentCreateByTemplateRequestRecipients;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -37,7 +37,7 @@ public class DocumentCreateByPdfRequest {
 
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
-  private List<DocumentCreateByPdfRequestRecipients> recipients = new ArrayList<>();
+  private List<DocumentCreateByTemplateRequestRecipients> recipients = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_PARSE_FORM_FIELDS = "parse_form_fields";
   @SerializedName(SERIALIZED_NAME_PARSE_FORM_FIELDS)
@@ -83,30 +83,30 @@ public class DocumentCreateByPdfRequest {
   }
 
 
-  public DocumentCreateByPdfRequest recipients(List<DocumentCreateByPdfRequestRecipients> recipients) {
+  public DocumentCreateByPdfRequest recipients(List<DocumentCreateByTemplateRequestRecipients> recipients) {
     
     this.recipients = recipients;
     return this;
   }
 
-  public DocumentCreateByPdfRequest addRecipientsItem(DocumentCreateByPdfRequestRecipients recipientsItem) {
+  public DocumentCreateByPdfRequest addRecipientsItem(DocumentCreateByTemplateRequestRecipients recipientsItem) {
     this.recipients.add(recipientsItem);
     return this;
   }
 
    /**
-   * The list of recipients you&#39;re sending the document to. Every object must contain the &#x60;email&#x60; parameter. The &#x60;role&#x60;, &#x60;first_name&#x60; and &#x60;last_name&#x60; parameters are optional. If the &#x60;role&#x60; parameter is passed, a person is assigned all fields matching their corresponding role. If a role was not passed, a person receives a read-only link to view the document. If the &#x60;first_name&#x60; and &#x60;last_name&#x60; are not passed, the system does this 1. Creates a new contact, if none exists with the given &#x60;email&#x60;; or 2. Gets the existing contact with the given &#x60;email&#x60; that already exists.
+   * The list of recipients you&#39;re sending the document to. Every object must contain the email parameter. The &#x60;role&#x60;, &#x60;first_name&#x60; and &#x60;last_name&#x60; parameters are optional. If the &#x60;role&#x60; parameter passed, a person is assigned all fields matching their corresponding role. If not passed, a person will receive a read-only link to view the document. If the &#x60;first_name&#x60; and &#x60;last_name&#x60; not passed the system 1. creates a new contact, if none exists with the given &#x60;email&#x60;; or 2. gets the existing contact with the given &#x60;email&#x60; that already exists.
    * @return recipients
   **/
   @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "The list of recipients you're sending the document to. Every object must contain the `email` parameter. The `role`, `first_name` and `last_name` parameters are optional. If the `role` parameter is passed, a person is assigned all fields matching their corresponding role. If a role was not passed, a person receives a read-only link to view the document. If the `first_name` and `last_name` are not passed, the system does this 1. Creates a new contact, if none exists with the given `email`; or 2. Gets the existing contact with the given `email` that already exists.")
+  @ApiModelProperty(required = true, value = "The list of recipients you're sending the document to. Every object must contain the email parameter. The `role`, `first_name` and `last_name` parameters are optional. If the `role` parameter passed, a person is assigned all fields matching their corresponding role. If not passed, a person will receive a read-only link to view the document. If the `first_name` and `last_name` not passed the system 1. creates a new contact, if none exists with the given `email`; or 2. gets the existing contact with the given `email` that already exists.")
 
-  public List<DocumentCreateByPdfRequestRecipients> getRecipients() {
+  public List<DocumentCreateByTemplateRequestRecipients> getRecipients() {
     return recipients;
   }
 
 
-  public void setRecipients(List<DocumentCreateByPdfRequestRecipients> recipients) {
+  public void setRecipients(List<DocumentCreateByTemplateRequestRecipients> recipients) {
     this.recipients = recipients;
   }
 
@@ -121,8 +121,8 @@ public class DocumentCreateByPdfRequest {
    * Set this parameter as &#x60;true&#x60; if you create a document from a PDF with form fields and as &#x60;false&#x60; if you upload a PDF with field tags.
    * @return parseFormFields
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(required = true, value = "Set this parameter as `true` if you create a document from a PDF with form fields and as `false` if you upload a PDF with field tags.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Set this parameter as `true` if you create a document from a PDF with form fields and as `false` if you upload a PDF with field tags.")
 
   public Boolean getParseFormFields() {
     return parseFormFields;
@@ -176,7 +176,7 @@ public class DocumentCreateByPdfRequest {
    * @return tags
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "Mark your document with one or several tags.")
+  @ApiModelProperty(example = "[\"pdf_document\",\"test_document\"]", value = "Mark your document with one or several tags.")
 
   public List<String> getTags() {
     return tags;

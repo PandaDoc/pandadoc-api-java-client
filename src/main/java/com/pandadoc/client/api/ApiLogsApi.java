@@ -55,7 +55,7 @@ public class ApiLogsApi {
     }
 
     /**
-     * Build call for detailsApiLog
+     * Build call for detailsLog
      * @param id Log event id. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -69,7 +69,7 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call detailsApiLogCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call detailsLogCall(String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -101,15 +101,15 @@ public class ApiLogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call detailsApiLogValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call detailsLogValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling detailsApiLog(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling detailsLog(Async)");
         }
         
 
-        okhttp3.Call localVarCall = detailsApiLogCall(id, _callback);
+        okhttp3.Call localVarCall = detailsLogCall(id, _callback);
         return localVarCall;
 
     }
@@ -129,8 +129,8 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public APILogDetailsResponse detailsApiLog(String id) throws ApiException {
-        ApiResponse<APILogDetailsResponse> localVarResp = detailsApiLogWithHttpInfo(id);
+    public APILogDetailsResponse detailsLog(String id) throws ApiException {
+        ApiResponse<APILogDetailsResponse> localVarResp = detailsLogWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -149,8 +149,8 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<APILogDetailsResponse> detailsApiLogWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = detailsApiLogValidateBeforeCall(id, null);
+    public ApiResponse<APILogDetailsResponse> detailsLogWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = detailsLogValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<APILogDetailsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -171,15 +171,15 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call detailsApiLogAsync(String id, final ApiCallback<APILogDetailsResponse> _callback) throws ApiException {
+    public okhttp3.Call detailsLogAsync(String id, final ApiCallback<APILogDetailsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = detailsApiLogValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = detailsLogValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<APILogDetailsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for listApiLogs
+     * Build call for listLogs
      * @param since Determines a point in time from which logs should be fetched. Either a specific ISO 8601 datetime or a relative identifier such as \&quot;-90d\&quot; (for past 90 days). (optional)
      * @param to Determines a point in time from which logs should be fetched. Either a specific ISO 8601 datetime or a relative identifier such as \&quot;-10d\&quot; (for past 10 days) or a special \&quot;now\&quot; value. (optional)
      * @param count The amount of items on each page. (optional)
@@ -200,7 +200,7 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listApiLogsCall(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLogsCall(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -263,10 +263,10 @@ public class ApiLogsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listApiLogsValidateBeforeCall(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLogsValidateBeforeCall(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listApiLogsCall(since, to, count, page, statuses, methods, search, environmentType, _callback);
+        okhttp3.Call localVarCall = listLogsCall(since, to, count, page, statuses, methods, search, environmentType, _callback);
         return localVarCall;
 
     }
@@ -293,8 +293,8 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public APILogListResponse listApiLogs(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType) throws ApiException {
-        ApiResponse<APILogListResponse> localVarResp = listApiLogsWithHttpInfo(since, to, count, page, statuses, methods, search, environmentType);
+    public APILogListResponse listLogs(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType) throws ApiException {
+        ApiResponse<APILogListResponse> localVarResp = listLogsWithHttpInfo(since, to, count, page, statuses, methods, search, environmentType);
         return localVarResp.getData();
     }
 
@@ -320,8 +320,8 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<APILogListResponse> listApiLogsWithHttpInfo(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType) throws ApiException {
-        okhttp3.Call localVarCall = listApiLogsValidateBeforeCall(since, to, count, page, statuses, methods, search, environmentType, null);
+    public ApiResponse<APILogListResponse> listLogsWithHttpInfo(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType) throws ApiException {
+        okhttp3.Call localVarCall = listLogsValidateBeforeCall(since, to, count, page, statuses, methods, search, environmentType, null);
         Type localVarReturnType = new TypeToken<APILogListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -349,9 +349,9 @@ public class ApiLogsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listApiLogsAsync(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType, final ApiCallback<APILogListResponse> _callback) throws ApiException {
+    public okhttp3.Call listLogsAsync(String since, String to, Integer count, Integer page, List<Integer> statuses, List<String> methods, String search, String environmentType, final ApiCallback<APILogListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listApiLogsValidateBeforeCall(since, to, count, page, statuses, methods, search, environmentType, _callback);
+        okhttp3.Call localVarCall = listLogsValidateBeforeCall(since, to, count, page, statuses, methods, search, environmentType, _callback);
         Type localVarReturnType = new TypeToken<APILogListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

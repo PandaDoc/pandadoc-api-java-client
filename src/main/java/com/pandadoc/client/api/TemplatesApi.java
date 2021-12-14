@@ -183,7 +183,7 @@ public class TemplatesApi {
         return localVarCall;
     }
     /**
-     * Build call for detailsTemaplate
+     * Build call for detailsTemplate
      * @param id Template ID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -198,7 +198,7 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call detailsTemaplateCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call detailsTemplateCall(String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -230,15 +230,15 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call detailsTemaplateValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call detailsTemplateValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling detailsTemaplate(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling detailsTemplate(Async)");
         }
         
 
-        okhttp3.Call localVarCall = detailsTemaplateCall(id, _callback);
+        okhttp3.Call localVarCall = detailsTemplateCall(id, _callback);
         return localVarCall;
 
     }
@@ -259,8 +259,8 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateDetailsResponse detailsTemaplate(String id) throws ApiException {
-        ApiResponse<TemplateDetailsResponse> localVarResp = detailsTemaplateWithHttpInfo(id);
+    public TemplateDetailsResponse detailsTemplate(String id) throws ApiException {
+        ApiResponse<TemplateDetailsResponse> localVarResp = detailsTemplateWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -280,8 +280,8 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateDetailsResponse> detailsTemaplateWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = detailsTemaplateValidateBeforeCall(id, null);
+    public ApiResponse<TemplateDetailsResponse> detailsTemplateWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = detailsTemplateValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<TemplateDetailsResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -303,9 +303,9 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call detailsTemaplateAsync(String id, final ApiCallback<TemplateDetailsResponse> _callback) throws ApiException {
+    public okhttp3.Call detailsTemplateAsync(String id, final ApiCallback<TemplateDetailsResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = detailsTemaplateValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = detailsTemplateValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<TemplateDetailsResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

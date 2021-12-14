@@ -48,6 +48,10 @@ public class DocumentDetailsResponseRecipients {
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
 
+  public static final String SERIALIZED_NAME_CONTACT_ID = "contact_id";
+  @SerializedName(SERIALIZED_NAME_CONTACT_ID)
+  private String contactId;
+
   public static final String SERIALIZED_NAME_FIRST_NAME = "first_name";
   @SerializedName(SERIALIZED_NAME_FIRST_NAME)
   private String firstName;
@@ -176,6 +180,29 @@ public class DocumentDetailsResponseRecipients {
   }
 
 
+  public DocumentDetailsResponseRecipients contactId(String contactId) {
+    
+    this.contactId = contactId;
+    return this;
+  }
+
+   /**
+   * Get contactId
+   * @return contactId
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "7kqXgjFejB2toXxjcC5jfZ", value = "")
+
+  public String getContactId() {
+    return contactId;
+  }
+
+
+  public void setContactId(String contactId) {
+    this.contactId = contactId;
+  }
+
+
   public DocumentDetailsResponseRecipients firstName(String firstName) {
     
     this.firstName = firstName;
@@ -259,6 +286,7 @@ public class DocumentDetailsResponseRecipients {
         Objects.equals(this.lastName, documentDetailsResponseRecipients.lastName) &&
         Objects.equals(this.signingOrder, documentDetailsResponseRecipients.signingOrder) &&
         Objects.equals(this.id, documentDetailsResponseRecipients.id) &&
+        Objects.equals(this.contactId, documentDetailsResponseRecipients.contactId) &&
         Objects.equals(this.firstName, documentDetailsResponseRecipients.firstName) &&
         Objects.equals(this.email, documentDetailsResponseRecipients.email) &&
         Objects.equals(this.hasCompleted, documentDetailsResponseRecipients.hasCompleted);
@@ -266,7 +294,7 @@ public class DocumentDetailsResponseRecipients {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipientType, role, lastName, signingOrder, id, firstName, email, hasCompleted);
+    return Objects.hash(recipientType, role, lastName, signingOrder, id, contactId, firstName, email, hasCompleted);
   }
 
   @Override
@@ -278,6 +306,7 @@ public class DocumentDetailsResponseRecipients {
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    signingOrder: ").append(toIndentedString(signingOrder)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    hasCompleted: ").append(toIndentedString(hasCompleted)).append("\n");

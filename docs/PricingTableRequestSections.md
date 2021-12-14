@@ -7,7 +7,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**title** | **String** |  |  [optional]
+**title** | **String** |  | 
 **_default** | **Boolean** |  |  [optional]
 **multichoiceEnabled** | **Boolean** |  |  [optional]
 **rows** | [**List&lt;PricingTableRequestRows&gt;**](PricingTableRequestRows.md) |  |  [optional]

@@ -58,8 +58,8 @@ public class PricingTableRequestSections {
    * Get title
    * @return title
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Sample Section", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Sample Section", required = true, value = "")
 
   public String getTitle() {
     return title;

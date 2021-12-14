@@ -47,8 +47,8 @@ public class DocumentCreateByTemplateRequestTokens {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Favorite.Pet", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Favorite.Pet", required = true, value = "")
 
   public String getName() {
     return name;
@@ -70,8 +70,8 @@ public class DocumentCreateByTemplateRequestTokens {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Panda", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Panda", required = true, value = "")
 
   public String getValue() {
     return value;

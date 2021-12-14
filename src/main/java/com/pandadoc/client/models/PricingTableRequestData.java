@@ -77,8 +77,8 @@ public class PricingTableRequestData {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Toy Panda", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Toy Panda", required = true, value = "")
 
   public String getName() {
     return name;
@@ -123,8 +123,8 @@ public class PricingTableRequestData {
    * Get price
    * @return price
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "10", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "10", required = true, value = "")
 
   public BigDecimal getPrice() {
     return price;
@@ -169,8 +169,8 @@ public class PricingTableRequestData {
    * Get qty
    * @return qty
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "3", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "3", required = true, value = "")
 
   public Integer getQty() {
     return qty;

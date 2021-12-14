@@ -29,10 +29,6 @@ import java.math.BigDecimal;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class PricingTableRequestOptionsDiscount {
-  public static final String SERIALIZED_NAME_IS_GLOBAL = "is_global";
-  @SerializedName(SERIALIZED_NAME_IS_GLOBAL)
-  private Boolean isGlobal;
-
   /**
    * Gets or Sets type
    */
@@ -93,29 +89,6 @@ public class PricingTableRequestOptionsDiscount {
   private BigDecimal value;
 
 
-  public PricingTableRequestOptionsDiscount isGlobal(Boolean isGlobal) {
-    
-    this.isGlobal = isGlobal;
-    return this;
-  }
-
-   /**
-   * Get isGlobal
-   * @return isGlobal
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public Boolean getIsGlobal() {
-    return isGlobal;
-  }
-
-
-  public void setIsGlobal(Boolean isGlobal) {
-    this.isGlobal = isGlobal;
-  }
-
-
   public PricingTableRequestOptionsDiscount type(TypeEnum type) {
     
     this.type = type;
@@ -126,8 +99,8 @@ public class PricingTableRequestOptionsDiscount {
    * Get type
    * @return type
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "absolute", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "absolute", required = true, value = "")
 
   public TypeEnum getType() {
     return type;
@@ -149,8 +122,8 @@ public class PricingTableRequestOptionsDiscount {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Global Discount", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Global Discount", required = true, value = "")
 
   public String getName() {
     return name;
@@ -172,8 +145,8 @@ public class PricingTableRequestOptionsDiscount {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "2.26", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "2.26", required = true, value = "")
 
   public BigDecimal getValue() {
     return value;
@@ -194,22 +167,20 @@ public class PricingTableRequestOptionsDiscount {
       return false;
     }
     PricingTableRequestOptionsDiscount pricingTableRequestOptionsDiscount = (PricingTableRequestOptionsDiscount) o;
-    return Objects.equals(this.isGlobal, pricingTableRequestOptionsDiscount.isGlobal) &&
-        Objects.equals(this.type, pricingTableRequestOptionsDiscount.type) &&
+    return Objects.equals(this.type, pricingTableRequestOptionsDiscount.type) &&
         Objects.equals(this.name, pricingTableRequestOptionsDiscount.name) &&
         Objects.equals(this.value, pricingTableRequestOptionsDiscount.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(isGlobal, type, name, value);
+    return Objects.hash(type, name, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class PricingTableRequestOptionsDiscount {\n");
-    sb.append("    isGlobal: ").append(toIndentedString(isGlobal)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");

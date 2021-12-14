@@ -4,14 +4,14 @@ All URIs are relative to *https://api.pandadoc.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**detailsApiLog**](ApiLogsApi.md#detailsApiLog) | **GET** /public/v1/logs/{id} | Details API Log
-[**listApiLogs**](ApiLogsApi.md#listApiLogs) | **GET** /public/v1/logs | List API Log
+[**detailsLog**](ApiLogsApi.md#detailsLog) | **GET** /public/v1/logs/{id} | Details API Log
+[**listLogs**](ApiLogsApi.md#listLogs) | **GET** /public/v1/logs | List API Log
 
 
 
-## detailsApiLog
+## detailsLog
 
-> APILogDetailsResponse detailsApiLog(id)
+> APILogDetailsResponse detailsLog(id)
 
 Details API Log
 
@@ -51,10 +51,10 @@ public class Example {
         // String | Log event id.
         String id = "AXp2jrHMK2MKv_lRqmQ";
         try {
-            APILogDetailsResponse result = apiInstance.detailsApiLog(id);
+            APILogDetailsResponse result = apiInstance.detailsLog(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ApiLogsApi#detailsApiLog");
+            System.err.println("Exception when calling ApiLogsApi#detailsLog");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -94,9 +94,9 @@ Name | Type | Description  | Notes
 | **429** | Too Many Requests |  -  |
 
 
-## listApiLogs
+## listLogs
 
-> APILogListResponse listApiLogs(since, to, count, page, statuses, methods, search, environmentType)
+> APILogListResponse listLogs(since, to, count, page, statuses, methods, search, environmentType)
 
 List API Log
 
@@ -150,10 +150,10 @@ public class Example {
         // String | Returns logs for production/sandbox.
         String environmentType = "PRODUCTION";
         try {
-            APILogListResponse result = apiInstance.listApiLogs(since, to, count, page, statuses, methods, search, environmentType);
+            APILogListResponse result = apiInstance.listLogs(since, to, count, page, statuses, methods, search, environmentType);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ApiLogsApi#listApiLogs");
+            System.err.println("Exception when calling ApiLogsApi#listLogs");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

@@ -81,8 +81,8 @@ public class DocumentCreateByTemplateRequestContentPlaceholders {
    * Get blockId
    * @return blockId
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Content Placeholder 1", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Content Placeholder 1", required = true, value = "")
 
   public String getBlockId() {
     return blockId;

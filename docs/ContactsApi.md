@@ -4,17 +4,17 @@ All URIs are relative to *https://api.pandadoc.com*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**contactCreate**](ContactsApi.md#contactCreate) | **POST** /public/v1/contacts | Create contact
-[**contactDelete**](ContactsApi.md#contactDelete) | **DELETE** /public/v1/contacts/{id} | Delete contact by id
-[**contactDetails**](ContactsApi.md#contactDetails) | **GET** /public/v1/contacts/{id} | Get contact details by id
-[**contactList**](ContactsApi.md#contactList) | **GET** /public/v1/contacts | List contacts
-[**contactUpdate**](ContactsApi.md#contactUpdate) | **PATCH** /public/v1/contacts/{id} | Update contact by id
+[**createContact**](ContactsApi.md#createContact) | **POST** /public/v1/contacts | Create contact
+[**deleteContact**](ContactsApi.md#deleteContact) | **DELETE** /public/v1/contacts/{id} | Delete contact by id
+[**detailsContact**](ContactsApi.md#detailsContact) | **GET** /public/v1/contacts/{id} | Get contact details by id
+[**listContacts**](ContactsApi.md#listContacts) | **GET** /public/v1/contacts | List contacts
+[**updateContact**](ContactsApi.md#updateContact) | **PATCH** /public/v1/contacts/{id} | Update contact by id
 
 
 
-## contactCreate
+## createContact
 
-> ContactDetailsResponse contactCreate(contactCreateRequest)
+> ContactDetailsResponse createContact(contactCreateRequest)
 
 Create contact
 
@@ -52,10 +52,10 @@ public class Example {
         // ContactCreateRequest | 
         ContactCreateRequest contactCreateRequest = new ContactCreateRequest();
         try {
-            ContactDetailsResponse result = apiInstance.contactCreate(contactCreateRequest);
+            ContactDetailsResponse result = apiInstance.createContact(contactCreateRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactsApi#contactCreate");
+            System.err.println("Exception when calling ContactsApi#createContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -95,9 +95,9 @@ Name | Type | Description  | Notes
 | **429** | Too Many Requests |  -  |
 
 
-## contactDelete
+## deleteContact
 
-> contactDelete(id)
+> deleteContact(id)
 
 Delete contact by id
 
@@ -135,9 +135,9 @@ public class Example {
         // String | Contact id.
         String id = "SyoufNkJiHRn24LpuJ7RXb";
         try {
-            apiInstance.contactDelete(id);
+            apiInstance.deleteContact(id);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactsApi#contactDelete");
+            System.err.println("Exception when calling ContactsApi#deleteContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -178,9 +178,9 @@ null (empty response body)
 | **429** | Too Many Requests |  -  |
 
 
-## contactDetails
+## detailsContact
 
-> ContactDetailsResponse contactDetails(id)
+> ContactDetailsResponse detailsContact(id)
 
 Get contact details by id
 
@@ -218,10 +218,10 @@ public class Example {
         // String | Contact id.
         String id = "SyoufNkJiHRn24LpuJ7RXb";
         try {
-            ContactDetailsResponse result = apiInstance.contactDetails(id);
+            ContactDetailsResponse result = apiInstance.detailsContact(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactsApi#contactDetails");
+            System.err.println("Exception when calling ContactsApi#detailsContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -262,9 +262,9 @@ Name | Type | Description  | Notes
 | **429** | Too Many Requests |  -  |
 
 
-## contactList
+## listContacts
 
-> List&lt;ContactDetailsResponse&gt; contactList()
+> List&lt;ContactDetailsResponse&gt; listContacts()
 
 List contacts
 
@@ -300,10 +300,10 @@ public class Example {
 
         ContactsApi apiInstance = new ContactsApi(defaultClient);
         try {
-            List<ContactDetailsResponse> result = apiInstance.contactList();
+            List<ContactDetailsResponse> result = apiInstance.listContacts();
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactsApi#contactList");
+            System.err.println("Exception when calling ContactsApi#listContacts");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());
@@ -341,9 +341,9 @@ This endpoint does not need any parameter.
 | **429** | Too Many Requests |  -  |
 
 
-## contactUpdate
+## updateContact
 
-> ContactDetailsResponse contactUpdate(id, contactUpdateRequest)
+> ContactDetailsResponse updateContact(id, contactUpdateRequest)
 
 Update contact by id
 
@@ -383,10 +383,10 @@ public class Example {
         // ContactUpdateRequest | 
         ContactUpdateRequest contactUpdateRequest = new ContactUpdateRequest();
         try {
-            ContactDetailsResponse result = apiInstance.contactUpdate(id, contactUpdateRequest);
+            ContactDetailsResponse result = apiInstance.updateContact(id, contactUpdateRequest);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling ContactsApi#contactUpdate");
+            System.err.println("Exception when calling ContactsApi#updateContact");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

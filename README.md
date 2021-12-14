@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.pandadoc</groupId>
   <artifactId>pandadoc-java-client</artifactId>
-  <version>1.1.0</version>
+  <version>2.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.pandadoc:pandadoc-java-client:1.1.0"
+compile "com.pandadoc:pandadoc-java-client:2.0.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/pandadoc-java-client-1.1.0.jar`
+- `target/pandadoc-java-client-2.0.0.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -116,28 +116,35 @@ All URIs are relative to *https://api.pandadoc.com*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*ApiLogsApi* | [**detailsApiLog**](docs/ApiLogsApi.md#detailsApiLog) | **GET** /public/v1/logs/{id} | Details API Log
-*ApiLogsApi* | [**listApiLogs**](docs/ApiLogsApi.md#listApiLogs) | **GET** /public/v1/logs | List API Log
-*ContactsApi* | [**contactCreate**](docs/ContactsApi.md#contactCreate) | **POST** /public/v1/contacts | Create contact
-*ContactsApi* | [**contactDelete**](docs/ContactsApi.md#contactDelete) | **DELETE** /public/v1/contacts/{id} | Delete contact by id
-*ContactsApi* | [**contactDetails**](docs/ContactsApi.md#contactDetails) | **GET** /public/v1/contacts/{id} | Get contact details by id
-*ContactsApi* | [**contactList**](docs/ContactsApi.md#contactList) | **GET** /public/v1/contacts | List contacts
-*ContactsApi* | [**contactUpdate**](docs/ContactsApi.md#contactUpdate) | **PATCH** /public/v1/contacts/{id} | Update contact by id
+*ApiLogsApi* | [**detailsLog**](docs/ApiLogsApi.md#detailsLog) | **GET** /public/v1/logs/{id} | Details API Log
+*ApiLogsApi* | [**listLogs**](docs/ApiLogsApi.md#listLogs) | **GET** /public/v1/logs | List API Log
+*ContactsApi* | [**createContact**](docs/ContactsApi.md#createContact) | **POST** /public/v1/contacts | Create contact
+*ContactsApi* | [**deleteContact**](docs/ContactsApi.md#deleteContact) | **DELETE** /public/v1/contacts/{id} | Delete contact by id
+*ContactsApi* | [**detailsContact**](docs/ContactsApi.md#detailsContact) | **GET** /public/v1/contacts/{id} | Get contact details by id
+*ContactsApi* | [**listContacts**](docs/ContactsApi.md#listContacts) | **GET** /public/v1/contacts | List contacts
+*ContactsApi* | [**updateContact**](docs/ContactsApi.md#updateContact) | **PATCH** /public/v1/contacts/{id} | Update contact by id
 *ContentLibraryItemsApi* | [**detailsContentLibraryItem**](docs/ContentLibraryItemsApi.md#detailsContentLibraryItem) | **GET** /public/v1/content-library-items/{id}/details | Details Content Library Item
 *ContentLibraryItemsApi* | [**listContentLibraryItems**](docs/ContentLibraryItemsApi.md#listContentLibraryItems) | **GET** /public/v1/content-library-items | List Content Library Item
+*DocumentAttachmentsApi* | [**createDocumentAttachment**](docs/DocumentAttachmentsApi.md#createDocumentAttachment) | **POST** /public/v1/documents/{id}/attachments | Document Attachment Create
+*DocumentAttachmentsApi* | [**deleteDocumentAttachment**](docs/DocumentAttachmentsApi.md#deleteDocumentAttachment) | **DELETE** /public/v1/documents/{id}/attachments/{attachment_id} | Document Attachment Delete
+*DocumentAttachmentsApi* | [**detailsDocumentAttachment**](docs/DocumentAttachmentsApi.md#detailsDocumentAttachment) | **GET** /public/v1/documents/{id}/attachments/{attachment_id} | Document Attachment Details
+*DocumentAttachmentsApi* | [**downloadDocumentAttachment**](docs/DocumentAttachmentsApi.md#downloadDocumentAttachment) | **GET** /public/v1/documents/{id}/attachments/{attachment_id}/download | Document Attachment Download
+*DocumentAttachmentsApi* | [**listDocumentAttachments**](docs/DocumentAttachmentsApi.md#listDocumentAttachments) | **GET** /public/v1/documents/{id}/attachments | Document Attachment List
+*DocumentsApi* | [**changeDocumentStatus**](docs/DocumentsApi.md#changeDocumentStatus) | **PATCH** /public/v1/documents/{id}/status | Document status change
+*DocumentsApi* | [**createDocument**](docs/DocumentsApi.md#createDocument) | **POST** /public/v1/documents | Create document
+*DocumentsApi* | [**createDocumentLink**](docs/DocumentsApi.md#createDocumentLink) | **POST** /public/v1/documents/{id}/session | Create a Document Link
+*DocumentsApi* | [**createLinkedObject**](docs/DocumentsApi.md#createLinkedObject) | **POST** /public/v1/documents/{id}/linked-objects | Create Linked Object
 *DocumentsApi* | [**deleteDocument**](docs/DocumentsApi.md#deleteDocument) | **DELETE** /public/v1/documents/{id} | Delete document by id
-*DocumentsApi* | [**documentCreate**](docs/DocumentsApi.md#documentCreate) | **POST** /public/v1/documents | Create document
-*DocumentsApi* | [**documentCreateLink**](docs/DocumentsApi.md#documentCreateLink) | **POST** /public/v1/documents/{id}/session | Create a Document Link
-*DocumentsApi* | [**documentDetails**](docs/DocumentsApi.md#documentDetails) | **GET** /public/v1/documents/{id}/details | Document details
-*DocumentsApi* | [**documentList**](docs/DocumentsApi.md#documentList) | **GET** /public/v1/documents | List documents
-*DocumentsApi* | [**documentStatus**](docs/DocumentsApi.md#documentStatus) | **GET** /public/v1/documents/{id} | Document status
-*DocumentsApi* | [**documentStatusChange**](docs/DocumentsApi.md#documentStatusChange) | **PATCH** /public/v1/documents/{id}/status | Document status change
+*DocumentsApi* | [**deleteLinkedObject**](docs/DocumentsApi.md#deleteLinkedObject) | **DELETE** /public/v1/documents/{id}/linked-objects/{linked_object_id} | Delete Linked Object
+*DocumentsApi* | [**detailsDocument**](docs/DocumentsApi.md#detailsDocument) | **GET** /public/v1/documents/{id}/details | Document details
 *DocumentsApi* | [**downloadDocument**](docs/DocumentsApi.md#downloadDocument) | **GET** /public/v1/documents/{id}/download | Document download
 *DocumentsApi* | [**downloadProtectedDocument**](docs/DocumentsApi.md#downloadProtectedDocument) | **GET** /public/v1/documents/{id}/download-protected | Download document protected
-*DocumentsApi* | [**linkedObjectDelete**](docs/DocumentsApi.md#linkedObjectDelete) | **DELETE** /public/v1/documents/{id}/linked-objects/{linked_object_id} | Delete Linked Object
-*DocumentsApi* | [**linkedObjectList**](docs/DocumentsApi.md#linkedObjectList) | **GET** /public/v1/documents/{id}/linked-objects | List Linked Objects
-*DocumentsApi* | [**linkedObjectsCreate**](docs/DocumentsApi.md#linkedObjectsCreate) | **POST** /public/v1/documents/{id}/linked-objects | Create Linked Object
+*DocumentsApi* | [**listDocuments**](docs/DocumentsApi.md#listDocuments) | **GET** /public/v1/documents | List documents
+*DocumentsApi* | [**listLinkedObjects**](docs/DocumentsApi.md#listLinkedObjects) | **GET** /public/v1/documents/{id}/linked-objects | List Linked Objects
 *DocumentsApi* | [**sendDocument**](docs/DocumentsApi.md#sendDocument) | **POST** /public/v1/documents/{id}/send | Send Document
+*DocumentsApi* | [**statusDocument**](docs/DocumentsApi.md#statusDocument) | **GET** /public/v1/documents/{id} | Document status
+*DocumentsApi* | [**transferAllDocumentsOwnership**](docs/DocumentsApi.md#transferAllDocumentsOwnership) | **PATCH** /public/v1/documents/ownership | Transfer all documents ownership
+*DocumentsApi* | [**transferDocumentOwnership**](docs/DocumentsApi.md#transferDocumentOwnership) | **PATCH** /public/v1/documents/{id}/ownership | Update document ownership
 *FoldersApiApi* | [**createDocumentFolder**](docs/FoldersApiApi.md#createDocumentFolder) | **POST** /public/v1/documents/folders | Create Documents Folder
 *FoldersApiApi* | [**createTemplateFolder**](docs/FoldersApiApi.md#createTemplateFolder) | **POST** /public/v1/templates/folders | Create Templates Folder
 *FoldersApiApi* | [**listDocumentFolders**](docs/FoldersApiApi.md#listDocumentFolders) | **GET** /public/v1/documents/folders | List Documents Folders
@@ -145,9 +152,12 @@ Class | Method | HTTP request | Description
 *FoldersApiApi* | [**renameDocumentFolder**](docs/FoldersApiApi.md#renameDocumentFolder) | **PUT** /public/v1/documents/folders/{id} | Rename Documents Folder
 *FoldersApiApi* | [**renameTemplateFolder**](docs/FoldersApiApi.md#renameTemplateFolder) | **PUT** /public/v1/templates/folders/{id} | Rename Templates Folder
 *FormsApi* | [**listForm**](docs/FormsApi.md#listForm) | **GET** /public/v1/forms | Forms
+*MembersApi* | [**detailsCurrentMember**](docs/MembersApi.md#detailsCurrentMember) | **GET** /public/v1/members/current | Current member details
+*MembersApi* | [**detailsMember**](docs/MembersApi.md#detailsMember) | **GET** /public/v1/members/{id} | Member details
+*MembersApi* | [**listMembers**](docs/MembersApi.md#listMembers) | **GET** /public/v1/members | List members
 *OAuth20AuthenticationApi* | [**accessToken**](docs/OAuth20AuthenticationApi.md#accessToken) | **POST** /oauth2/access_token | Create/Refresh Access Token
 *TemplatesApi* | [**deleteTemplate**](docs/TemplatesApi.md#deleteTemplate) | **DELETE** /public/v1/templates/{id} | Delete Template
-*TemplatesApi* | [**detailsTemaplate**](docs/TemplatesApi.md#detailsTemaplate) | **GET** /public/v1/templates/{id}/details | Details Template
+*TemplatesApi* | [**detailsTemplate**](docs/TemplatesApi.md#detailsTemplate) | **GET** /public/v1/templates/{id}/details | Details Template
 *TemplatesApi* | [**listTemplates**](docs/TemplatesApi.md#listTemplates) | **GET** /public/v1/templates | List Templates
 
 ## Documentation for Authorization
