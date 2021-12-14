@@ -151,7 +151,7 @@ public class DocumentDetailsResponse {
    * @return name
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "API Sample Document from PandaDoc Templaten", value = "")
+  @ApiModelProperty(example = "API Sample Document from PandaDoc Template", value = "")
 
   public String getName() {
     return name;

@@ -5,7 +5,7 @@ All URIs are relative to *https://api.pandadoc.com*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteTemplate**](TemplatesApi.md#deleteTemplate) | **DELETE** /public/v1/templates/{id} | Delete Template
-[**detailsTemaplate**](TemplatesApi.md#detailsTemaplate) | **GET** /public/v1/templates/{id}/details | Details Template
+[**detailsTemplate**](TemplatesApi.md#detailsTemplate) | **GET** /public/v1/templates/{id}/details | Details Template
 [**listTemplates**](TemplatesApi.md#listTemplates) | **GET** /public/v1/templates | List Templates
 
 
@@ -96,9 +96,9 @@ null (empty response body)
 | **429** | Too Many Requests |  -  |
 
 
-## detailsTemaplate
+## detailsTemplate
 
-> TemplateDetailsResponse detailsTemaplate(id)
+> TemplateDetailsResponse detailsTemplate(id)
 
 Details Template
 
@@ -138,10 +138,10 @@ public class Example {
         // String | Template ID
         String id = "EE8yUNg5HztqVAuH85He8V";
         try {
-            TemplateDetailsResponse result = apiInstance.detailsTemaplate(id);
+            TemplateDetailsResponse result = apiInstance.detailsTemplate(id);
             System.out.println(result);
         } catch (ApiException e) {
-            System.err.println("Exception when calling TemplatesApi#detailsTemaplate");
+            System.err.println("Exception when calling TemplatesApi#detailsTemplate");
             System.err.println("Status code: " + e.getCode());
             System.err.println("Reason: " + e.getResponseBody());
             System.err.println("Response headers: " + e.getResponseHeaders());

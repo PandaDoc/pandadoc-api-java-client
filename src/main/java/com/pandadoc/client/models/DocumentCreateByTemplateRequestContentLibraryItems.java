@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.DocumentCreateByTemplateRequestRecipients;
 import com.pandadoc.client.models.PricingTableRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -31,13 +32,67 @@ import java.util.List;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DocumentCreateByTemplateRequestContentLibraryItems {
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
+  public static final String SERIALIZED_NAME_FIELDS = "fields";
+  @SerializedName(SERIALIZED_NAME_FIELDS)
+  private Object fields;
+
   public static final String SERIALIZED_NAME_PRICING_TABLES = "pricing_tables";
   @SerializedName(SERIALIZED_NAME_PRICING_TABLES)
   private List<PricingTableRequest> pricingTables = null;
 
-  public static final String SERIALIZED_NAME_ID = "id";
-  @SerializedName(SERIALIZED_NAME_ID)
-  private String id;
+  public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
+  @SerializedName(SERIALIZED_NAME_RECIPIENTS)
+  private List<DocumentCreateByTemplateRequestRecipients> recipients = null;
+
+
+  public DocumentCreateByTemplateRequestContentLibraryItems id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "9d9k7VtSQ5KCXfsUQv4GxE", required = true, value = "")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
+  public DocumentCreateByTemplateRequestContentLibraryItems fields(Object fields) {
+    
+    this.fields = fields;
+    return this;
+  }
+
+   /**
+   * Get fields
+   * @return fields
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public Object getFields() {
+    return fields;
+  }
+
+
+  public void setFields(Object fields) {
+    this.fields = fields;
+  }
 
 
   public DocumentCreateByTemplateRequestContentLibraryItems pricingTables(List<PricingTableRequest> pricingTables) {
@@ -71,26 +126,34 @@ public class DocumentCreateByTemplateRequestContentLibraryItems {
   }
 
 
-  public DocumentCreateByTemplateRequestContentLibraryItems id(String id) {
+  public DocumentCreateByTemplateRequestContentLibraryItems recipients(List<DocumentCreateByTemplateRequestRecipients> recipients) {
     
-    this.id = id;
+    this.recipients = recipients;
+    return this;
+  }
+
+  public DocumentCreateByTemplateRequestContentLibraryItems addRecipientsItem(DocumentCreateByTemplateRequestRecipients recipientsItem) {
+    if (this.recipients == null) {
+      this.recipients = new ArrayList<>();
+    }
+    this.recipients.add(recipientsItem);
     return this;
   }
 
    /**
-   * Get id
-   * @return id
+   * Get recipients
+   * @return recipients
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "9d9k7VtSQ5KCXfsUQv4GxE", value = "")
+  @ApiModelProperty(value = "")
 
-  public String getId() {
-    return id;
+  public List<DocumentCreateByTemplateRequestRecipients> getRecipients() {
+    return recipients;
   }
 
 
-  public void setId(String id) {
-    this.id = id;
+  public void setRecipients(List<DocumentCreateByTemplateRequestRecipients> recipients) {
+    this.recipients = recipients;
   }
 
 
@@ -103,21 +166,25 @@ public class DocumentCreateByTemplateRequestContentLibraryItems {
       return false;
     }
     DocumentCreateByTemplateRequestContentLibraryItems documentCreateByTemplateRequestContentLibraryItems = (DocumentCreateByTemplateRequestContentLibraryItems) o;
-    return Objects.equals(this.pricingTables, documentCreateByTemplateRequestContentLibraryItems.pricingTables) &&
-        Objects.equals(this.id, documentCreateByTemplateRequestContentLibraryItems.id);
+    return Objects.equals(this.id, documentCreateByTemplateRequestContentLibraryItems.id) &&
+        Objects.equals(this.fields, documentCreateByTemplateRequestContentLibraryItems.fields) &&
+        Objects.equals(this.pricingTables, documentCreateByTemplateRequestContentLibraryItems.pricingTables) &&
+        Objects.equals(this.recipients, documentCreateByTemplateRequestContentLibraryItems.recipients);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(pricingTables, id);
+    return Objects.hash(id, fields, pricingTables, recipients);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentCreateByTemplateRequestContentLibraryItems {\n");
-    sb.append("    pricingTables: ").append(toIndentedString(pricingTables)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
+    sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
+    sb.append("    pricingTables: ").append(toIndentedString(pricingTables)).append("\n");
+    sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
     sb.append("}");
     return sb.toString();
   }

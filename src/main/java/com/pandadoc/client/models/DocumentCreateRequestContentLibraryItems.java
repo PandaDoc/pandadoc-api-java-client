@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.DocumentCreateByTemplateRequestRecipients;
 import com.pandadoc.client.models.PricingTableRequest;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -45,7 +46,7 @@ public class DocumentCreateRequestContentLibraryItems {
 
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
-  private List<Object> recipients = null;
+  private List<DocumentCreateByTemplateRequestRecipients> recipients = null;
 
 
   public DocumentCreateRequestContentLibraryItems id(String id) {
@@ -58,8 +59,8 @@ public class DocumentCreateRequestContentLibraryItems {
    * Content library item id
    * @return id
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "hryJY9mqYZHjQCYQuSjRQg", value = "Content library item id")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "hryJY9mqYZHjQCYQuSjRQg", required = true, value = "Content library item id")
 
   public String getId() {
     return id;
@@ -125,13 +126,13 @@ public class DocumentCreateRequestContentLibraryItems {
   }
 
 
-  public DocumentCreateRequestContentLibraryItems recipients(List<Object> recipients) {
+  public DocumentCreateRequestContentLibraryItems recipients(List<DocumentCreateByTemplateRequestRecipients> recipients) {
     
     this.recipients = recipients;
     return this;
   }
 
-  public DocumentCreateRequestContentLibraryItems addRecipientsItem(Object recipientsItem) {
+  public DocumentCreateRequestContentLibraryItems addRecipientsItem(DocumentCreateByTemplateRequestRecipients recipientsItem) {
     if (this.recipients == null) {
       this.recipients = new ArrayList<>();
     }
@@ -146,12 +147,12 @@ public class DocumentCreateRequestContentLibraryItems {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<Object> getRecipients() {
+  public List<DocumentCreateByTemplateRequestRecipients> getRecipients() {
     return recipients;
   }
 
 
-  public void setRecipients(List<Object> recipients) {
+  public void setRecipients(List<DocumentCreateByTemplateRequestRecipients> recipients) {
     this.recipients = recipients;
   }
 

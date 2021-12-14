@@ -49,7 +49,7 @@ public class DocumentCreateByTemplateRequest {
 
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
-  private List<DocumentCreateByTemplateRequestRecipients> recipients = null;
+  private List<DocumentCreateByTemplateRequestRecipients> recipients = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_TOKENS = "tokens";
   @SerializedName(SERIALIZED_NAME_TOKENS)
@@ -156,9 +156,6 @@ public class DocumentCreateByTemplateRequest {
   }
 
   public DocumentCreateByTemplateRequest addRecipientsItem(DocumentCreateByTemplateRequestRecipients recipientsItem) {
-    if (this.recipients == null) {
-      this.recipients = new ArrayList<>();
-    }
     this.recipients.add(recipientsItem);
     return this;
   }
@@ -167,8 +164,8 @@ public class DocumentCreateByTemplateRequest {
    * The list of recipients you&#39;re sending the document to. Every object must contain the email parameter. The &#x60;role&#x60;, &#x60;first_name&#x60; and &#x60;last_name&#x60; parameters are optional. If the &#x60;role&#x60; parameter passed, a person is assigned all fields matching their corresponding role. If not passed, a person will receive a read-only link to view the document. If the &#x60;first_name&#x60; and &#x60;last_name&#x60; not passed the system 1. creates a new contact, if none exists with the given &#x60;email&#x60;; or 2. gets the existing contact with the given &#x60;email&#x60; that already exists.
    * @return recipients
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "The list of recipients you're sending the document to. Every object must contain the email parameter. The `role`, `first_name` and `last_name` parameters are optional. If the `role` parameter passed, a person is assigned all fields matching their corresponding role. If not passed, a person will receive a read-only link to view the document. If the `first_name` and `last_name` not passed the system 1. creates a new contact, if none exists with the given `email`; or 2. gets the existing contact with the given `email` that already exists.")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(required = true, value = "The list of recipients you're sending the document to. Every object must contain the email parameter. The `role`, `first_name` and `last_name` parameters are optional. If the `role` parameter passed, a person is assigned all fields matching their corresponding role. If not passed, a person will receive a read-only link to view the document. If the `first_name` and `last_name` not passed the system 1. creates a new contact, if none exists with the given `email`; or 2. gets the existing contact with the given `email` that already exists.")
 
   public List<DocumentCreateByTemplateRequestRecipients> getRecipients() {
     return recipients;

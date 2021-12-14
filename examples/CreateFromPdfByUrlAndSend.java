@@ -54,7 +54,7 @@
                 .metadata(metadata)
                 .parseFormFields(false);
 
-        return apiInstance.documentCreate(documentCreateRequest, EDITOR_VERSION);
+        return apiInstance.createDocument(documentCreateRequest, EDITOR_VERSION);
     }
 
     public static void ensureDocumentCreated(DocumentsApi apiInstance, DocumentCreateResponse document) {
@@ -84,7 +84,7 @@
             }
 
             currentRetries++;
-            DocumentStatusResponse docStatusResponse = apiInstance.documentStatus(document.getId());
+            DocumentStatusResponse docStatusResponse = apiInstance.statusDocument(document.getId());
             String documentStatus = docStatusResponse.getStatus();
 
             if ("document.draft".equals(documentStatus)) {

@@ -38,6 +38,8 @@ import com.pandadoc.client.models.DocumentSendResponse;
 import com.pandadoc.client.models.DocumentStatusChangeRequest;
 import com.pandadoc.client.models.DocumentStatusEnum;
 import com.pandadoc.client.models.DocumentStatusResponse;
+import com.pandadoc.client.models.DocumentTransferAllOwnershipRequest;
+import com.pandadoc.client.models.DocumentTransferOwnershipRequest;
 import java.io.File;
 import com.pandadoc.client.models.LinkedObjectCreateRequest;
 import com.pandadoc.client.models.LinkedObjectCreateResponse;
@@ -68,6 +70,552 @@ public class DocumentsApi {
         this.localVarApiClient = apiClient;
     }
 
+    /**
+     * Build call for changeDocumentStatus
+     * @param id Specify document ID. (required)
+     * @param documentStatusChangeRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call changeDocumentStatusCall(String id, DocumentStatusChangeRequest documentStatusChangeRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = documentStatusChangeRequest;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/status"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json", "multipart/form-data"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call changeDocumentStatusValidateBeforeCall(String id, DocumentStatusChangeRequest documentStatusChangeRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling changeDocumentStatus(Async)");
+        }
+        
+        // verify the required parameter 'documentStatusChangeRequest' is set
+        if (documentStatusChangeRequest == null) {
+            throw new ApiException("Missing the required parameter 'documentStatusChangeRequest' when calling changeDocumentStatus(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = changeDocumentStatusCall(id, documentStatusChangeRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Document status change
+     * 
+     * @param id Specify document ID. (required)
+     * @param documentStatusChangeRequest  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public void changeDocumentStatus(String id, DocumentStatusChangeRequest documentStatusChangeRequest) throws ApiException {
+        changeDocumentStatusWithHttpInfo(id, documentStatusChangeRequest);
+    }
+
+    /**
+     * Document status change
+     * 
+     * @param id Specify document ID. (required)
+     * @param documentStatusChangeRequest  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> changeDocumentStatusWithHttpInfo(String id, DocumentStatusChangeRequest documentStatusChangeRequest) throws ApiException {
+        okhttp3.Call localVarCall = changeDocumentStatusValidateBeforeCall(id, documentStatusChangeRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Document status change (asynchronously)
+     * 
+     * @param id Specify document ID. (required)
+     * @param documentStatusChangeRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call changeDocumentStatusAsync(String id, DocumentStatusChangeRequest documentStatusChangeRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = changeDocumentStatusValidateBeforeCall(id, documentStatusChangeRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDocument
+     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
+     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDocumentCall(DocumentCreateRequest documentCreateRequest, String editorVer, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = documentCreateRequest;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (editorVer != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("editor_ver", editorVer));
+        }
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json", "multipart/form-data"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDocumentValidateBeforeCall(DocumentCreateRequest documentCreateRequest, String editorVer, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'documentCreateRequest' is set
+        if (documentCreateRequest == null) {
+            throw new ApiException("Missing the required parameter 'documentCreateRequest' when calling createDocument(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDocumentCall(documentCreateRequest, editorVer, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create document
+     * 
+     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
+     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
+     * @return DocumentCreateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public DocumentCreateResponse createDocument(DocumentCreateRequest documentCreateRequest, String editorVer) throws ApiException {
+        ApiResponse<DocumentCreateResponse> localVarResp = createDocumentWithHttpInfo(documentCreateRequest, editorVer);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create document
+     * 
+     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
+     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
+     * @return ApiResponse&lt;DocumentCreateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DocumentCreateResponse> createDocumentWithHttpInfo(DocumentCreateRequest documentCreateRequest, String editorVer) throws ApiException {
+        okhttp3.Call localVarCall = createDocumentValidateBeforeCall(documentCreateRequest, editorVer, null);
+        Type localVarReturnType = new TypeToken<DocumentCreateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create document (asynchronously)
+     * 
+     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
+     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDocumentAsync(DocumentCreateRequest documentCreateRequest, String editorVer, final ApiCallback<DocumentCreateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDocumentValidateBeforeCall(documentCreateRequest, editorVer, _callback);
+        Type localVarReturnType = new TypeToken<DocumentCreateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createDocumentLink
+     * @param id Document ID (required)
+     * @param documentCreateLinkRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDocumentLinkCall(String id, DocumentCreateLinkRequest documentCreateLinkRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = documentCreateLinkRequest;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/session"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createDocumentLinkValidateBeforeCall(String id, DocumentCreateLinkRequest documentCreateLinkRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createDocumentLink(Async)");
+        }
+        
+        // verify the required parameter 'documentCreateLinkRequest' is set
+        if (documentCreateLinkRequest == null) {
+            throw new ApiException("Missing the required parameter 'documentCreateLinkRequest' when calling createDocumentLink(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createDocumentLinkCall(id, documentCreateLinkRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create a Document Link
+     * 
+     * @param id Document ID (required)
+     * @param documentCreateLinkRequest  (required)
+     * @return DocumentCreateLinkResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public DocumentCreateLinkResponse createDocumentLink(String id, DocumentCreateLinkRequest documentCreateLinkRequest) throws ApiException {
+        ApiResponse<DocumentCreateLinkResponse> localVarResp = createDocumentLinkWithHttpInfo(id, documentCreateLinkRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create a Document Link
+     * 
+     * @param id Document ID (required)
+     * @param documentCreateLinkRequest  (required)
+     * @return ApiResponse&lt;DocumentCreateLinkResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DocumentCreateLinkResponse> createDocumentLinkWithHttpInfo(String id, DocumentCreateLinkRequest documentCreateLinkRequest) throws ApiException {
+        okhttp3.Call localVarCall = createDocumentLinkValidateBeforeCall(id, documentCreateLinkRequest, null);
+        Type localVarReturnType = new TypeToken<DocumentCreateLinkResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create a Document Link (asynchronously)
+     * 
+     * @param id Document ID (required)
+     * @param documentCreateLinkRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createDocumentLinkAsync(String id, DocumentCreateLinkRequest documentCreateLinkRequest, final ApiCallback<DocumentCreateLinkResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createDocumentLinkValidateBeforeCall(id, documentCreateLinkRequest, _callback);
+        Type localVarReturnType = new TypeToken<DocumentCreateLinkResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for createLinkedObject
+     * @param id Specify document ID. (required)
+     * @param linkedObjectCreateRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createLinkedObjectCall(String id, LinkedObjectCreateRequest linkedObjectCreateRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = linkedObjectCreateRequest;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/linked-objects"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call createLinkedObjectValidateBeforeCall(String id, LinkedObjectCreateRequest linkedObjectCreateRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createLinkedObject(Async)");
+        }
+        
+        // verify the required parameter 'linkedObjectCreateRequest' is set
+        if (linkedObjectCreateRequest == null) {
+            throw new ApiException("Missing the required parameter 'linkedObjectCreateRequest' when calling createLinkedObject(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = createLinkedObjectCall(id, linkedObjectCreateRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Create Linked Object
+     * 
+     * @param id Specify document ID. (required)
+     * @param linkedObjectCreateRequest  (required)
+     * @return LinkedObjectCreateResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public LinkedObjectCreateResponse createLinkedObject(String id, LinkedObjectCreateRequest linkedObjectCreateRequest) throws ApiException {
+        ApiResponse<LinkedObjectCreateResponse> localVarResp = createLinkedObjectWithHttpInfo(id, linkedObjectCreateRequest);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Create Linked Object
+     * 
+     * @param id Specify document ID. (required)
+     * @param linkedObjectCreateRequest  (required)
+     * @return ApiResponse&lt;LinkedObjectCreateResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<LinkedObjectCreateResponse> createLinkedObjectWithHttpInfo(String id, LinkedObjectCreateRequest linkedObjectCreateRequest) throws ApiException {
+        okhttp3.Call localVarCall = createLinkedObjectValidateBeforeCall(id, linkedObjectCreateRequest, null);
+        Type localVarReturnType = new TypeToken<LinkedObjectCreateResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Create Linked Object (asynchronously)
+     * 
+     * @param id Specify document ID. (required)
+     * @param linkedObjectCreateRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call createLinkedObjectAsync(String id, LinkedObjectCreateRequest linkedObjectCreateRequest, final ApiCallback<LinkedObjectCreateResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = createLinkedObjectValidateBeforeCall(id, linkedObjectCreateRequest, _callback);
+        Type localVarReturnType = new TypeToken<LinkedObjectCreateResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
     /**
      * Build call for deleteDocument
      * @param id Document ID (required)
@@ -181,815 +729,9 @@ public class DocumentsApi {
         return localVarCall;
     }
     /**
-     * Build call for documentCreate
-     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
-     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentCreateCall(DocumentCreateRequest documentCreateRequest, String editorVer, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = documentCreateRequest;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/documents";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (editorVer != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("editor_ver", editorVer));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json", "multipart/form-data"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentCreateValidateBeforeCall(DocumentCreateRequest documentCreateRequest, String editorVer, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'documentCreateRequest' is set
-        if (documentCreateRequest == null) {
-            throw new ApiException("Missing the required parameter 'documentCreateRequest' when calling documentCreate(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = documentCreateCall(documentCreateRequest, editorVer, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Create document
-     * 
-     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
-     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
-     * @return DocumentCreateResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public DocumentCreateResponse documentCreate(DocumentCreateRequest documentCreateRequest, String editorVer) throws ApiException {
-        ApiResponse<DocumentCreateResponse> localVarResp = documentCreateWithHttpInfo(documentCreateRequest, editorVer);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create document
-     * 
-     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
-     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
-     * @return ApiResponse&lt;DocumentCreateResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DocumentCreateResponse> documentCreateWithHttpInfo(DocumentCreateRequest documentCreateRequest, String editorVer) throws ApiException {
-        okhttp3.Call localVarCall = documentCreateValidateBeforeCall(documentCreateRequest, editorVer, null);
-        Type localVarReturnType = new TypeToken<DocumentCreateResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Create document (asynchronously)
-     * 
-     * @param documentCreateRequest Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  (required)
-     * @param editorVer Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentCreateAsync(DocumentCreateRequest documentCreateRequest, String editorVer, final ApiCallback<DocumentCreateResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = documentCreateValidateBeforeCall(documentCreateRequest, editorVer, _callback);
-        Type localVarReturnType = new TypeToken<DocumentCreateResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for documentCreateLink
-     * @param id Document ID (required)
-     * @param documentCreateLinkRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentCreateLinkCall(String id, DocumentCreateLinkRequest documentCreateLinkRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = documentCreateLinkRequest;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}/session"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentCreateLinkValidateBeforeCall(String id, DocumentCreateLinkRequest documentCreateLinkRequest, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling documentCreateLink(Async)");
-        }
-        
-        // verify the required parameter 'documentCreateLinkRequest' is set
-        if (documentCreateLinkRequest == null) {
-            throw new ApiException("Missing the required parameter 'documentCreateLinkRequest' when calling documentCreateLink(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = documentCreateLinkCall(id, documentCreateLinkRequest, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Create a Document Link
-     * 
-     * @param id Document ID (required)
-     * @param documentCreateLinkRequest  (required)
-     * @return DocumentCreateLinkResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public DocumentCreateLinkResponse documentCreateLink(String id, DocumentCreateLinkRequest documentCreateLinkRequest) throws ApiException {
-        ApiResponse<DocumentCreateLinkResponse> localVarResp = documentCreateLinkWithHttpInfo(id, documentCreateLinkRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create a Document Link
-     * 
-     * @param id Document ID (required)
-     * @param documentCreateLinkRequest  (required)
-     * @return ApiResponse&lt;DocumentCreateLinkResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DocumentCreateLinkResponse> documentCreateLinkWithHttpInfo(String id, DocumentCreateLinkRequest documentCreateLinkRequest) throws ApiException {
-        okhttp3.Call localVarCall = documentCreateLinkValidateBeforeCall(id, documentCreateLinkRequest, null);
-        Type localVarReturnType = new TypeToken<DocumentCreateLinkResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Create a Document Link (asynchronously)
-     * 
-     * @param id Document ID (required)
-     * @param documentCreateLinkRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentCreateLinkAsync(String id, DocumentCreateLinkRequest documentCreateLinkRequest, final ApiCallback<DocumentCreateLinkResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = documentCreateLinkValidateBeforeCall(id, documentCreateLinkRequest, _callback);
-        Type localVarReturnType = new TypeToken<DocumentCreateLinkResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for documentDetails
-     * @param id Document ID (required)
-     * @param dataMerge When set to true, each item will contain all the fields in flat structure with external field names defined in the template. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentDetailsCall(String id, Boolean dataMerge, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}/details"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (dataMerge != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("data_merge", dataMerge));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentDetailsValidateBeforeCall(String id, Boolean dataMerge, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling documentDetails(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = documentDetailsCall(id, dataMerge, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Document details
-     * 
-     * @param id Document ID (required)
-     * @param dataMerge When set to true, each item will contain all the fields in flat structure with external field names defined in the template. (optional)
-     * @return DocumentDetailsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public DocumentDetailsResponse documentDetails(String id, Boolean dataMerge) throws ApiException {
-        ApiResponse<DocumentDetailsResponse> localVarResp = documentDetailsWithHttpInfo(id, dataMerge);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Document details
-     * 
-     * @param id Document ID (required)
-     * @param dataMerge When set to true, each item will contain all the fields in flat structure with external field names defined in the template. (optional)
-     * @return ApiResponse&lt;DocumentDetailsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DocumentDetailsResponse> documentDetailsWithHttpInfo(String id, Boolean dataMerge) throws ApiException {
-        okhttp3.Call localVarCall = documentDetailsValidateBeforeCall(id, dataMerge, null);
-        Type localVarReturnType = new TypeToken<DocumentDetailsResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Document details (asynchronously)
-     * 
-     * @param id Document ID (required)
-     * @param dataMerge When set to true, each item will contain all the fields in flat structure with external field names defined in the template. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentDetailsAsync(String id, Boolean dataMerge, final ApiCallback<DocumentDetailsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = documentDetailsValidateBeforeCall(id, dataMerge, _callback);
-        Type localVarReturnType = new TypeToken<DocumentDetailsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for documentList
-     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
-     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
-     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
-     * @param deleted Returns only the deleted documents. (optional)
-     * @param id  (optional)
-     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
-     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
-     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
-     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
-     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
-     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
-     * @param page Specify which page of the dataset to return. (optional)
-     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
-     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param tag Search tag. Filter by document tag. (optional)
-     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentListCall(String completedFrom, String completedTo, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/documents";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        if (completedFrom != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("completed_from", completedFrom));
-        }
-
-        if (completedTo != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("completed_to", completedTo));
-        }
-
-        if (count != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("count", count));
-        }
-
-        if (createdFrom != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("created_from", createdFrom));
-        }
-
-        if (createdTo != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("created_to", createdTo));
-        }
-
-        if (deleted != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("deleted", deleted));
-        }
-
-        if (id != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("id", id));
-        }
-
-        if (folderUuid != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("folder_uuid", folderUuid));
-        }
-
-        if (formId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("form_id", formId));
-        }
-
-        if (metadata != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metadata", metadata));
-        }
-
-        if (modifiedFrom != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("modified_from", modifiedFrom));
-        }
-
-        if (modifiedTo != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("modified_to", modifiedTo));
-        }
-
-        if (orderBy != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_by", orderBy));
-        }
-
-        if (page != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
-        }
-
-        if (q != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
-        }
-
-        if (status != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
-        }
-
-        if (statusNe != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status__ne", statusNe));
-        }
-
-        if (tag != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tag", tag));
-        }
-
-        if (templateId != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("template_id", templateId));
-        }
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentListValidateBeforeCall(String completedFrom, String completedTo, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = documentListCall(completedFrom, completedTo, count, createdFrom, createdTo, deleted, id, folderUuid, formId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * List documents
-     * 
-     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
-     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
-     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
-     * @param deleted Returns only the deleted documents. (optional)
-     * @param id  (optional)
-     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
-     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
-     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
-     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
-     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
-     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
-     * @param page Specify which page of the dataset to return. (optional)
-     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
-     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param tag Search tag. Filter by document tag. (optional)
-     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
-     * @return DocumentListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public DocumentListResponse documentList(String completedFrom, String completedTo, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId) throws ApiException {
-        ApiResponse<DocumentListResponse> localVarResp = documentListWithHttpInfo(completedFrom, completedTo, count, createdFrom, createdTo, deleted, id, folderUuid, formId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId);
-        return localVarResp.getData();
-    }
-
-    /**
-     * List documents
-     * 
-     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
-     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
-     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
-     * @param deleted Returns only the deleted documents. (optional)
-     * @param id  (optional)
-     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
-     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
-     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
-     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
-     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
-     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
-     * @param page Specify which page of the dataset to return. (optional)
-     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
-     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param tag Search tag. Filter by document tag. (optional)
-     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
-     * @return ApiResponse&lt;DocumentListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DocumentListResponse> documentListWithHttpInfo(String completedFrom, String completedTo, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId) throws ApiException {
-        okhttp3.Call localVarCall = documentListValidateBeforeCall(completedFrom, completedTo, count, createdFrom, createdTo, deleted, id, folderUuid, formId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, null);
-        Type localVarReturnType = new TypeToken<DocumentListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List documents (asynchronously)
-     * 
-     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
-     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
-     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
-     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
-     * @param deleted Returns only the deleted documents. (optional)
-     * @param id  (optional)
-     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
-     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
-     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
-     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
-     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
-     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
-     * @param page Specify which page of the dataset to return. (optional)
-     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
-     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
-     * @param tag Search tag. Filter by document tag. (optional)
-     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentListAsync(String completedFrom, String completedTo, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId, final ApiCallback<DocumentListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = documentListValidateBeforeCall(completedFrom, completedTo, count, createdFrom, createdTo, deleted, id, folderUuid, formId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, _callback);
-        Type localVarReturnType = new TypeToken<DocumentListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for documentStatus
+     * Build call for deleteLinkedObject
      * @param id Specify document ID. (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentStatusCall(String id, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentStatusValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling documentStatus(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = documentStatusCall(id, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Document status
-     * 
-     * @param id Specify document ID. (required)
-     * @return DocumentStatusResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public DocumentStatusResponse documentStatus(String id) throws ApiException {
-        ApiResponse<DocumentStatusResponse> localVarResp = documentStatusWithHttpInfo(id);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Document status
-     * 
-     * @param id Specify document ID. (required)
-     * @return ApiResponse&lt;DocumentStatusResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<DocumentStatusResponse> documentStatusWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = documentStatusValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<DocumentStatusResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Document status (asynchronously)
-     * 
-     * @param id Specify document ID. (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call documentStatusAsync(String id, final ApiCallback<DocumentStatusResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = documentStatusValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<DocumentStatusResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for documentStatusChange
-     * @param id Specify document ID. (required)
-     * @param documentStatusChangeRequest  (required)
+     * @param linkedObjectId Specify linked object ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1003,12 +745,13 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call documentStatusChangeCall(String id, DocumentStatusChangeRequest documentStatusChangeRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = documentStatusChangeRequest;
+    public okhttp3.Call deleteLinkedObjectCall(String id, String linkedObjectId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}/status"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+        String localVarPath = "/public/v1/documents/{id}/linked-objects/{linked_object_id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "linked_object_id" + "\\}", localVarApiClient.escapeString(linkedObjectId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -1025,39 +768,39 @@ public class DocumentsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json", "multipart/form-data"
+            
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call documentStatusChangeValidateBeforeCall(String id, DocumentStatusChangeRequest documentStatusChangeRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteLinkedObjectValidateBeforeCall(String id, String linkedObjectId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling documentStatusChange(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteLinkedObject(Async)");
         }
         
-        // verify the required parameter 'documentStatusChangeRequest' is set
-        if (documentStatusChangeRequest == null) {
-            throw new ApiException("Missing the required parameter 'documentStatusChangeRequest' when calling documentStatusChange(Async)");
+        // verify the required parameter 'linkedObjectId' is set
+        if (linkedObjectId == null) {
+            throw new ApiException("Missing the required parameter 'linkedObjectId' when calling deleteLinkedObject(Async)");
         }
         
 
-        okhttp3.Call localVarCall = documentStatusChangeCall(id, documentStatusChangeRequest, _callback);
+        okhttp3.Call localVarCall = deleteLinkedObjectCall(id, linkedObjectId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Document status change
+     * Delete Linked Object
      * 
      * @param id Specify document ID. (required)
-     * @param documentStatusChangeRequest  (required)
+     * @param linkedObjectId Specify linked object ID. (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
@@ -1069,15 +812,15 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public void documentStatusChange(String id, DocumentStatusChangeRequest documentStatusChangeRequest) throws ApiException {
-        documentStatusChangeWithHttpInfo(id, documentStatusChangeRequest);
+    public void deleteLinkedObject(String id, String linkedObjectId) throws ApiException {
+        deleteLinkedObjectWithHttpInfo(id, linkedObjectId);
     }
 
     /**
-     * Document status change
+     * Delete Linked Object
      * 
      * @param id Specify document ID. (required)
-     * @param documentStatusChangeRequest  (required)
+     * @param linkedObjectId Specify linked object ID. (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1090,16 +833,16 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> documentStatusChangeWithHttpInfo(String id, DocumentStatusChangeRequest documentStatusChangeRequest) throws ApiException {
-        okhttp3.Call localVarCall = documentStatusChangeValidateBeforeCall(id, documentStatusChangeRequest, null);
+    public ApiResponse<Void> deleteLinkedObjectWithHttpInfo(String id, String linkedObjectId) throws ApiException {
+        okhttp3.Call localVarCall = deleteLinkedObjectValidateBeforeCall(id, linkedObjectId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Document status change (asynchronously)
+     * Delete Linked Object (asynchronously)
      * 
      * @param id Specify document ID. (required)
-     * @param documentStatusChangeRequest  (required)
+     * @param linkedObjectId Specify linked object ID. (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1113,10 +856,138 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call documentStatusChangeAsync(String id, DocumentStatusChangeRequest documentStatusChangeRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteLinkedObjectAsync(String id, String linkedObjectId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = documentStatusChangeValidateBeforeCall(id, documentStatusChangeRequest, _callback);
+        okhttp3.Call localVarCall = deleteLinkedObjectValidateBeforeCall(id, linkedObjectId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for detailsDocument
+     * @param id Document ID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call detailsDocumentCall(String id, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/details"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call detailsDocumentValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling detailsDocument(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = detailsDocumentCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Document details
+     * 
+     * @param id Document ID (required)
+     * @return DocumentDetailsResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public DocumentDetailsResponse detailsDocument(String id) throws ApiException {
+        ApiResponse<DocumentDetailsResponse> localVarResp = detailsDocumentWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Document details
+     * 
+     * @param id Document ID (required)
+     * @return ApiResponse&lt;DocumentDetailsResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DocumentDetailsResponse> detailsDocumentWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = detailsDocumentValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<DocumentDetailsResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Document details (asynchronously)
+     * 
+     * @param id Document ID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call detailsDocumentAsync(String id, final ApiCallback<DocumentDetailsResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = detailsDocumentValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<DocumentDetailsResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -1412,35 +1283,136 @@ public class DocumentsApi {
         return localVarCall;
     }
     /**
-     * Build call for linkedObjectDelete
-     * @param id Specify document ID. (required)
-     * @param linkedObjectId Specify linked object ID. (required)
+     * Build call for listDocuments
+     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
+     * @param contactId Returns results where &#39;contact_id&#39; is present in document as recipient or approver (optional)
+     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
+     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
+     * @param deleted Returns only the deleted documents. (optional)
+     * @param id  (optional)
+     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
+     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
+     * @param membershipId Returns results where &#39;membership_id&#39; is present in document as owner (should be member uuid) (optional)
+     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
+     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
+     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
+     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
+     * @param page Specify which page of the dataset to return. (optional)
+     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
+     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param tag Search tag. Filter by document tag. (optional)
+     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkedObjectDeleteCall(String id, String linkedObjectId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listDocumentsCall(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}/linked-objects/{linked_object_id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
-            .replaceAll("\\{" + "linked_object_id" + "\\}", localVarApiClient.escapeString(linkedObjectId.toString()));
+        String localVarPath = "/public/v1/documents";
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (completedFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("completed_from", completedFrom));
+        }
+
+        if (completedTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("completed_to", completedTo));
+        }
+
+        if (contactId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("contact_id", contactId));
+        }
+
+        if (count != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("count", count));
+        }
+
+        if (createdFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("created_from", createdFrom));
+        }
+
+        if (createdTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("created_to", createdTo));
+        }
+
+        if (deleted != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("deleted", deleted));
+        }
+
+        if (id != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("id", id));
+        }
+
+        if (folderUuid != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("folder_uuid", folderUuid));
+        }
+
+        if (formId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("form_id", formId));
+        }
+
+        if (membershipId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("membership_id", membershipId));
+        }
+
+        if (metadata != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metadata", metadata));
+        }
+
+        if (modifiedFrom != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("modified_from", modifiedFrom));
+        }
+
+        if (modifiedTo != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("modified_to", modifiedTo));
+        }
+
+        if (orderBy != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("order_by", orderBy));
+        }
+
+        if (page != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("page", page));
+        }
+
+        if (q != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("q", q));
+        }
+
+        if (status != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status", status));
+        }
+
+        if (statusNe != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("status__ne", statusNe));
+        }
+
+        if (tag != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("tag", tag));
+        }
+
+        if (templateId != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("template_id", templateId));
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -1457,96 +1429,147 @@ public class DocumentsApi {
         localVarHeaderParams.put("Content-Type", localVarContentType);
 
         String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "DELETE", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkedObjectDeleteValidateBeforeCall(String id, String linkedObjectId, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling linkedObjectDelete(Async)");
-        }
-        
-        // verify the required parameter 'linkedObjectId' is set
-        if (linkedObjectId == null) {
-            throw new ApiException("Missing the required parameter 'linkedObjectId' when calling linkedObjectDelete(Async)");
-        }
+    private okhttp3.Call listDocumentsValidateBeforeCall(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = linkedObjectDeleteCall(id, linkedObjectId, _callback);
+        okhttp3.Call localVarCall = listDocumentsCall(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Delete Linked Object
+     * List documents
      * 
-     * @param id Specify document ID. (required)
-     * @param linkedObjectId Specify linked object ID. (required)
+     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
+     * @param contactId Returns results where &#39;contact_id&#39; is present in document as recipient or approver (optional)
+     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
+     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
+     * @param deleted Returns only the deleted documents. (optional)
+     * @param id  (optional)
+     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
+     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
+     * @param membershipId Returns results where &#39;membership_id&#39; is present in document as owner (should be member uuid) (optional)
+     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
+     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
+     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
+     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
+     * @param page Specify which page of the dataset to return. (optional)
+     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
+     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param tag Search tag. Filter by document tag. (optional)
+     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
+     * @return DocumentListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public void linkedObjectDelete(String id, String linkedObjectId) throws ApiException {
-        linkedObjectDeleteWithHttpInfo(id, linkedObjectId);
+    public DocumentListResponse listDocuments(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId) throws ApiException {
+        ApiResponse<DocumentListResponse> localVarResp = listDocumentsWithHttpInfo(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId);
+        return localVarResp.getData();
     }
 
     /**
-     * Delete Linked Object
+     * List documents
      * 
-     * @param id Specify document ID. (required)
-     * @param linkedObjectId Specify linked object ID. (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
+     * @param contactId Returns results where &#39;contact_id&#39; is present in document as recipient or approver (optional)
+     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
+     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
+     * @param deleted Returns only the deleted documents. (optional)
+     * @param id  (optional)
+     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
+     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
+     * @param membershipId Returns results where &#39;membership_id&#39; is present in document as owner (should be member uuid) (optional)
+     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
+     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
+     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
+     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
+     * @param page Specify which page of the dataset to return. (optional)
+     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
+     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param tag Search tag. Filter by document tag. (optional)
+     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
+     * @return ApiResponse&lt;DocumentListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> linkedObjectDeleteWithHttpInfo(String id, String linkedObjectId) throws ApiException {
-        okhttp3.Call localVarCall = linkedObjectDeleteValidateBeforeCall(id, linkedObjectId, null);
-        return localVarApiClient.execute(localVarCall);
+    public ApiResponse<DocumentListResponse> listDocumentsWithHttpInfo(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId) throws ApiException {
+        okhttp3.Call localVarCall = listDocumentsValidateBeforeCall(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, null);
+        Type localVarReturnType = new TypeToken<DocumentListResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Delete Linked Object (asynchronously)
+     * List documents (asynchronously)
      * 
-     * @param id Specify document ID. (required)
-     * @param linkedObjectId Specify linked object ID. (required)
+     * @param completedFrom Return results where the &#x60;date_completed&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param completedTo Return results where the &#x60;date_completed&#x60; field (ISO 8601) is less than or equal to this value. (optional)
+     * @param contactId Returns results where &#39;contact_id&#39; is present in document as recipient or approver (optional)
+     * @param count Specify how many document results to return. Default is 50 documents, maximum is 100 documents. (optional)
+     * @param createdFrom Return results where the &#x60;date_created&#x60; field (ISO 8601) is greater than or equal to this value. (optional)
+     * @param createdTo Return results where the &#x60;date_created&#x60; field (ISO 8601) is less than this value. (optional)
+     * @param deleted Returns only the deleted documents. (optional)
+     * @param id  (optional)
+     * @param folderUuid The UUID of the folder where the documents are stored. (optional)
+     * @param formId Specify the form used for documents creation. This parameter can&#39;t be used with template_id. (optional)
+     * @param membershipId Returns results where &#39;membership_id&#39; is present in document as owner (should be member uuid) (optional)
+     * @param metadata Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. (optional)
+     * @param modifiedFrom Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. (optional)
+     * @param modifiedTo Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. (optional)
+     * @param orderBy Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. (optional)
+     * @param page Specify which page of the dataset to return. (optional)
+     * @param q Search query. Filter by document reference number (this token is stored on the template level) or name. (optional)
+     * @param status Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param statusNe Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  (optional)
+     * @param tag Search tag. Filter by document tag. (optional)
+     * @param templateId Specify the template used for documents creation. Parameter can&#39;t be used with form_id. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkedObjectDeleteAsync(String id, String linkedObjectId, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call listDocumentsAsync(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusEnum status, DocumentStatusEnum statusNe, String tag, String templateId, final ApiCallback<DocumentListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = linkedObjectDeleteValidateBeforeCall(id, linkedObjectId, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        okhttp3.Call localVarCall = listDocumentsValidateBeforeCall(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, _callback);
+        Type localVarReturnType = new TypeToken<DocumentListResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for linkedObjectList
+     * Build call for listLinkedObjects
      * @param id Specify document ID. (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
@@ -1561,7 +1584,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkedObjectListCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listLinkedObjectsCall(String id, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
@@ -1593,15 +1616,15 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkedObjectListValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listLinkedObjectsValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling linkedObjectList(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling listLinkedObjects(Async)");
         }
         
 
-        okhttp3.Call localVarCall = linkedObjectListCall(id, _callback);
+        okhttp3.Call localVarCall = listLinkedObjectsCall(id, _callback);
         return localVarCall;
 
     }
@@ -1622,8 +1645,8 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public LinkedObjectListResponse linkedObjectList(String id) throws ApiException {
-        ApiResponse<LinkedObjectListResponse> localVarResp = linkedObjectListWithHttpInfo(id);
+    public LinkedObjectListResponse listLinkedObjects(String id) throws ApiException {
+        ApiResponse<LinkedObjectListResponse> localVarResp = listLinkedObjectsWithHttpInfo(id);
         return localVarResp.getData();
     }
 
@@ -1643,8 +1666,8 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<LinkedObjectListResponse> linkedObjectListWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = linkedObjectListValidateBeforeCall(id, null);
+    public ApiResponse<LinkedObjectListResponse> listLinkedObjectsWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = listLinkedObjectsValidateBeforeCall(id, null);
         Type localVarReturnType = new TypeToken<LinkedObjectListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1666,151 +1689,10 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call linkedObjectListAsync(String id, final ApiCallback<LinkedObjectListResponse> _callback) throws ApiException {
+    public okhttp3.Call listLinkedObjectsAsync(String id, final ApiCallback<LinkedObjectListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = linkedObjectListValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = listLinkedObjectsValidateBeforeCall(id, _callback);
         Type localVarReturnType = new TypeToken<LinkedObjectListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for linkedObjectsCreate
-     * @param id Specify document ID. (required)
-     * @param linkedObjectCreateRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call linkedObjectsCreateCall(String id, LinkedObjectCreateRequest linkedObjectCreateRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = linkedObjectCreateRequest;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}/linked-objects"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "POST", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call linkedObjectsCreateValidateBeforeCall(String id, LinkedObjectCreateRequest linkedObjectCreateRequest, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling linkedObjectsCreate(Async)");
-        }
-        
-        // verify the required parameter 'linkedObjectCreateRequest' is set
-        if (linkedObjectCreateRequest == null) {
-            throw new ApiException("Missing the required parameter 'linkedObjectCreateRequest' when calling linkedObjectsCreate(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = linkedObjectsCreateCall(id, linkedObjectCreateRequest, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Create Linked Object
-     * 
-     * @param id Specify document ID. (required)
-     * @param linkedObjectCreateRequest  (required)
-     * @return LinkedObjectCreateResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public LinkedObjectCreateResponse linkedObjectsCreate(String id, LinkedObjectCreateRequest linkedObjectCreateRequest) throws ApiException {
-        ApiResponse<LinkedObjectCreateResponse> localVarResp = linkedObjectsCreateWithHttpInfo(id, linkedObjectCreateRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Create Linked Object
-     * 
-     * @param id Specify document ID. (required)
-     * @param linkedObjectCreateRequest  (required)
-     * @return ApiResponse&lt;LinkedObjectCreateResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<LinkedObjectCreateResponse> linkedObjectsCreateWithHttpInfo(String id, LinkedObjectCreateRequest linkedObjectCreateRequest) throws ApiException {
-        okhttp3.Call localVarCall = linkedObjectsCreateValidateBeforeCall(id, linkedObjectCreateRequest, null);
-        Type localVarReturnType = new TypeToken<LinkedObjectCreateResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Create Linked Object (asynchronously)
-     * 
-     * @param id Specify document ID. (required)
-     * @param linkedObjectCreateRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
-        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call linkedObjectsCreateAsync(String id, LinkedObjectCreateRequest linkedObjectCreateRequest, final ApiCallback<LinkedObjectCreateResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = linkedObjectsCreateValidateBeforeCall(id, linkedObjectCreateRequest, _callback);
-        Type localVarReturnType = new TypeToken<LinkedObjectCreateResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
@@ -1949,6 +1831,390 @@ public class DocumentsApi {
         okhttp3.Call localVarCall = sendDocumentValidateBeforeCall(id, documentSendRequest, _callback);
         Type localVarReturnType = new TypeToken<DocumentSendResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for statusDocument
+     * @param id Specify document ID. (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statusDocumentCall(String id, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call statusDocumentValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling statusDocument(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = statusDocumentCall(id, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Document status
+     * 
+     * @param id Specify document ID. (required)
+     * @return DocumentStatusResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public DocumentStatusResponse statusDocument(String id) throws ApiException {
+        ApiResponse<DocumentStatusResponse> localVarResp = statusDocumentWithHttpInfo(id);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Document status
+     * 
+     * @param id Specify document ID. (required)
+     * @return ApiResponse&lt;DocumentStatusResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DocumentStatusResponse> statusDocumentWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = statusDocumentValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<DocumentStatusResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Document status (asynchronously)
+     * 
+     * @param id Specify document ID. (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call statusDocumentAsync(String id, final ApiCallback<DocumentStatusResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = statusDocumentValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<DocumentStatusResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for transferAllDocumentsOwnership
+     * @param documentTransferAllOwnershipRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call transferAllDocumentsOwnershipCall(DocumentTransferAllOwnershipRequest documentTransferAllOwnershipRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = documentTransferAllOwnershipRequest;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/ownership";
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call transferAllDocumentsOwnershipValidateBeforeCall(DocumentTransferAllOwnershipRequest documentTransferAllOwnershipRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'documentTransferAllOwnershipRequest' is set
+        if (documentTransferAllOwnershipRequest == null) {
+            throw new ApiException("Missing the required parameter 'documentTransferAllOwnershipRequest' when calling transferAllDocumentsOwnership(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = transferAllDocumentsOwnershipCall(documentTransferAllOwnershipRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Transfer all documents ownership
+     * 
+     * @param documentTransferAllOwnershipRequest  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public void transferAllDocumentsOwnership(DocumentTransferAllOwnershipRequest documentTransferAllOwnershipRequest) throws ApiException {
+        transferAllDocumentsOwnershipWithHttpInfo(documentTransferAllOwnershipRequest);
+    }
+
+    /**
+     * Transfer all documents ownership
+     * 
+     * @param documentTransferAllOwnershipRequest  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> transferAllDocumentsOwnershipWithHttpInfo(DocumentTransferAllOwnershipRequest documentTransferAllOwnershipRequest) throws ApiException {
+        okhttp3.Call localVarCall = transferAllDocumentsOwnershipValidateBeforeCall(documentTransferAllOwnershipRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Transfer all documents ownership (asynchronously)
+     * 
+     * @param documentTransferAllOwnershipRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call transferAllDocumentsOwnershipAsync(DocumentTransferAllOwnershipRequest documentTransferAllOwnershipRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = transferAllDocumentsOwnershipValidateBeforeCall(documentTransferAllOwnershipRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for transferDocumentOwnership
+     * @param id Specify document ID. (required)
+     * @param documentTransferOwnershipRequest  (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call transferDocumentOwnershipCall(String id, DocumentTransferOwnershipRequest documentTransferOwnershipRequest, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = documentTransferOwnershipRequest;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/ownership"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            "application/json"
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call transferDocumentOwnershipValidateBeforeCall(String id, DocumentTransferOwnershipRequest documentTransferOwnershipRequest, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling transferDocumentOwnership(Async)");
+        }
+        
+        // verify the required parameter 'documentTransferOwnershipRequest' is set
+        if (documentTransferOwnershipRequest == null) {
+            throw new ApiException("Missing the required parameter 'documentTransferOwnershipRequest' when calling transferDocumentOwnership(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = transferDocumentOwnershipCall(id, documentTransferOwnershipRequest, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Update document ownership
+     * 
+     * @param id Specify document ID. (required)
+     * @param documentTransferOwnershipRequest  (required)
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public void transferDocumentOwnership(String id, DocumentTransferOwnershipRequest documentTransferOwnershipRequest) throws ApiException {
+        transferDocumentOwnershipWithHttpInfo(id, documentTransferOwnershipRequest);
+    }
+
+    /**
+     * Update document ownership
+     * 
+     * @param id Specify document ID. (required)
+     * @param documentTransferOwnershipRequest  (required)
+     * @return ApiResponse&lt;Void&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<Void> transferDocumentOwnershipWithHttpInfo(String id, DocumentTransferOwnershipRequest documentTransferOwnershipRequest) throws ApiException {
+        okhttp3.Call localVarCall = transferDocumentOwnershipValidateBeforeCall(id, documentTransferOwnershipRequest, null);
+        return localVarApiClient.execute(localVarCall);
+    }
+
+    /**
+     * Update document ownership (asynchronously)
+     * 
+     * @param id Specify document ID. (required)
+     * @param documentTransferOwnershipRequest  (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call transferDocumentOwnershipAsync(String id, DocumentTransferOwnershipRequest documentTransferOwnershipRequest, final ApiCallback<Void> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = transferDocumentOwnershipValidateBeforeCall(id, documentTransferOwnershipRequest, _callback);
+        localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
 }

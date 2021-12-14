@@ -33,19 +33,16 @@ public class CreateFromTemplateAndSend {
        List<DocumentCreateRequestRecipients> recipients = Collections.singletonList(recipient);
 
        PricingTableRequestOptionsDiscount discount = new PricingTableRequestOptionsDiscount()
-               .isGlobal(true)
                .type(PricingTableRequestOptionsDiscount.TypeEnum.ABSOLUTE)
                .name("Global discount")
                .value(new BigDecimal("2.26"));
 
        PricingTableRequestOptionsTaxFirst taxFirst = new PricingTableRequestOptionsTaxFirst()
-               .isGlobal(true)
                .type(PricingTableRequestOptionsTaxFirst.TypeEnum.PERCENT)
                .name("tax first")
                .value(new BigDecimal("2.26"));
 
        PricingTableRequestOptionsTaxSecond taxSecond = new PricingTableRequestOptionsTaxSecond()
-               .isGlobal(true)
                .type(PricingTableRequestOptionsTaxSecond.TypeEnum.PERCENT)
                .name("tax second")
                .value(new BigDecimal("2.26"));
@@ -121,7 +118,7 @@ public class CreateFromTemplateAndSend {
                .pricingTables(pricingTables)
                .contentPlaceholders(documentPlaceholders);
 
-       return apiInstance.documentCreate(documentRequest, EDITOR_VERSION);
+       return apiInstance.createDocument(documentRequest, EDITOR_VERSION);
    }
 
     public static void ensureDocumentCreated(DocumentsApi apiInstance, DocumentCreateResponse document) {
@@ -151,7 +148,7 @@ public class CreateFromTemplateAndSend {
             }
 
             currentRetries++;
-            DocumentStatusResponse docStatusResponse = apiInstance.documentStatus(document.getId());
+            DocumentStatusResponse docStatusResponse = apiInstance.statusDocument(document.getId());
             String documentStatus = docStatusResponse.getStatus();
 
             if ("document.draft".equals(documentStatus)) {

@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**urls** | **List&lt;String&gt;** |  |  [optional]
-**name** | **String** |  |  [optional]
+**urls** | **List&lt;String&gt;** |  | 
+**name** | **String** |  | 
 
 
 

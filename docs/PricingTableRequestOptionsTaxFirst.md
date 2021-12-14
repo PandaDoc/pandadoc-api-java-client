@@ -7,10 +7,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**isGlobal** | **Boolean** |  |  [optional]
-**type** | [**TypeEnum**](#TypeEnum) |  |  [optional]
-**name** | **String** |  |  [optional]
-**value** | **BigDecimal** |  |  [optional]
+**type** | [**TypeEnum**](#TypeEnum) |  | 
+**name** | **String** |  | 
+**value** | **BigDecimal** |  | 
 
 
 

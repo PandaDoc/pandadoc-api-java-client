@@ -59,8 +59,8 @@ public class DocumentCreateRequestRecipients {
    * Get email
    * @return email
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "josh@example.com", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "josh@example.com", required = true, value = "")
 
   public String getEmail() {
     return email;

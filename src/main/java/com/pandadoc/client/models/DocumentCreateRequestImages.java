@@ -32,7 +32,7 @@ import java.util.List;
 public class DocumentCreateRequestImages {
   public static final String SERIALIZED_NAME_URLS = "urls";
   @SerializedName(SERIALIZED_NAME_URLS)
-  private List<String> urls = null;
+  private List<String> urls = new ArrayList<>();
 
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
@@ -46,9 +46,6 @@ public class DocumentCreateRequestImages {
   }
 
   public DocumentCreateRequestImages addUrlsItem(String urlsItem) {
-    if (this.urls == null) {
-      this.urls = new ArrayList<>();
-    }
     this.urls.add(urlsItem);
     return this;
   }
@@ -57,8 +54,8 @@ public class DocumentCreateRequestImages {
    * Get urls
    * @return urls
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "[\"https://s3.amazonaws.com/pd-static-content/public-docs/pandadoc-panda-bear.png\"]", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "[\"https://s3.amazonaws.com/pd-static-content/public-docs/pandadoc-panda-bear.png\"]", required = true, value = "")
 
   public List<String> getUrls() {
     return urls;
@@ -80,8 +77,8 @@ public class DocumentCreateRequestImages {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Image 1", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Image 1", required = true, value = "")
 
   public String getName() {
     return name;

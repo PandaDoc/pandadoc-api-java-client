@@ -59,8 +59,8 @@ public class PricingTableRequest {
    * Get name
    * @return name
   **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "Pricing Table 1", value = "")
+  @javax.annotation.Nonnull
+  @ApiModelProperty(example = "Pricing Table 1", required = true, value = "")
 
   public String getName() {
     return name;
