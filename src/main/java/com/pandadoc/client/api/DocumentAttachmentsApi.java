@@ -26,10 +26,8 @@ import com.google.gson.reflect.TypeToken;
 import java.io.IOException;
 
 
-import com.pandadoc.client.models.ContactCreateRequest;
-import com.pandadoc.client.models.ContactDetailsResponse;
-import com.pandadoc.client.models.ContactListResponse;
-import com.pandadoc.client.models.ContactUpdateRequest;
+import com.pandadoc.client.models.DocumentAttachmentResponse;
+import java.io.File;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -37,14 +35,14 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class ContactsApi {
+public class DocumentAttachmentsApi {
     private ApiClient localVarApiClient;
 
-    public ContactsApi() {
+    public DocumentAttachmentsApi() {
         this(Configuration.getDefaultApiClient());
     }
 
-    public ContactsApi(ApiClient apiClient) {
+    public DocumentAttachmentsApi(ApiClient apiClient) {
         this.localVarApiClient = apiClient;
     }
 
@@ -57,31 +55,48 @@ public class ContactsApi {
     }
 
     /**
-     * Build call for createContact
-     * @param contactCreateRequest  (required)
+     * Build call for createDocumentAttachment
+     * @param id Document UUID (required)
+     * @param file Binary file to be attached to a document (optional)
+     * @param source URL link to the file to be attached to a document (optional)
+     * @param name Optional name to set for uploaded file (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createContactCall(ContactCreateRequest contactCreateRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = contactCreateRequest;
+    public okhttp3.Call createDocumentAttachmentCall(String id, File file, String source, String name, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/public/v1/contacts";
+        String localVarPath = "/public/v1/documents/{id}/attachments"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
         Map<String, String> localVarHeaderParams = new HashMap<String, String>();
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        if (file != null) {
+            localVarFormParams.put("file", file);
+        }
+
+        if (source != null) {
+            localVarFormParams.put("source", source);
+        }
+
+        if (name != null) {
+            localVarFormParams.put("name", name);
+        }
 
         final String[] localVarAccepts = {
             "application/json"
@@ -92,7 +107,7 @@ public class ContactsApi {
         }
 
         final String[] localVarContentTypes = {
-            "application/json"
+            "multipart/form-data"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
         localVarHeaderParams.put("Content-Type", localVarContentType);
@@ -102,105 +117,118 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createContactValidateBeforeCall(ContactCreateRequest contactCreateRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDocumentAttachmentValidateBeforeCall(String id, File file, String source, String name, final ApiCallback _callback) throws ApiException {
         
-        // verify the required parameter 'contactCreateRequest' is set
-        if (contactCreateRequest == null) {
-            throw new ApiException("Missing the required parameter 'contactCreateRequest' when calling createContact(Async)");
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling createDocumentAttachment(Async)");
         }
         
 
-        okhttp3.Call localVarCall = createContactCall(contactCreateRequest, _callback);
+        okhttp3.Call localVarCall = createDocumentAttachmentCall(id, file, source, name, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Create contact
-     * 
-     * @param contactCreateRequest  (required)
-     * @return ContactDetailsResponse
+     * Document Attachment Create
+     * Creates an attachment for a particular document
+     * @param id Document UUID (required)
+     * @param file Binary file to be attached to a document (optional)
+     * @param source URL link to the file to be attached to a document (optional)
+     * @param name Optional name to set for uploaded file (optional)
+     * @return DocumentAttachmentResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ContactDetailsResponse createContact(ContactCreateRequest contactCreateRequest) throws ApiException {
-        ApiResponse<ContactDetailsResponse> localVarResp = createContactWithHttpInfo(contactCreateRequest);
+    public DocumentAttachmentResponse createDocumentAttachment(String id, File file, String source, String name) throws ApiException {
+        ApiResponse<DocumentAttachmentResponse> localVarResp = createDocumentAttachmentWithHttpInfo(id, file, source, name);
         return localVarResp.getData();
     }
 
     /**
-     * Create contact
-     * 
-     * @param contactCreateRequest  (required)
-     * @return ApiResponse&lt;ContactDetailsResponse&gt;
+     * Document Attachment Create
+     * Creates an attachment for a particular document
+     * @param id Document UUID (required)
+     * @param file Binary file to be attached to a document (optional)
+     * @param source URL link to the file to be attached to a document (optional)
+     * @param name Optional name to set for uploaded file (optional)
+     * @return ApiResponse&lt;DocumentAttachmentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactDetailsResponse> createContactWithHttpInfo(ContactCreateRequest contactCreateRequest) throws ApiException {
-        okhttp3.Call localVarCall = createContactValidateBeforeCall(contactCreateRequest, null);
-        Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
+    public ApiResponse<DocumentAttachmentResponse> createDocumentAttachmentWithHttpInfo(String id, File file, String source, String name) throws ApiException {
+        okhttp3.Call localVarCall = createDocumentAttachmentValidateBeforeCall(id, file, source, name, null);
+        Type localVarReturnType = new TypeToken<DocumentAttachmentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Create contact (asynchronously)
-     * 
-     * @param contactCreateRequest  (required)
+     * Document Attachment Create (asynchronously)
+     * Creates an attachment for a particular document
+     * @param id Document UUID (required)
+     * @param file Binary file to be attached to a document (optional)
+     * @param source URL link to the file to be attached to a document (optional)
+     * @param name Optional name to set for uploaded file (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 201 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createContactAsync(ContactCreateRequest contactCreateRequest, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
+    public okhttp3.Call createDocumentAttachmentAsync(String id, File file, String source, String name, final ApiCallback<DocumentAttachmentResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createContactValidateBeforeCall(contactCreateRequest, _callback);
-        Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
+        okhttp3.Call localVarCall = createDocumentAttachmentValidateBeforeCall(id, file, source, name, _callback);
+        Type localVarReturnType = new TypeToken<DocumentAttachmentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
-     * Build call for deleteContact
-     * @param id Contact id. (required)
+     * Build call for deleteDocumentAttachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteContactCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call deleteDocumentAttachmentCall(String id, String attachmentId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/public/v1/contacts/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
+        String localVarPath = "/public/v1/documents/{id}/attachments/{attachment_id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "attachment_id" + "\\}", localVarApiClient.escapeString(attachmentId.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
         List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
@@ -227,85 +255,91 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call deleteContactValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call deleteDocumentAttachmentValidateBeforeCall(String id, String attachmentId, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling deleteContact(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling deleteDocumentAttachment(Async)");
+        }
+        
+        // verify the required parameter 'attachmentId' is set
+        if (attachmentId == null) {
+            throw new ApiException("Missing the required parameter 'attachmentId' when calling deleteDocumentAttachment(Async)");
         }
         
 
-        okhttp3.Call localVarCall = deleteContactCall(id, _callback);
+        okhttp3.Call localVarCall = deleteDocumentAttachmentCall(id, attachmentId, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Delete contact by id
-     * 
-     * @param id Contact id. (required)
+     * Document Attachment Delete
+     * Deletes specific document&#39;s attachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public void deleteContact(String id) throws ApiException {
-        deleteContactWithHttpInfo(id);
+    public void deleteDocumentAttachment(String id, String attachmentId) throws ApiException {
+        deleteDocumentAttachmentWithHttpInfo(id, attachmentId);
     }
 
     /**
-     * Delete contact by id
-     * 
-     * @param id Contact id. (required)
+     * Document Attachment Delete
+     * Deletes specific document&#39;s attachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
      * @return ApiResponse&lt;Void&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> deleteContactWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = deleteContactValidateBeforeCall(id, null);
+    public ApiResponse<Void> deleteDocumentAttachmentWithHttpInfo(String id, String attachmentId) throws ApiException {
+        okhttp3.Call localVarCall = deleteDocumentAttachmentValidateBeforeCall(id, attachmentId, null);
         return localVarApiClient.execute(localVarCall);
     }
 
     /**
-     * Delete contact by id (asynchronously)
-     * 
-     * @param id Contact id. (required)
+     * Document Attachment Delete (asynchronously)
+     * Deletes specific document&#39;s attachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 204 </td><td> No Content </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call deleteContactAsync(String id, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call deleteDocumentAttachmentAsync(String id, String attachmentId, final ApiCallback<Void> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = deleteContactValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = deleteDocumentAttachmentValidateBeforeCall(id, attachmentId, _callback);
         localVarApiClient.executeAsync(localVarCall, _callback);
         return localVarCall;
     }
     /**
-     * Build call for detailsContact
-     * @param id Contact id. (required)
+     * Build call for detailsDocumentAttachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -313,17 +347,283 @@ public class ContactsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call detailsContactCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call detailsDocumentAttachmentCall(String id, String attachmentId, final ApiCallback _callback) throws ApiException {
         Object localVarPostBody = null;
 
         // create path and map variables
-        String localVarPath = "/public/v1/contacts/{id}"
+        String localVarPath = "/public/v1/documents/{id}/attachments/{attachment_id}"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "attachment_id" + "\\}", localVarApiClient.escapeString(attachmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call detailsDocumentAttachmentValidateBeforeCall(String id, String attachmentId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling detailsDocumentAttachment(Async)");
+        }
+        
+        // verify the required parameter 'attachmentId' is set
+        if (attachmentId == null) {
+            throw new ApiException("Missing the required parameter 'attachmentId' when calling detailsDocumentAttachment(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = detailsDocumentAttachmentCall(id, attachmentId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Document Attachment Details
+     * Returns details of the specific document&#39;s attachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @return DocumentAttachmentResponse
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public DocumentAttachmentResponse detailsDocumentAttachment(String id, String attachmentId) throws ApiException {
+        ApiResponse<DocumentAttachmentResponse> localVarResp = detailsDocumentAttachmentWithHttpInfo(id, attachmentId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Document Attachment Details
+     * Returns details of the specific document&#39;s attachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @return ApiResponse&lt;DocumentAttachmentResponse&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<DocumentAttachmentResponse> detailsDocumentAttachmentWithHttpInfo(String id, String attachmentId) throws ApiException {
+        okhttp3.Call localVarCall = detailsDocumentAttachmentValidateBeforeCall(id, attachmentId, null);
+        Type localVarReturnType = new TypeToken<DocumentAttachmentResponse>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Document Attachment Details (asynchronously)
+     * Returns details of the specific document&#39;s attachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call detailsDocumentAttachmentAsync(String id, String attachmentId, final ApiCallback<DocumentAttachmentResponse> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = detailsDocumentAttachmentValidateBeforeCall(id, attachmentId, _callback);
+        Type localVarReturnType = new TypeToken<DocumentAttachmentResponse>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for downloadDocumentAttachment
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadDocumentAttachmentCall(String id, String attachmentId, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/attachments/{attachment_id}/download"
+            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
+            .replaceAll("\\{" + "attachment_id" + "\\}", localVarApiClient.escapeString(attachmentId.toString()));
+
+        List<Pair> localVarQueryParams = new ArrayList<Pair>();
+        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
+        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
+        Map<String, String> localVarCookieParams = new HashMap<String, String>();
+        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
+
+        final String[] localVarAccepts = {
+            "application/_*", "application/json"
+        };
+        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
+        if (localVarAccept != null) {
+            localVarHeaderParams.put("Accept", localVarAccept);
+        }
+
+        final String[] localVarContentTypes = {
+            
+        };
+        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
+        localVarHeaderParams.put("Content-Type", localVarContentType);
+
+        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
+        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
+    }
+
+    @SuppressWarnings("rawtypes")
+    private okhttp3.Call downloadDocumentAttachmentValidateBeforeCall(String id, String attachmentId, final ApiCallback _callback) throws ApiException {
+        
+        // verify the required parameter 'id' is set
+        if (id == null) {
+            throw new ApiException("Missing the required parameter 'id' when calling downloadDocumentAttachment(Async)");
+        }
+        
+        // verify the required parameter 'attachmentId' is set
+        if (attachmentId == null) {
+            throw new ApiException("Missing the required parameter 'attachmentId' when calling downloadDocumentAttachment(Async)");
+        }
+        
+
+        okhttp3.Call localVarCall = downloadDocumentAttachmentCall(id, attachmentId, _callback);
+        return localVarCall;
+
+    }
+
+    /**
+     * Document Attachment Download
+     * Returns document attachment file for download
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @return File
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public File downloadDocumentAttachment(String id, String attachmentId) throws ApiException {
+        ApiResponse<File> localVarResp = downloadDocumentAttachmentWithHttpInfo(id, attachmentId);
+        return localVarResp.getData();
+    }
+
+    /**
+     * Document Attachment Download
+     * Returns document attachment file for download
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @return ApiResponse&lt;File&gt;
+     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public ApiResponse<File> downloadDocumentAttachmentWithHttpInfo(String id, String attachmentId) throws ApiException {
+        okhttp3.Call localVarCall = downloadDocumentAttachmentValidateBeforeCall(id, attachmentId, null);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
+    }
+
+    /**
+     * Document Attachment Download (asynchronously)
+     * Returns document attachment file for download
+     * @param id Document UUID (required)
+     * @param attachmentId Attachment UUID (required)
+     * @param _callback The callback to be executed when the API call finishes
+     * @return The request call
+     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call downloadDocumentAttachmentAsync(String id, String attachmentId, final ApiCallback<File> _callback) throws ApiException {
+
+        okhttp3.Call localVarCall = downloadDocumentAttachmentValidateBeforeCall(id, attachmentId, _callback);
+        Type localVarReturnType = new TypeToken<File>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
+        return localVarCall;
+    }
+    /**
+     * Build call for listDocumentAttachments
+     * @param id Document UUID (required)
+     * @param _callback Callback for upload/download progress
+     * @return Call to execute
+     * @throws ApiException If fail to serialize the request body object
+     * @http.response.details
+     <table summary="Response Details" border="1">
+        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
+        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
+     </table>
+     */
+    public okhttp3.Call listDocumentAttachmentsCall(String id, final ApiCallback _callback) throws ApiException {
+        Object localVarPostBody = null;
+
+        // create path and map variables
+        String localVarPath = "/public/v1/documents/{id}/attachments"
             .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
 
         List<Pair> localVarQueryParams = new ArrayList<Pair>();
@@ -351,66 +651,64 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call detailsContactValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDocumentAttachmentsValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling detailsContact(Async)");
+            throw new ApiException("Missing the required parameter 'id' when calling listDocumentAttachments(Async)");
         }
         
 
-        okhttp3.Call localVarCall = detailsContactCall(id, _callback);
+        okhttp3.Call localVarCall = listDocumentAttachmentsCall(id, _callback);
         return localVarCall;
 
     }
 
     /**
-     * Get contact details by id
-     * 
-     * @param id Contact id. (required)
-     * @return ContactDetailsResponse
+     * Document Attachment List
+     * Return list of objects attached to particular document
+     * @param id Document UUID (required)
+     * @return List&lt;DocumentAttachmentResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ContactDetailsResponse detailsContact(String id) throws ApiException {
-        ApiResponse<ContactDetailsResponse> localVarResp = detailsContactWithHttpInfo(id);
+    public List<DocumentAttachmentResponse> listDocumentAttachments(String id) throws ApiException {
+        ApiResponse<List<DocumentAttachmentResponse>> localVarResp = listDocumentAttachmentsWithHttpInfo(id);
         return localVarResp.getData();
     }
 
     /**
-     * Get contact details by id
-     * 
-     * @param id Contact id. (required)
-     * @return ApiResponse&lt;ContactDetailsResponse&gt;
+     * Document Attachment List
+     * Return list of objects attached to particular document
+     * @param id Document UUID (required)
+     * @return ApiResponse&lt;List&lt;DocumentAttachmentResponse&gt;&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactDetailsResponse> detailsContactWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = detailsContactValidateBeforeCall(id, null);
-        Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
+    public ApiResponse<List<DocumentAttachmentResponse>> listDocumentAttachmentsWithHttpInfo(String id) throws ApiException {
+        okhttp3.Call localVarCall = listDocumentAttachmentsValidateBeforeCall(id, null);
+        Type localVarReturnType = new TypeToken<List<DocumentAttachmentResponse>>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
-     * Get contact details by id (asynchronously)
-     * 
-     * @param id Contact id. (required)
+     * Document Attachment List (asynchronously)
+     * Return list of objects attached to particular document
+     * @param id Document UUID (required)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -418,267 +716,15 @@ public class ContactsApi {
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
         <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call detailsContactAsync(String id, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = detailsContactValidateBeforeCall(id, _callback);
-        Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for listContacts
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listContactsCall(final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = null;
-
-        // create path and map variables
-        String localVarPath = "/public/v1/contacts";
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "GET", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call listContactsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
-        
-
-        okhttp3.Call localVarCall = listContactsCall(_callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * List contacts
-     * 
-     * @return ContactListResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ContactListResponse listContacts() throws ApiException {
-        ApiResponse<ContactListResponse> localVarResp = listContactsWithHttpInfo();
-        return localVarResp.getData();
-    }
-
-    /**
-     * List contacts
-     * 
-     * @return ApiResponse&lt;ContactListResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ContactListResponse> listContactsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listContactsValidateBeforeCall(null);
-        Type localVarReturnType = new TypeToken<ContactListResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * List contacts (asynchronously)
-     * 
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 403 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call listContactsAsync(final ApiCallback<ContactListResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = listContactsValidateBeforeCall(_callback);
-        Type localVarReturnType = new TypeToken<ContactListResponse>(){}.getType();
-        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
-        return localVarCall;
-    }
-    /**
-     * Build call for updateContact
-     * @param id Contact id. (required)
-     * @param contactUpdateRequest  (required)
-     * @param _callback Callback for upload/download progress
-     * @return Call to execute
-     * @throws ApiException If fail to serialize the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
+        <tr><td> 404 </td><td> Not found </td><td>  -  </td></tr>
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call updateContactCall(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback _callback) throws ApiException {
-        Object localVarPostBody = contactUpdateRequest;
+    public okhttp3.Call listDocumentAttachmentsAsync(String id, final ApiCallback<List<DocumentAttachmentResponse>> _callback) throws ApiException {
 
-        // create path and map variables
-        String localVarPath = "/public/v1/contacts/{id}"
-            .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()));
-
-        List<Pair> localVarQueryParams = new ArrayList<Pair>();
-        List<Pair> localVarCollectionQueryParams = new ArrayList<Pair>();
-        Map<String, String> localVarHeaderParams = new HashMap<String, String>();
-        Map<String, String> localVarCookieParams = new HashMap<String, String>();
-        Map<String, Object> localVarFormParams = new HashMap<String, Object>();
-
-        final String[] localVarAccepts = {
-            "application/json"
-        };
-        final String localVarAccept = localVarApiClient.selectHeaderAccept(localVarAccepts);
-        if (localVarAccept != null) {
-            localVarHeaderParams.put("Accept", localVarAccept);
-        }
-
-        final String[] localVarContentTypes = {
-            "application/json"
-        };
-        final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        localVarHeaderParams.put("Content-Type", localVarContentType);
-
-        String[] localVarAuthNames = new String[] { "apiKey", "oauth2" };
-        return localVarApiClient.buildCall(localVarPath, "PATCH", localVarQueryParams, localVarCollectionQueryParams, localVarPostBody, localVarHeaderParams, localVarCookieParams, localVarFormParams, localVarAuthNames, _callback);
-    }
-
-    @SuppressWarnings("rawtypes")
-    private okhttp3.Call updateContactValidateBeforeCall(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback _callback) throws ApiException {
-        
-        // verify the required parameter 'id' is set
-        if (id == null) {
-            throw new ApiException("Missing the required parameter 'id' when calling updateContact(Async)");
-        }
-        
-        // verify the required parameter 'contactUpdateRequest' is set
-        if (contactUpdateRequest == null) {
-            throw new ApiException("Missing the required parameter 'contactUpdateRequest' when calling updateContact(Async)");
-        }
-        
-
-        okhttp3.Call localVarCall = updateContactCall(id, contactUpdateRequest, _callback);
-        return localVarCall;
-
-    }
-
-    /**
-     * Update contact by id
-     * 
-     * @param id Contact id. (required)
-     * @param contactUpdateRequest  (required)
-     * @return ContactDetailsResponse
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ContactDetailsResponse updateContact(String id, ContactUpdateRequest contactUpdateRequest) throws ApiException {
-        ApiResponse<ContactDetailsResponse> localVarResp = updateContactWithHttpInfo(id, contactUpdateRequest);
-        return localVarResp.getData();
-    }
-
-    /**
-     * Update contact by id
-     * 
-     * @param id Contact id. (required)
-     * @param contactUpdateRequest  (required)
-     * @return ApiResponse&lt;ContactDetailsResponse&gt;
-     * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public ApiResponse<ContactDetailsResponse> updateContactWithHttpInfo(String id, ContactUpdateRequest contactUpdateRequest) throws ApiException {
-        okhttp3.Call localVarCall = updateContactValidateBeforeCall(id, contactUpdateRequest, null);
-        Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
-        return localVarApiClient.execute(localVarCall, localVarReturnType);
-    }
-
-    /**
-     * Update contact by id (asynchronously)
-     * 
-     * @param id Contact id. (required)
-     * @param contactUpdateRequest  (required)
-     * @param _callback The callback to be executed when the API call finishes
-     * @return The request call
-     * @throws ApiException If fail to process the API call, e.g. serializing the request body object
-     * @http.response.details
-     <table summary="Response Details" border="1">
-        <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
-        <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
-        <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
-        <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
-     </table>
-     */
-    public okhttp3.Call updateContactAsync(String id, ContactUpdateRequest contactUpdateRequest, final ApiCallback<ContactDetailsResponse> _callback) throws ApiException {
-
-        okhttp3.Call localVarCall = updateContactValidateBeforeCall(id, contactUpdateRequest, _callback);
-        Type localVarReturnType = new TypeToken<ContactDetailsResponse>(){}.getType();
+        okhttp3.Call localVarCall = listDocumentAttachmentsValidateBeforeCall(id, _callback);
+        Type localVarReturnType = new TypeToken<List<DocumentAttachmentResponse>>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
