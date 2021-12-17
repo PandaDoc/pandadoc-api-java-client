@@ -184,7 +184,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("pandadoc_java_client/2.0.0");
+        setUserAgent("pandadoc_java_client/3.0.0");
 
         authentications = new HashMap<String, Authentication>();
     }
