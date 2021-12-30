@@ -36,6 +36,8 @@ public class DocumentCreateLinkResponse {
   @SerializedName(SERIALIZED_NAME_EXPIRES_AT)
   private String expiresAt;
 
+  public DocumentCreateLinkResponse() { 
+  }
 
   public DocumentCreateLinkResponse id(String id) {
     

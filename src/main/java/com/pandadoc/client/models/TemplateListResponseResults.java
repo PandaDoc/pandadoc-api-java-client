@@ -48,6 +48,8 @@ public class TemplateListResponseResults {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
+  public TemplateListResponseResults() { 
+  }
 
   public TemplateListResponseResults id(String id) {
     

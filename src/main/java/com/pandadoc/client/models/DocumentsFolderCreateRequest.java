@@ -36,6 +36,8 @@ public class DocumentsFolderCreateRequest {
   @SerializedName(SERIALIZED_NAME_PARENT_UUID)
   private String parentUuid;
 
+  public DocumentsFolderCreateRequest() { 
+  }
 
   public DocumentsFolderCreateRequest name(String name) {
     

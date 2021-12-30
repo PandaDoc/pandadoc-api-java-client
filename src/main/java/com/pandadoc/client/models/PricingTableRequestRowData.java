@@ -19,17 +19,19 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.PricingTableRequestDataDiscount;
+import com.pandadoc.client.models.PricingTableRequestRowDataDiscount;
+import com.pandadoc.client.models.PricingTableRequestRowDataTaxFirst;
+import com.pandadoc.client.models.PricingTableRequestRowDataTaxSecond;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * PricingTableRequestData
+ * PricingTableRequestRowData
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTableRequestData {
+public class PricingTableRequestRowData {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -56,18 +58,20 @@ public class PricingTableRequestData {
 
   public static final String SERIALIZED_NAME_DISCOUNT = "discount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT)
-  private PricingTableRequestDataDiscount discount;
+  private PricingTableRequestRowDataDiscount discount;
 
   public static final String SERIALIZED_NAME_TAX_FIRST = "tax_first";
   @SerializedName(SERIALIZED_NAME_TAX_FIRST)
-  private PricingTableRequestDataDiscount taxFirst;
+  private PricingTableRequestRowDataTaxFirst taxFirst;
 
   public static final String SERIALIZED_NAME_TAX_SECOND = "tax_second";
   @SerializedName(SERIALIZED_NAME_TAX_SECOND)
-  private PricingTableRequestDataDiscount taxSecond;
+  private PricingTableRequestRowDataTaxSecond taxSecond;
 
+  public PricingTableRequestRowData() { 
+  }
 
-  public PricingTableRequestData name(String name) {
+  public PricingTableRequestRowData name(String name) {
     
     this.name = name;
     return this;
@@ -90,7 +94,7 @@ public class PricingTableRequestData {
   }
 
 
-  public PricingTableRequestData description(String description) {
+  public PricingTableRequestRowData description(String description) {
     
     this.description = description;
     return this;
@@ -113,7 +117,7 @@ public class PricingTableRequestData {
   }
 
 
-  public PricingTableRequestData price(BigDecimal price) {
+  public PricingTableRequestRowData price(BigDecimal price) {
     
     this.price = price;
     return this;
@@ -136,7 +140,7 @@ public class PricingTableRequestData {
   }
 
 
-  public PricingTableRequestData cost(BigDecimal cost) {
+  public PricingTableRequestRowData cost(BigDecimal cost) {
     
     this.cost = cost;
     return this;
@@ -159,7 +163,7 @@ public class PricingTableRequestData {
   }
 
 
-  public PricingTableRequestData qty(Integer qty) {
+  public PricingTableRequestRowData qty(Integer qty) {
     
     this.qty = qty;
     return this;
@@ -182,7 +186,7 @@ public class PricingTableRequestData {
   }
 
 
-  public PricingTableRequestData sku(String sku) {
+  public PricingTableRequestRowData sku(String sku) {
     
     this.sku = sku;
     return this;
@@ -205,7 +209,7 @@ public class PricingTableRequestData {
   }
 
 
-  public PricingTableRequestData discount(PricingTableRequestDataDiscount discount) {
+  public PricingTableRequestRowData discount(PricingTableRequestRowDataDiscount discount) {
     
     this.discount = discount;
     return this;
@@ -218,17 +222,17 @@ public class PricingTableRequestData {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTableRequestDataDiscount getDiscount() {
+  public PricingTableRequestRowDataDiscount getDiscount() {
     return discount;
   }
 
 
-  public void setDiscount(PricingTableRequestDataDiscount discount) {
+  public void setDiscount(PricingTableRequestRowDataDiscount discount) {
     this.discount = discount;
   }
 
 
-  public PricingTableRequestData taxFirst(PricingTableRequestDataDiscount taxFirst) {
+  public PricingTableRequestRowData taxFirst(PricingTableRequestRowDataTaxFirst taxFirst) {
     
     this.taxFirst = taxFirst;
     return this;
@@ -241,17 +245,17 @@ public class PricingTableRequestData {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTableRequestDataDiscount getTaxFirst() {
+  public PricingTableRequestRowDataTaxFirst getTaxFirst() {
     return taxFirst;
   }
 
 
-  public void setTaxFirst(PricingTableRequestDataDiscount taxFirst) {
+  public void setTaxFirst(PricingTableRequestRowDataTaxFirst taxFirst) {
     this.taxFirst = taxFirst;
   }
 
 
-  public PricingTableRequestData taxSecond(PricingTableRequestDataDiscount taxSecond) {
+  public PricingTableRequestRowData taxSecond(PricingTableRequestRowDataTaxSecond taxSecond) {
     
     this.taxSecond = taxSecond;
     return this;
@@ -264,12 +268,12 @@ public class PricingTableRequestData {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTableRequestDataDiscount getTaxSecond() {
+  public PricingTableRequestRowDataTaxSecond getTaxSecond() {
     return taxSecond;
   }
 
 
-  public void setTaxSecond(PricingTableRequestDataDiscount taxSecond) {
+  public void setTaxSecond(PricingTableRequestRowDataTaxSecond taxSecond) {
     this.taxSecond = taxSecond;
   }
 
@@ -282,16 +286,16 @@ public class PricingTableRequestData {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTableRequestData pricingTableRequestData = (PricingTableRequestData) o;
-    return Objects.equals(this.name, pricingTableRequestData.name) &&
-        Objects.equals(this.description, pricingTableRequestData.description) &&
-        Objects.equals(this.price, pricingTableRequestData.price) &&
-        Objects.equals(this.cost, pricingTableRequestData.cost) &&
-        Objects.equals(this.qty, pricingTableRequestData.qty) &&
-        Objects.equals(this.sku, pricingTableRequestData.sku) &&
-        Objects.equals(this.discount, pricingTableRequestData.discount) &&
-        Objects.equals(this.taxFirst, pricingTableRequestData.taxFirst) &&
-        Objects.equals(this.taxSecond, pricingTableRequestData.taxSecond);
+    PricingTableRequestRowData pricingTableRequestRowData = (PricingTableRequestRowData) o;
+    return Objects.equals(this.name, pricingTableRequestRowData.name) &&
+        Objects.equals(this.description, pricingTableRequestRowData.description) &&
+        Objects.equals(this.price, pricingTableRequestRowData.price) &&
+        Objects.equals(this.cost, pricingTableRequestRowData.cost) &&
+        Objects.equals(this.qty, pricingTableRequestRowData.qty) &&
+        Objects.equals(this.sku, pricingTableRequestRowData.sku) &&
+        Objects.equals(this.discount, pricingTableRequestRowData.discount) &&
+        Objects.equals(this.taxFirst, pricingTableRequestRowData.taxFirst) &&
+        Objects.equals(this.taxSecond, pricingTableRequestRowData.taxSecond);
   }
 
   @Override
@@ -302,7 +306,7 @@ public class PricingTableRequestData {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTableRequestData {\n");
+    sb.append("class PricingTableRequestRowData {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    description: ").append(toIndentedString(description)).append("\n");
     sb.append("    price: ").append(toIndentedString(price)).append("\n");

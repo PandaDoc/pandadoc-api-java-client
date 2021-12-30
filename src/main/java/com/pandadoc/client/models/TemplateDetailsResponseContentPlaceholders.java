@@ -40,6 +40,8 @@ public class TemplateDetailsResponseContentPlaceholders {
   @SerializedName(SERIALIZED_NAME_DESCRIPTION)
   private String description;
 
+  public TemplateDetailsResponseContentPlaceholders() { 
+  }
 
   public TemplateDetailsResponseContentPlaceholders uuid(String uuid) {
     

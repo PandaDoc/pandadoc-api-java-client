@@ -35,6 +35,8 @@ public class DocumentsFolderListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<DocumentsFolderListResponseResults> results = null;
 
+  public DocumentsFolderListResponse() { 
+  }
 
   public DocumentsFolderListResponse results(List<DocumentsFolderListResponseResults> results) {
     

@@ -48,6 +48,8 @@ public class DocumentsFolderListResponseResults {
   @SerializedName(SERIALIZED_NAME_HAS_ITEMS)
   private Boolean hasItems;
 
+  public DocumentsFolderListResponseResults() { 
+  }
 
   public DocumentsFolderListResponseResults uuid(String uuid) {
     

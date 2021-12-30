@@ -86,6 +86,8 @@ public class PricingTableRequestOptionsTaxSecond {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
 
+  public PricingTableRequestOptionsTaxSecond() { 
+  }
 
   public PricingTableRequestOptionsTaxSecond type(TypeEnum type) {
     

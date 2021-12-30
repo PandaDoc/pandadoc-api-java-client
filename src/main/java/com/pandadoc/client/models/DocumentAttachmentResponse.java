@@ -45,6 +45,8 @@ public class DocumentAttachmentResponse {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public DocumentAttachmentResponse() { 
+  }
 
   public DocumentAttachmentResponse uuid(String uuid) {
     

@@ -36,6 +36,8 @@ public class DocumentTransferAllOwnershipRequest {
   @SerializedName(SERIALIZED_NAME_TO_MEMBERSHIP_ID)
   private String toMembershipId;
 
+  public DocumentTransferAllOwnershipRequest() { 
+  }
 
   public DocumentTransferAllOwnershipRequest fromMembershipId(String fromMembershipId) {
     

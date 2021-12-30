@@ -35,6 +35,8 @@ public class ContentLibraryItemListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<ContentLibraryItemListResponseResults> results = null;
 
+  public ContentLibraryItemListResponse() { 
+  }
 
   public ContentLibraryItemListResponse results(List<ContentLibraryItemListResponseResults> results) {
     

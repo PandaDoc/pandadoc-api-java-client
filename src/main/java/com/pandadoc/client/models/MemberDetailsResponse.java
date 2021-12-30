@@ -80,6 +80,8 @@ public class MemberDetailsResponse {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   private String dateModified;
 
+  public MemberDetailsResponse() { 
+  }
 
   public MemberDetailsResponse userId(String userId) {
     

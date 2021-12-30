@@ -35,6 +35,8 @@ public class MemberListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<MemberDetailsResponse> results = null;
 
+  public MemberListResponse() { 
+  }
 
   public MemberListResponse results(List<MemberDetailsResponse> results) {
     

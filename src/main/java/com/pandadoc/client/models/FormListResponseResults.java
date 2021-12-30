@@ -48,6 +48,8 @@ public class FormListResponseResults {
   @SerializedName(SERIALIZED_NAME_STATUS)
   private String status;
 
+  public FormListResponseResults() { 
+  }
 
   public FormListResponseResults id(String id) {
     

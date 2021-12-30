@@ -35,6 +35,8 @@ public class ContactListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<ContactDetailsResponse> results = null;
 
+  public ContactListResponse() { 
+  }
 
   public ContactListResponse results(List<ContactDetailsResponse> results) {
     

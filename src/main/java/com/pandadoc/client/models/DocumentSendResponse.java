@@ -60,6 +60,8 @@ public class DocumentSendResponse {
   @SerializedName(SERIALIZED_NAME_UUID)
   private String uuid;
 
+  public DocumentSendResponse() { 
+  }
 
   public DocumentSendResponse id(String id) {
     

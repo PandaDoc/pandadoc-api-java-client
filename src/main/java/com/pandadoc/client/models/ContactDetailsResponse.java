@@ -72,6 +72,8 @@ public class ContactDetailsResponse {
   @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
   private String postalCode;
 
+  public ContactDetailsResponse() { 
+  }
 
   public ContactDetailsResponse id(String id) {
     

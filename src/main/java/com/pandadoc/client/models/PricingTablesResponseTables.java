@@ -60,6 +60,8 @@ public class PricingTablesResponseTables {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public PricingTablesResponseTables() { 
+  }
 
   public PricingTablesResponseTables name(String name) {
     

@@ -36,6 +36,8 @@ public class TemplatesFolderCreateRequest {
   @SerializedName(SERIALIZED_NAME_PARENT_UUID)
   private String parentUuid;
 
+  public TemplatesFolderCreateRequest() { 
+  }
 
   public TemplatesFolderCreateRequest name(String name) {
     

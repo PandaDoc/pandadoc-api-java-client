@@ -37,6 +37,8 @@ public class DocumentCreateLinkRequest {
   @SerializedName(SERIALIZED_NAME_LIFETIME)
   private BigDecimal lifetime;
 
+  public DocumentCreateLinkRequest() { 
+  }
 
   public DocumentCreateLinkRequest recipient(String recipient) {
     

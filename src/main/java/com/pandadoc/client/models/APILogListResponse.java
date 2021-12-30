@@ -35,6 +35,8 @@ public class APILogListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<APILogListResponseResults> results = null;
 
+  public APILogListResponse() { 
+  }
 
   public APILogListResponse results(List<APILogListResponseResults> results) {
     

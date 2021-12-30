@@ -44,6 +44,8 @@ public class PricingTablesResponseSummary {
   @SerializedName(SERIALIZED_NAME_TAX)
   private String tax;
 
+  public PricingTablesResponseSummary() { 
+  }
 
   public PricingTablesResponseSummary subtotal(String subtotal) {
     

@@ -40,6 +40,8 @@ public class DocumentSendRequest {
   @SerializedName(SERIALIZED_NAME_SILENT)
   private Boolean silent;
 
+  public DocumentSendRequest() { 
+  }
 
   public DocumentSendRequest message(String message) {
     

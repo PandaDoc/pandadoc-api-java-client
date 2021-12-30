@@ -48,6 +48,8 @@ public class ContentLibraryItemResponseCreatedBy {
   @SerializedName(SERIALIZED_NAME_AVATAR)
   private String avatar;
 
+  public ContentLibraryItemResponseCreatedBy() { 
+  }
 
   public ContentLibraryItemResponseCreatedBy id(String id) {
     

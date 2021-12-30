@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **createdBy** | [**ContentLibraryItemResponseCreatedBy**](ContentLibraryItemResponseCreatedBy.md) |  |  [optional]
 **metadata** | **Object** |  |  [optional]
 **tokens** | [**List&lt;TemplateDetailsResponseTokens&gt;**](TemplateDetailsResponseTokens.md) |  |  [optional]
-**fields** | [**List&lt;TemplateDetailsResponseFields&gt;**](TemplateDetailsResponseFields.md) |  |  [optional]
+**fields** | **List&lt;Object&gt;** |  |  [optional]
 **pricing** | [**PricingTablesResponse**](PricingTablesResponse.md) |  |  [optional]
 **tags** | **List&lt;String&gt;** |  |  [optional]
 **roles** | [**List&lt;TemplateDetailsResponseRoles&gt;**](TemplateDetailsResponseRoles.md) |  |  [optional]

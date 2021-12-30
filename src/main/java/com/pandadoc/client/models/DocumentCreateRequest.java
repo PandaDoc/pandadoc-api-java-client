@@ -87,6 +87,8 @@ public class DocumentCreateRequest {
   @SerializedName(SERIALIZED_NAME_PARSE_FORM_FIELDS)
   private Boolean parseFormFields;
 
+  public DocumentCreateRequest() { 
+  }
 
   public DocumentCreateRequest name(String name) {
     

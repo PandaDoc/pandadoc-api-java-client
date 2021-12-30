@@ -48,6 +48,8 @@ public class ContentLibraryItemListResponseResults {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
+  public ContentLibraryItemListResponseResults() { 
+  }
 
   public ContentLibraryItemListResponseResults id(String id) {
     

@@ -48,6 +48,8 @@ public class DocumentCreateByTemplateRequestContentLibraryItems {
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
   private List<DocumentCreateByTemplateRequestRecipients> recipients = null;
 
+  public DocumentCreateByTemplateRequestContentLibraryItems() { 
+  }
 
   public DocumentCreateByTemplateRequestContentLibraryItems id(String id) {
     

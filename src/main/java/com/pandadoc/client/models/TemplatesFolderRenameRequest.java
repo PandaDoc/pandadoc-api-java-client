@@ -32,6 +32,8 @@ public class TemplatesFolderRenameRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public TemplatesFolderRenameRequest() { 
+  }
 
   public TemplatesFolderRenameRequest name(String name) {
     

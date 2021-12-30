@@ -39,6 +39,8 @@ public class DocumentCreateByTemplateRequestContentPlaceholders {
   @SerializedName(SERIALIZED_NAME_BLOCK_ID)
   private String blockId;
 
+  public DocumentCreateByTemplateRequestContentPlaceholders() { 
+  }
 
   public DocumentCreateByTemplateRequestContentPlaceholders contentLibraryItems(List<DocumentCreateByTemplateRequestContentLibraryItems> contentLibraryItems) {
     

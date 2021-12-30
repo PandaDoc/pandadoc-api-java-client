@@ -36,6 +36,8 @@ public class DocumentDetailsResponseGrandTotal {
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
+  public DocumentDetailsResponseGrandTotal() { 
+  }
 
   public DocumentDetailsResponseGrandTotal amount(String amount) {
     

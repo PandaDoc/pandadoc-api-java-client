@@ -92,6 +92,8 @@ public class APILogDetailsResponse {
   @SerializedName(SERIALIZED_NAME_USER_ID)
   private String userId;
 
+  public APILogDetailsResponse() { 
+  }
 
   public APILogDetailsResponse id(String id) {
     

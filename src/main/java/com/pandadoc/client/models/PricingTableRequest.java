@@ -48,6 +48,8 @@ public class PricingTableRequest {
   @SerializedName(SERIALIZED_NAME_SECTIONS)
   private List<PricingTableRequestSections> sections = null;
 
+  public PricingTableRequest() { 
+  }
 
   public PricingTableRequest name(String name) {
     

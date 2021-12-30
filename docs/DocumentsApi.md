@@ -942,8 +942,8 @@ Name | Type | Description  | Notes
 |-------------|-------------|------------------|
 | **200** | OK |  -  |
 | **400** | Bad Request |  -  |
-| **401** | Bad Request |  -  |
-| **403** | Authentication error |  -  |
+| **401** | Authentication error |  -  |
+| **403** | Permission error |  -  |
 | **429** | Too Many Requests |  -  |
 
 

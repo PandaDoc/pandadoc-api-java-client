@@ -42,6 +42,8 @@ public class TemplateDetailsResponseImages {
   @SerializedName(SERIALIZED_NAME_URLS)
   private List<String> urls = null;
 
+  public TemplateDetailsResponseImages() { 
+  }
 
   public TemplateDetailsResponseImages name(String name) {
     

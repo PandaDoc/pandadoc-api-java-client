@@ -39,6 +39,8 @@ public class FormListResponse {
   @SerializedName(SERIALIZED_NAME_HAS_NEXT_PAGE)
   private Boolean hasNextPage;
 
+  public FormListResponse() { 
+  }
 
   public FormListResponse results(List<FormListResponseResults> results) {
     

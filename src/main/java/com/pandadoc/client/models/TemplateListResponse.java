@@ -35,6 +35,8 @@ public class TemplateListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<TemplateListResponseResults> results = null;
 
+  public TemplateListResponse() { 
+  }
 
   public TemplateListResponse results(List<TemplateListResponseResults> results) {
     

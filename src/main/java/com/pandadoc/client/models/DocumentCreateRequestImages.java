@@ -38,6 +38,8 @@ public class DocumentCreateRequestImages {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public DocumentCreateRequestImages() { 
+  }
 
   public DocumentCreateRequestImages urls(List<String> urls) {
     

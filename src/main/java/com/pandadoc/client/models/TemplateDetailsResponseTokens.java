@@ -36,6 +36,8 @@ public class TemplateDetailsResponseTokens {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
+  public TemplateDetailsResponseTokens() { 
+  }
 
   public TemplateDetailsResponseTokens name(String name) {
     

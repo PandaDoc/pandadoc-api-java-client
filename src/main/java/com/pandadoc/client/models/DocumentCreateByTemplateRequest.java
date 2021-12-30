@@ -79,6 +79,8 @@ public class DocumentCreateByTemplateRequest {
   @SerializedName(SERIALIZED_NAME_CONTENT_PLACEHOLDERS)
   private List<DocumentCreateByTemplateRequestContentPlaceholders> contentPlaceholders = null;
 
+  public DocumentCreateByTemplateRequest() { 
+  }
 
   public DocumentCreateByTemplateRequest name(String name) {
     

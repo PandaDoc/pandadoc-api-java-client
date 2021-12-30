@@ -19,8 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.PricingTableRequestData;
-import com.pandadoc.client.models.PricingTableRequestOptions1;
+import com.pandadoc.client.models.PricingTableRequestRowData;
+import com.pandadoc.client.models.PricingTableRequestRowOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -32,18 +32,20 @@ import java.io.IOException;
 public class PricingTableRequestRows {
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
-  private PricingTableRequestOptions1 options;
+  private PricingTableRequestRowOptions options;
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private PricingTableRequestData data;
+  private PricingTableRequestRowData data;
 
   public static final String SERIALIZED_NAME_CUSTOM_FIELDS = "custom_fields";
   @SerializedName(SERIALIZED_NAME_CUSTOM_FIELDS)
   private Object customFields;
 
+  public PricingTableRequestRows() { 
+  }
 
-  public PricingTableRequestRows options(PricingTableRequestOptions1 options) {
+  public PricingTableRequestRows options(PricingTableRequestRowOptions options) {
     
     this.options = options;
     return this;
@@ -56,17 +58,17 @@ public class PricingTableRequestRows {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTableRequestOptions1 getOptions() {
+  public PricingTableRequestRowOptions getOptions() {
     return options;
   }
 
 
-  public void setOptions(PricingTableRequestOptions1 options) {
+  public void setOptions(PricingTableRequestRowOptions options) {
     this.options = options;
   }
 
 
-  public PricingTableRequestRows data(PricingTableRequestData data) {
+  public PricingTableRequestRows data(PricingTableRequestRowData data) {
     
     this.data = data;
     return this;
@@ -79,12 +81,12 @@ public class PricingTableRequestRows {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTableRequestData getData() {
+  public PricingTableRequestRowData getData() {
     return data;
   }
 
 
-  public void setData(PricingTableRequestData data) {
+  public void setData(PricingTableRequestRowData data) {
     this.data = data;
   }
 

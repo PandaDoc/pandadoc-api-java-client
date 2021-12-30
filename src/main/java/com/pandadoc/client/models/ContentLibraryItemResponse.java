@@ -88,6 +88,8 @@ public class ContentLibraryItemResponse {
   @SerializedName(SERIALIZED_NAME_IMAGES)
   private List<Object> images = null;
 
+  public ContentLibraryItemResponse() { 
+  }
 
   public ContentLibraryItemResponse id(String id) {
     

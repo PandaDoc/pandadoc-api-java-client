@@ -1,6 +1,6 @@
 
 
-# PricingTableRequestOptions1
+# PricingTableRequestRowOptions
 
 
 ## Properties
