@@ -40,6 +40,8 @@ public class DocumentDetailsResponseLinkedObjects {
   @SerializedName(SERIALIZED_NAME_ENTITY_ID)
   private String entityId;
 
+  public DocumentDetailsResponseLinkedObjects() { 
+  }
 
   public DocumentDetailsResponseLinkedObjects provider(String provider) {
     

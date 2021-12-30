@@ -32,6 +32,8 @@ public class DocumentsFolderRenameRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public DocumentsFolderRenameRequest() { 
+  }
 
   public DocumentsFolderRenameRequest name(String name) {
     

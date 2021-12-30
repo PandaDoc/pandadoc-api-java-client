@@ -47,6 +47,8 @@ public class PricingTableRequestOptions {
   @SerializedName(SERIALIZED_NAME_TAX_SECOND)
   private PricingTableRequestOptionsTaxSecond taxSecond;
 
+  public PricingTableRequestOptions() { 
+  }
 
   public PricingTableRequestOptions currency(String currency) {
     

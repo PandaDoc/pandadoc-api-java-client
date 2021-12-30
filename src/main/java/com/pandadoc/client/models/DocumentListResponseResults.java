@@ -56,6 +56,8 @@ public class DocumentListResponseResults {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
+  public DocumentListResponseResults() { 
+  }
 
   public DocumentListResponseResults id(String id) {
     

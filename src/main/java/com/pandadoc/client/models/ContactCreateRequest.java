@@ -68,6 +68,8 @@ public class ContactCreateRequest {
   @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
   private String postalCode;
 
+  public ContactCreateRequest() { 
+  }
 
   public ContactCreateRequest email(String email) {
     

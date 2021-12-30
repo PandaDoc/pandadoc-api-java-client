@@ -59,6 +59,8 @@ public class DocumentCreateByPdfRequest {
   @SerializedName(SERIALIZED_NAME_METADATA)
   private Object metadata;
 
+  public DocumentCreateByPdfRequest() { 
+  }
 
   public DocumentCreateByPdfRequest url(String url) {
     

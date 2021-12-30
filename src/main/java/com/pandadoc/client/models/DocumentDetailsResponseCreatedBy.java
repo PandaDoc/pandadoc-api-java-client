@@ -52,6 +52,8 @@ public class DocumentDetailsResponseCreatedBy {
   @SerializedName(SERIALIZED_NAME_AVATAR)
   private String avatar;
 
+  public DocumentDetailsResponseCreatedBy() { 
+  }
 
   public DocumentDetailsResponseCreatedBy id(String id) {
     

@@ -64,6 +64,8 @@ public class DocumentStatusResponse {
   @SerializedName(SERIALIZED_NAME_UUID)
   private String uuid;
 
+  public DocumentStatusResponse() { 
+  }
 
   public DocumentStatusResponse id(String id) {
     

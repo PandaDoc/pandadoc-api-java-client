@@ -35,6 +35,8 @@ public class TemplatesFolderListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<TemplatesFolderListResponseResults> results = null;
 
+  public TemplatesFolderListResponse() { 
+  }
 
   public TemplatesFolderListResponse results(List<TemplatesFolderListResponseResults> results) {
     

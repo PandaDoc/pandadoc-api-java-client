@@ -106,6 +106,8 @@ public class PricingTablesResponseItems {
   @SerializedName(SERIALIZED_NAME_MERGED_DATA)
   private Object mergedData;
 
+  public PricingTablesResponseItems() { 
+  }
 
   public PricingTablesResponseItems id(String id) {
     

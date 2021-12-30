@@ -1,17 +1,17 @@
- package com.pandadoc.client;
+package com.pandadoc.client;
 
- import com.pandadoc.client.api.DocumentsApi;
- import com.pandadoc.client.auth.ApiKeyAuth;
- import com.pandadoc.client.models.*;
+import com.pandadoc.client.api.DocumentsApi;
+import com.pandadoc.client.auth.ApiKeyAuth;
+import com.pandadoc.client.models.*;
 
- import java.util.Arrays;
- import java.util.HashMap;
- import java.util.List;
- import java.util.Map;
- import java.util.concurrent.TimeUnit;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
 
 
- public class CreateFromPdfByUrlAndSend {
+public class CreateFromPdfByUrlAndSend {
 
     private static final String API_KEY = "YOUR_API_KEY";
     private static final String DOCUMENT_PDF_URL = "https://cdn2.hubspot.net/hubfs/2127247/public-templates/SamplePandaDocPdf_FieldTags.pdf";
@@ -96,8 +96,8 @@
 
     public static void sendDocument (DocumentsApi apiInstance, DocumentCreateResponse document) throws ApiException {
         DocumentSendRequest sendRequest = new DocumentSendRequest()
-            .silent(true)
-            .subject("This doc was send via java SDK");
+                .silent(true)
+                .subject("This doc was send via java SDK");
         apiInstance.sendDocument(document.getId(), sendRequest);
     }
 
@@ -123,4 +123,4 @@
             e.printStackTrace();
         }
     }
- }
+}

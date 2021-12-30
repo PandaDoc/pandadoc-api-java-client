@@ -40,6 +40,8 @@ public class DocumentsFolderCreateResponse {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   private String dateCreated;
 
+  public DocumentsFolderCreateResponse() { 
+  }
 
   public DocumentsFolderCreateResponse uuid(String uuid) {
     

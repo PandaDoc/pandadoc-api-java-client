@@ -25,10 +25,10 @@ import java.io.IOException;
 import java.math.BigDecimal;
 
 /**
- * PricingTableRequestDataDiscount
+ * PricingTableRequestRowDataTaxSecond
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTableRequestDataDiscount {
+public class PricingTableRequestRowDataTaxSecond {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
@@ -37,8 +37,10 @@ public class PricingTableRequestDataDiscount {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public PricingTableRequestRowDataTaxSecond() { 
+  }
 
-  public PricingTableRequestDataDiscount value(BigDecimal value) {
+  public PricingTableRequestRowDataTaxSecond value(BigDecimal value) {
     
     this.value = value;
     return this;
@@ -61,7 +63,7 @@ public class PricingTableRequestDataDiscount {
   }
 
 
-  public PricingTableRequestDataDiscount type(String type) {
+  public PricingTableRequestRowDataTaxSecond type(String type) {
     
     this.type = type;
     return this;
@@ -92,9 +94,9 @@ public class PricingTableRequestDataDiscount {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTableRequestDataDiscount pricingTableRequestDataDiscount = (PricingTableRequestDataDiscount) o;
-    return Objects.equals(this.value, pricingTableRequestDataDiscount.value) &&
-        Objects.equals(this.type, pricingTableRequestDataDiscount.type);
+    PricingTableRequestRowDataTaxSecond pricingTableRequestRowDataTaxSecond = (PricingTableRequestRowDataTaxSecond) o;
+    return Objects.equals(this.value, pricingTableRequestRowDataTaxSecond.value) &&
+        Objects.equals(this.type, pricingTableRequestRowDataTaxSecond.type);
   }
 
   @Override
@@ -105,7 +107,7 @@ public class PricingTableRequestDataDiscount {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTableRequestDataDiscount {\n");
+    sb.append("class PricingTableRequestRowDataTaxSecond {\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");

@@ -35,6 +35,8 @@ public class LinkedObjectListResponse {
   @SerializedName(SERIALIZED_NAME_LINKED_OBJECTS)
   private List<LinkedObjectCreateResponse> linkedObjects = null;
 
+  public LinkedObjectListResponse() { 
+  }
 
   public LinkedObjectListResponse linkedObjects(List<LinkedObjectCreateResponse> linkedObjects) {
     

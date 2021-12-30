@@ -39,6 +39,8 @@ public class PricingTablesResponse {
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private String total;
 
+  public PricingTablesResponse() { 
+  }
 
   public PricingTablesResponse tables(List<PricingTablesResponseTables> tables) {
     

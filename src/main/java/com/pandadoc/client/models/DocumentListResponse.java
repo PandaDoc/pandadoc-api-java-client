@@ -35,6 +35,8 @@ public class DocumentListResponse {
   @SerializedName(SERIALIZED_NAME_RESULTS)
   private List<DocumentListResponseResults> results = null;
 
+  public DocumentListResponse() { 
+  }
 
   public DocumentListResponse results(List<DocumentListResponseResults> results) {
     

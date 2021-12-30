@@ -36,6 +36,8 @@ public class PricingTablesResponseDiscount {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public PricingTablesResponseDiscount() { 
+  }
 
   public PricingTablesResponseDiscount value(String value) {
     

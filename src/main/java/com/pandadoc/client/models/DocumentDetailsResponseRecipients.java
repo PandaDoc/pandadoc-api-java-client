@@ -64,6 +64,8 @@ public class DocumentDetailsResponseRecipients {
   @SerializedName(SERIALIZED_NAME_HAS_COMPLETED)
   private Boolean hasCompleted;
 
+  public DocumentDetailsResponseRecipients() { 
+  }
 
   public DocumentDetailsResponseRecipients recipientType(String recipientType) {
     

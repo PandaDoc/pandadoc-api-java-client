@@ -45,6 +45,8 @@ public class TemplateDetailsResponseRoles {
   @SerializedName(SERIALIZED_NAME_PREASSIGNED_PERSON)
   private TemplateDetailsResponsePreassignedPerson preassignedPerson;
 
+  public TemplateDetailsResponseRoles() { 
+  }
 
   public TemplateDetailsResponseRoles id(String id) {
     

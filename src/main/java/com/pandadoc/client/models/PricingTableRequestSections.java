@@ -47,6 +47,8 @@ public class PricingTableRequestSections {
   @SerializedName(SERIALIZED_NAME_ROWS)
   private List<PricingTableRequestRows> rows = null;
 
+  public PricingTableRequestSections() { 
+  }
 
   public PricingTableRequestSections title(String title) {
     

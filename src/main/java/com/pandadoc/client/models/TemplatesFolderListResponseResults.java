@@ -48,6 +48,8 @@ public class TemplatesFolderListResponseResults {
   @SerializedName(SERIALIZED_NAME_HAS_ITEMS)
   private Boolean hasItems;
 
+  public TemplatesFolderListResponseResults() { 
+  }
 
   public TemplatesFolderListResponseResults uuid(String uuid) {
     

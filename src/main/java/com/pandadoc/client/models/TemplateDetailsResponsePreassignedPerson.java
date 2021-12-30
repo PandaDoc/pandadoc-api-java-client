@@ -36,6 +36,8 @@ public class TemplateDetailsResponsePreassignedPerson {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public TemplateDetailsResponsePreassignedPerson() { 
+  }
 
   public TemplateDetailsResponsePreassignedPerson email(String email) {
     

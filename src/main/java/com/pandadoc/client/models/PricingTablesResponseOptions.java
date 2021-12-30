@@ -44,6 +44,8 @@ public class PricingTablesResponseOptions {
   @SerializedName(SERIALIZED_NAME_MULTICHOICE_SELECTED)
   private Boolean multichoiceSelected;
 
+  public PricingTablesResponseOptions() { 
+  }
 
   public PricingTablesResponseOptions optional(Boolean optional) {
     

@@ -7,8 +7,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**options** | [**PricingTableRequestOptions1**](PricingTableRequestOptions1.md) |  |  [optional]
-**data** | [**PricingTableRequestData**](PricingTableRequestData.md) |  |  [optional]
+**options** | [**PricingTableRequestRowOptions**](PricingTableRequestRowOptions.md) |  |  [optional]
+**data** | [**PricingTableRequestRowData**](PricingTableRequestRowData.md) |  |  [optional]
 **customFields** | **Object** |  |  [optional]
 
 

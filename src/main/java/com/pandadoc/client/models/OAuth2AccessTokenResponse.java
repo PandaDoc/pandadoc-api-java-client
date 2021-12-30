@@ -49,6 +49,8 @@ public class OAuth2AccessTokenResponse {
   @SerializedName(SERIALIZED_NAME_REFRESH_TOKEN)
   private String refreshToken;
 
+  public OAuth2AccessTokenResponse() { 
+  }
 
   public OAuth2AccessTokenResponse accessToken(String accessToken) {
     

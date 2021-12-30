@@ -40,6 +40,8 @@ public class TemplatesFolderCreateResponse {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   private String dateCreated;
 
+  public TemplatesFolderCreateResponse() { 
+  }
 
   public TemplatesFolderCreateResponse uuid(String uuid) {
     

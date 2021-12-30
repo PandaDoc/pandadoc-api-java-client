@@ -86,6 +86,8 @@ public class PricingTableRequestOptionsTaxFirst {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
 
+  public PricingTableRequestOptionsTaxFirst() { 
+  }
 
   public PricingTableRequestOptionsTaxFirst type(TypeEnum type) {
     

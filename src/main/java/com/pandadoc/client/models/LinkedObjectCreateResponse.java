@@ -44,6 +44,8 @@ public class LinkedObjectCreateResponse {
   @SerializedName(SERIALIZED_NAME_ENTIRY_ID)
   private String entiryId;
 
+  public LinkedObjectCreateResponse() { 
+  }
 
   public LinkedObjectCreateResponse id(String id) {
     

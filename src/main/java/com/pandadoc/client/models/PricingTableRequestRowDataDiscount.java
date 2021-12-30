@@ -22,47 +22,25 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.math.BigDecimal;
 
 /**
- * DocumentCreateByTemplateRequestTokens
+ * PricingTableRequestRowDataDiscount
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class DocumentCreateByTemplateRequestTokens {
-  public static final String SERIALIZED_NAME_NAME = "name";
-  @SerializedName(SERIALIZED_NAME_NAME)
-  private String name;
-
+public class PricingTableRequestRowDataDiscount {
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
-  private String value;
+  private BigDecimal value;
 
-  public DocumentCreateByTemplateRequestTokens() { 
+  public static final String SERIALIZED_NAME_TYPE = "type";
+  @SerializedName(SERIALIZED_NAME_TYPE)
+  private String type;
+
+  public PricingTableRequestRowDataDiscount() { 
   }
 
-  public DocumentCreateByTemplateRequestTokens name(String name) {
-    
-    this.name = name;
-    return this;
-  }
-
-   /**
-   * Get name
-   * @return name
-  **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "Favorite.Pet", required = true, value = "")
-
-  public String getName() {
-    return name;
-  }
-
-
-  public void setName(String name) {
-    this.name = name;
-  }
-
-
-  public DocumentCreateByTemplateRequestTokens value(String value) {
+  public PricingTableRequestRowDataDiscount value(BigDecimal value) {
     
     this.value = value;
     return this;
@@ -72,16 +50,39 @@ public class DocumentCreateByTemplateRequestTokens {
    * Get value
    * @return value
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "Panda", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "7.5", value = "")
 
-  public String getValue() {
+  public BigDecimal getValue() {
     return value;
   }
 
 
-  public void setValue(String value) {
+  public void setValue(BigDecimal value) {
     this.value = value;
+  }
+
+
+  public PricingTableRequestRowDataDiscount type(String type) {
+    
+    this.type = type;
+    return this;
+  }
+
+   /**
+   * Get type
+   * @return type
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "percent", value = "")
+
+  public String getType() {
+    return type;
+  }
+
+
+  public void setType(String type) {
+    this.type = type;
   }
 
 
@@ -93,22 +94,22 @@ public class DocumentCreateByTemplateRequestTokens {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    DocumentCreateByTemplateRequestTokens documentCreateByTemplateRequestTokens = (DocumentCreateByTemplateRequestTokens) o;
-    return Objects.equals(this.name, documentCreateByTemplateRequestTokens.name) &&
-        Objects.equals(this.value, documentCreateByTemplateRequestTokens.value);
+    PricingTableRequestRowDataDiscount pricingTableRequestRowDataDiscount = (PricingTableRequestRowDataDiscount) o;
+    return Objects.equals(this.value, pricingTableRequestRowDataDiscount.value) &&
+        Objects.equals(this.type, pricingTableRequestRowDataDiscount.type);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, value);
+    return Objects.hash(value, type);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class DocumentCreateByTemplateRequestTokens {\n");
-    sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("class PricingTableRequestRowDataDiscount {\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
+    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

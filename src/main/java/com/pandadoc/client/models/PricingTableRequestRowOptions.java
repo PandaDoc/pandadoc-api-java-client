@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PricingTableRequestOptions1
+ * PricingTableRequestRowOptions
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTableRequestOptions1 {
+public class PricingTableRequestRowOptions {
   public static final String SERIALIZED_NAME_QTY_EDITABLE = "qty_editable";
   @SerializedName(SERIALIZED_NAME_QTY_EDITABLE)
   private Boolean qtyEditable;
@@ -40,8 +40,10 @@ public class PricingTableRequestOptions1 {
   @SerializedName(SERIALIZED_NAME_OPTIONAL)
   private Boolean optional;
 
+  public PricingTableRequestRowOptions() { 
+  }
 
-  public PricingTableRequestOptions1 qtyEditable(Boolean qtyEditable) {
+  public PricingTableRequestRowOptions qtyEditable(Boolean qtyEditable) {
     
     this.qtyEditable = qtyEditable;
     return this;
@@ -64,7 +66,7 @@ public class PricingTableRequestOptions1 {
   }
 
 
-  public PricingTableRequestOptions1 optionalSelected(Boolean optionalSelected) {
+  public PricingTableRequestRowOptions optionalSelected(Boolean optionalSelected) {
     
     this.optionalSelected = optionalSelected;
     return this;
@@ -87,7 +89,7 @@ public class PricingTableRequestOptions1 {
   }
 
 
-  public PricingTableRequestOptions1 optional(Boolean optional) {
+  public PricingTableRequestRowOptions optional(Boolean optional) {
     
     this.optional = optional;
     return this;
@@ -118,10 +120,10 @@ public class PricingTableRequestOptions1 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTableRequestOptions1 pricingTableRequestOptions1 = (PricingTableRequestOptions1) o;
-    return Objects.equals(this.qtyEditable, pricingTableRequestOptions1.qtyEditable) &&
-        Objects.equals(this.optionalSelected, pricingTableRequestOptions1.optionalSelected) &&
-        Objects.equals(this.optional, pricingTableRequestOptions1.optional);
+    PricingTableRequestRowOptions pricingTableRequestRowOptions = (PricingTableRequestRowOptions) o;
+    return Objects.equals(this.qtyEditable, pricingTableRequestRowOptions.qtyEditable) &&
+        Objects.equals(this.optionalSelected, pricingTableRequestRowOptions.optionalSelected) &&
+        Objects.equals(this.optional, pricingTableRequestRowOptions.optional);
   }
 
   @Override
@@ -132,7 +134,7 @@ public class PricingTableRequestOptions1 {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTableRequestOptions1 {\n");
+    sb.append("class PricingTableRequestRowOptions {\n");
     sb.append("    qtyEditable: ").append(toIndentedString(qtyEditable)).append("\n");
     sb.append("    optionalSelected: ").append(toIndentedString(optionalSelected)).append("\n");
     sb.append("    optional: ").append(toIndentedString(optional)).append("\n");

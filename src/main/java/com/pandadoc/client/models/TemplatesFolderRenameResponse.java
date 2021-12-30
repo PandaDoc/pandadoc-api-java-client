@@ -40,6 +40,8 @@ public class TemplatesFolderRenameResponse {
   @SerializedName(SERIALIZED_NAME_DATE_CREATED)
   private String dateCreated;
 
+  public TemplatesFolderRenameResponse() { 
+  }
 
   public TemplatesFolderRenameResponse uuid(String uuid) {
     

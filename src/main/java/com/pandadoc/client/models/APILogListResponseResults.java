@@ -48,6 +48,8 @@ public class APILogListResponseResults {
   @SerializedName(SERIALIZED_NAME_RESPONSE_TIME)
   private String responseTime;
 
+  public APILogListResponseResults() { 
+  }
 
   public APILogListResponseResults id(String id) {
     

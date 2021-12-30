@@ -22,7 +22,6 @@ import com.google.gson.stream.JsonWriter;
 import com.pandadoc.client.models.ContentLibraryItemResponseCreatedBy;
 import com.pandadoc.client.models.PricingTablesResponse;
 import com.pandadoc.client.models.TemplateDetailsResponseContentPlaceholders;
-import com.pandadoc.client.models.TemplateDetailsResponseFields;
 import com.pandadoc.client.models.TemplateDetailsResponseImages;
 import com.pandadoc.client.models.TemplateDetailsResponseRoles;
 import com.pandadoc.client.models.TemplateDetailsResponseTokens;
@@ -67,7 +66,7 @@ public class TemplateDetailsResponse {
 
   public static final String SERIALIZED_NAME_FIELDS = "fields";
   @SerializedName(SERIALIZED_NAME_FIELDS)
-  private List<TemplateDetailsResponseFields> fields = null;
+  private List<Object> fields = null;
 
   public static final String SERIALIZED_NAME_PRICING = "pricing";
   @SerializedName(SERIALIZED_NAME_PRICING)
@@ -93,6 +92,8 @@ public class TemplateDetailsResponse {
   @SerializedName(SERIALIZED_NAME_IMAGES)
   private List<TemplateDetailsResponseImages> images = null;
 
+  public TemplateDetailsResponse() { 
+  }
 
   public TemplateDetailsResponse id(String id) {
     
@@ -263,13 +264,13 @@ public class TemplateDetailsResponse {
   }
 
 
-  public TemplateDetailsResponse fields(List<TemplateDetailsResponseFields> fields) {
+  public TemplateDetailsResponse fields(List<Object> fields) {
     
     this.fields = fields;
     return this;
   }
 
-  public TemplateDetailsResponse addFieldsItem(TemplateDetailsResponseFields fieldsItem) {
+  public TemplateDetailsResponse addFieldsItem(Object fieldsItem) {
     if (this.fields == null) {
       this.fields = new ArrayList<>();
     }
@@ -282,14 +283,14 @@ public class TemplateDetailsResponse {
    * @return fields
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "[{\"uuid\":\"74bcb05d-e4cd-458d-bc1d-671c2be8b221\",\"name\":\"Favorite.Color\",\"title\":\"\",\"placeholder\":\"Favorite Color\",\"value\":\"\",\"assigned_to\":{\"id\":\"HHaFsYvJCqMvdAtXwGcyL\",\"name\":\"user\",\"preassigned_person\":{\"email\":\"test@panddoc.com\",\"type\":\"preassigned contact\"},\"type\":\"role\"},\"merge_field\":\"Favorite.Color\",\"field_id\":\"text1\",\"type\":\"text\"}]", value = "")
 
-  public List<TemplateDetailsResponseFields> getFields() {
+  public List<Object> getFields() {
     return fields;
   }
 
 
-  public void setFields(List<TemplateDetailsResponseFields> fields) {
+  public void setFields(List<Object> fields) {
     this.fields = fields;
   }
 

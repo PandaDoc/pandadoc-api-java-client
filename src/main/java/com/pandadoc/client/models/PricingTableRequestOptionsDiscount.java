@@ -88,6 +88,8 @@ public class PricingTableRequestOptionsDiscount {
   @SerializedName(SERIALIZED_NAME_VALUE)
   private BigDecimal value;
 
+  public PricingTableRequestOptionsDiscount() { 
+  }
 
   public PricingTableRequestOptionsDiscount type(TypeEnum type) {
     

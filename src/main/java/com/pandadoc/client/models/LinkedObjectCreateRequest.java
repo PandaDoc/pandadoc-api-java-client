@@ -40,6 +40,8 @@ public class LinkedObjectCreateRequest {
   @SerializedName(SERIALIZED_NAME_ENTITY_ID)
   private String entityId;
 
+  public LinkedObjectCreateRequest() { 
+  }
 
   public LinkedObjectCreateRequest provider(String provider) {
     

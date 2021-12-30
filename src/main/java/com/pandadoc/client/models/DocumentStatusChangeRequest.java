@@ -41,6 +41,8 @@ public class DocumentStatusChangeRequest {
   @SerializedName(SERIALIZED_NAME_NOTIFY_RECIPIENTS)
   private Boolean notifyRecipients;
 
+  public DocumentStatusChangeRequest() { 
+  }
 
   public DocumentStatusChangeRequest status(DocumentStatusEnum status) {
     

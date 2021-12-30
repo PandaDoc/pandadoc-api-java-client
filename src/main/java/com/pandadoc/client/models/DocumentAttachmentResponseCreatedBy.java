@@ -48,6 +48,8 @@ public class DocumentAttachmentResponseCreatedBy {
   @SerializedName(SERIALIZED_NAME_AVATAR)
   private String avatar;
 
+  public DocumentAttachmentResponseCreatedBy() { 
+  }
 
   public DocumentAttachmentResponseCreatedBy id(String id) {
     

@@ -56,6 +56,8 @@ public class DocumentCreateResponse {
   @SerializedName(SERIALIZED_NAME_UUID)
   private String uuid;
 
+  public DocumentCreateResponse() { 
+  }
 
   public DocumentCreateResponse id(String id) {
     

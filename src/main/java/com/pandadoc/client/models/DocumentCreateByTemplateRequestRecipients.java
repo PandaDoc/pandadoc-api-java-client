@@ -48,6 +48,8 @@ public class DocumentCreateByTemplateRequestRecipients {
   @SerializedName(SERIALIZED_NAME_SIGNING_ORDER)
   private Integer signingOrder;
 
+  public DocumentCreateByTemplateRequestRecipients() { 
+  }
 
   public DocumentCreateByTemplateRequestRecipients email(String email) {
     
