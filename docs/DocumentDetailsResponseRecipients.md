@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **firstName** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
 **hasCompleted** | **Boolean** |  |  [optional]
+**sharedLink** | **String** |  |  [optional]
 
 
 

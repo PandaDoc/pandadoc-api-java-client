@@ -103,7 +103,7 @@ public class ApiClient {
     /**
      * Basic constructor with custom OkHttpClient
      *
-     * @param client a {@link OkHttpClient} object
+     * @param client a {@link okhttp3.OkHttpClient} object
      */
     public ApiClient(OkHttpClient client) {
         init();
@@ -130,7 +130,7 @@ public class ApiClient {
      * Constructor for ApiClient to support access token retry on 401/403 configured with client ID and additional parameters
      *
      * @param clientId client ID
-     * @param parameters a {@link Map} of parameters
+     * @param parameters a {@link java.util.Map} of parameters
      */
     public ApiClient(String clientId, Map<String, String> parameters) {
         this(clientId, null, parameters);
@@ -141,7 +141,7 @@ public class ApiClient {
      *
      * @param clientId client ID
      * @param clientSecret client secret
-     * @param parameters a {@link Map} of parameters
+     * @param parameters a {@link java.util.Map} of parameters
      */
     public ApiClient(String clientId, String clientSecret, Map<String, String> parameters) {
         this(null, clientId, clientSecret, parameters);
@@ -153,7 +153,7 @@ public class ApiClient {
      * @param basePath base path
      * @param clientId client ID
      * @param clientSecret client secret
-     * @param parameters a {@link Map} of parameters
+     * @param parameters a {@link java.util.Map} of parameters
      */
     public ApiClient(String basePath, String clientId, String clientSecret, Map<String, String> parameters) {
         init();
@@ -204,7 +204,7 @@ public class ApiClient {
         json = new JSON();
 
         // Set default User-Agent.
-        setUserAgent("pandadoc_java_client/4.0.0");
+        setUserAgent("pandadoc_java_client/4.1.0");
 
         authentications = new HashMap<String, Authentication>();
     }
@@ -243,7 +243,7 @@ public class ApiClient {
      *
      * @param newHttpClient An instance of OkHttpClient
      * @return Api Client
-     * @throws NullPointerException when newHttpClient is null
+     * @throws java.lang.NullPointerException when newHttpClient is null
      */
     public ApiClient setHttpClient(OkHttpClient newHttpClient) {
         this.httpClient = Objects.requireNonNull(newHttpClient, "HttpClient must not be null!");
@@ -318,7 +318,7 @@ public class ApiClient {
     /**
      * <p>Getter for the field <code>keyManagers</code>.</p>
      *
-     * @return an array of {@link KeyManager} objects
+     * @return an array of {@link javax.net.ssl.KeyManager} objects
      */
     public KeyManager[] getKeyManagers() {
         return keyManagers;
@@ -340,7 +340,7 @@ public class ApiClient {
     /**
      * <p>Getter for the field <code>dateFormat</code>.</p>
      *
-     * @return a {@link DateFormat} object
+     * @return a {@link java.text.DateFormat} object
      */
     public DateFormat getDateFormat() {
         return dateFormat;
@@ -349,7 +349,7 @@ public class ApiClient {
     /**
      * <p>Setter for the field <code>dateFormat</code>.</p>
      *
-     * @param dateFormat a {@link DateFormat} object
+     * @param dateFormat a {@link java.text.DateFormat} object
      * @return a {@link org.openapitools.client.ApiClient} object
      */
     public ApiClient setDateFormat(DateFormat dateFormat) {
@@ -360,7 +360,7 @@ public class ApiClient {
     /**
      * <p>Set SqlDateFormat.</p>
      *
-     * @param dateFormat a {@link DateFormat} object
+     * @param dateFormat a {@link java.text.DateFormat} object
      * @return a {@link org.openapitools.client.ApiClient} object
      */
     public ApiClient setSqlDateFormat(DateFormat dateFormat) {
@@ -598,7 +598,7 @@ public class ApiClient {
     /**
      * Sets the connect timeout (in milliseconds).
      * A value of 0 means no timeout, otherwise values must be between 1 and
-     * {@link Integer#MAX_VALUE}.
+     * {@link java.lang.Integer#MAX_VALUE}.
      *
      * @param connectionTimeout connection timeout in milliseconds
      * @return Api client
@@ -620,7 +620,7 @@ public class ApiClient {
     /**
      * Sets the read timeout (in milliseconds).
      * A value of 0 means no timeout, otherwise values must be between 1 and
-     * {@link Integer#MAX_VALUE}.
+     * {@link java.lang.Integer#MAX_VALUE}.
      *
      * @param readTimeout read timeout in milliseconds
      * @return Api client
@@ -642,7 +642,7 @@ public class ApiClient {
     /**
      * Sets the write timeout (in milliseconds).
      * A value of 0 means no timeout, otherwise values must be between 1 and
-     * {@link Integer#MAX_VALUE}.
+     * {@link java.lang.Integer#MAX_VALUE}.
      *
      * @param writeTimeout connection timeout in milliseconds
      * @return Api client
@@ -1005,7 +1005,7 @@ public class ApiClient {
      *
      * @param response An instance of the Response object
      * @return Prepared file for the download
-     * @throws IOException If fail to prepare file for download
+     * @throws java.io.IOException If fail to prepare file for download
      */
     public File prepareDownloadFile(Response response) throws IOException {
         String filename = null;
@@ -1366,7 +1366,7 @@ public class ApiClient {
      * @return RequestBody
      */
     public RequestBody buildRequestBodyFormEncoding(Map<String, Object> formParams) {
-        FormBody.Builder formBuilder = new FormBody.Builder();
+        okhttp3.FormBody.Builder formBuilder = new okhttp3.FormBody.Builder();
         for (Entry<String, Object> param : formParams.entrySet()) {
             formBuilder.add(param.getKey(), parameterToString(param.getValue()));
         }
@@ -1418,7 +1418,7 @@ public class ApiClient {
     private Interceptor getProgressInterceptor() {
         return new Interceptor() {
             @Override
-            public Response intercept(Chain chain) throws IOException {
+            public Response intercept(Interceptor.Chain chain) throws IOException {
                 final Request request = chain.request();
                 final Response originalResponse = chain.proceed(request);
                 if (request.tag() instanceof ApiCallback) {
@@ -1444,16 +1444,16 @@ public class ApiClient {
                 trustManagers = new TrustManager[]{
                         new X509TrustManager() {
                             @Override
-                            public void checkClientTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                            public void checkClientTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
                             }
 
                             @Override
-                            public void checkServerTrusted(X509Certificate[] chain, String authType) throws CertificateException {
+                            public void checkServerTrusted(java.security.cert.X509Certificate[] chain, String authType) throws CertificateException {
                             }
 
                             @Override
-                            public X509Certificate[] getAcceptedIssuers() {
-                                return new X509Certificate[]{};
+                            public java.security.cert.X509Certificate[] getAcceptedIssuers() {
+                                return new java.security.cert.X509Certificate[]{};
                             }
                         }
                 };

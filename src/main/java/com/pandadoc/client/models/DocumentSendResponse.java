@@ -60,6 +60,10 @@ public class DocumentSendResponse {
   @SerializedName(SERIALIZED_NAME_UUID)
   private String uuid;
 
+  public static final String SERIALIZED_NAME_SHARED_LINK = "shared_link";
+  @SerializedName(SERIALIZED_NAME_SHARED_LINK)
+  private String sharedLink;
+
   public DocumentSendResponse() { 
   }
 
@@ -247,6 +251,29 @@ public class DocumentSendResponse {
   }
 
 
+  public DocumentSendResponse sharedLink(String sharedLink) {
+    
+    this.sharedLink = sharedLink;
+    return this;
+  }
+
+   /**
+   * Get sharedLink
+   * @return sharedLink
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "https://app.pandadoc.com/document/b7f11ea3c09d1c11208cc122457d4f3a2829d364", value = "")
+
+  public String getSharedLink() {
+    return sharedLink;
+  }
+
+
+  public void setSharedLink(String sharedLink) {
+    this.sharedLink = sharedLink;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -263,12 +290,13 @@ public class DocumentSendResponse {
         Objects.equals(this.dateModified, documentSendResponse.dateModified) &&
         Objects.equals(this.expirationDate, documentSendResponse.expirationDate) &&
         Objects.equals(this.version, documentSendResponse.version) &&
-        Objects.equals(this.uuid, documentSendResponse.uuid);
+        Objects.equals(this.uuid, documentSendResponse.uuid) &&
+        Objects.equals(this.sharedLink, documentSendResponse.sharedLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, status, dateCreated, dateModified, expirationDate, version, uuid);
+    return Objects.hash(id, name, status, dateCreated, dateModified, expirationDate, version, uuid, sharedLink);
   }
 
   @Override
@@ -283,6 +311,7 @@ public class DocumentSendResponse {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
+    sb.append("    sharedLink: ").append(toIndentedString(sharedLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }

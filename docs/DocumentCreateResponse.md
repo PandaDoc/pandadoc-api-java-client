@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **id** | **String** |  |  [optional]
 **name** | **String** |  |  [optional]
-**status** | **String** |  |  [optional]
+**status** | **DocumentStatusEnum** |  |  [optional]
 **dateCreated** | **String** |  |  [optional]
 **dateModified** | **String** |  |  [optional]
 **expirationDate** | **String** |  |  [optional]

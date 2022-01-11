@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **expirationDate** | **String** |  |  [optional]
 **version** | **String** |  |  [optional]
 **uuid** | **String** |  |  [optional]
+**sharedLink** | **String** |  |  [optional]
 
 
 

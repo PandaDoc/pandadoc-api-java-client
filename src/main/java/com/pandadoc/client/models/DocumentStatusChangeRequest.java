@@ -19,7 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.DocumentStatusEnum;
+import com.pandadoc.client.models.DocumentStatusRequestEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -31,7 +31,7 @@ import java.io.IOException;
 public class DocumentStatusChangeRequest {
   public static final String SERIALIZED_NAME_STATUS = "status";
   @SerializedName(SERIALIZED_NAME_STATUS)
-  private DocumentStatusEnum status;
+  private DocumentStatusRequestEnum status;
 
   public static final String SERIALIZED_NAME_NOTE = "note";
   @SerializedName(SERIALIZED_NAME_NOTE)
@@ -44,7 +44,7 @@ public class DocumentStatusChangeRequest {
   public DocumentStatusChangeRequest() { 
   }
 
-  public DocumentStatusChangeRequest status(DocumentStatusEnum status) {
+  public DocumentStatusChangeRequest status(DocumentStatusRequestEnum status) {
     
     this.status = status;
     return this;
@@ -57,12 +57,12 @@ public class DocumentStatusChangeRequest {
   @javax.annotation.Nonnull
   @ApiModelProperty(required = true, value = "")
 
-  public DocumentStatusEnum getStatus() {
+  public DocumentStatusRequestEnum getStatus() {
     return status;
   }
 
 
-  public void setStatus(DocumentStatusEnum status) {
+  public void setStatus(DocumentStatusRequestEnum status) {
     this.status = status;
   }
 

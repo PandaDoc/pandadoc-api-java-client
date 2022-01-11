@@ -64,6 +64,10 @@ public class DocumentDetailsResponseRecipients {
   @SerializedName(SERIALIZED_NAME_HAS_COMPLETED)
   private Boolean hasCompleted;
 
+  public static final String SERIALIZED_NAME_SHARED_LINK = "shared_link";
+  @SerializedName(SERIALIZED_NAME_SHARED_LINK)
+  private String sharedLink;
+
   public DocumentDetailsResponseRecipients() { 
   }
 
@@ -274,6 +278,29 @@ public class DocumentDetailsResponseRecipients {
   }
 
 
+  public DocumentDetailsResponseRecipients sharedLink(String sharedLink) {
+    
+    this.sharedLink = sharedLink;
+    return this;
+  }
+
+   /**
+   * Get sharedLink
+   * @return sharedLink
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "https://app.pandadoc.com/document/b7f11ea3c09d1c11208cc122457d4f3a2829d364", value = "")
+
+  public String getSharedLink() {
+    return sharedLink;
+  }
+
+
+  public void setSharedLink(String sharedLink) {
+    this.sharedLink = sharedLink;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -291,12 +318,13 @@ public class DocumentDetailsResponseRecipients {
         Objects.equals(this.contactId, documentDetailsResponseRecipients.contactId) &&
         Objects.equals(this.firstName, documentDetailsResponseRecipients.firstName) &&
         Objects.equals(this.email, documentDetailsResponseRecipients.email) &&
-        Objects.equals(this.hasCompleted, documentDetailsResponseRecipients.hasCompleted);
+        Objects.equals(this.hasCompleted, documentDetailsResponseRecipients.hasCompleted) &&
+        Objects.equals(this.sharedLink, documentDetailsResponseRecipients.sharedLink);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipientType, role, lastName, signingOrder, id, contactId, firstName, email, hasCompleted);
+    return Objects.hash(recipientType, role, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink);
   }
 
   @Override
@@ -312,6 +340,7 @@ public class DocumentDetailsResponseRecipients {
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    hasCompleted: ").append(toIndentedString(hasCompleted)).append("\n");
+    sb.append("    sharedLink: ").append(toIndentedString(sharedLink)).append("\n");
     sb.append("}");
     return sb.toString();
   }
