@@ -28,39 +28,39 @@ import com.google.gson.stream.JsonWriter;
 @JsonAdapter(DocumentStatusEnum.Adapter.class)
 public enum DocumentStatusEnum {
   
-  NUMBER_0(0),
+  DRAFT("document.draft"),
   
-  NUMBER_1(1),
+  SENT("document.sent"),
   
-  NUMBER_2(2),
+  COMPLETED("document.completed"),
   
-  NUMBER_3(3),
+  UPLOADED("document.uploaded"),
   
-  NUMBER_4(4),
+  ERROR("document.error"),
   
-  NUMBER_5(5),
+  VIEWED("document.viewed"),
   
-  NUMBER_6(6),
+  WAITING_APPROVAL("document.waiting_approval"),
   
-  NUMBER_7(7),
+  APPROVED("document.approved"),
   
-  NUMBER_8(8),
+  REJECTED("document.rejected"),
   
-  NUMBER_9(9),
+  WAITING_PAY("document.waiting_pay"),
   
-  NUMBER_10(10),
+  PAID("document.paid"),
   
-  NUMBER_11(11),
+  VOIDED("document.voided"),
   
-  NUMBER_12(12);
+  DECLINED("document.declined");
 
-  private Integer value;
+  private String value;
 
-  DocumentStatusEnum(Integer value) {
+  DocumentStatusEnum(String value) {
     this.value = value;
   }
 
-  public Integer getValue() {
+  public String getValue() {
     return value;
   }
 
@@ -69,7 +69,7 @@ public enum DocumentStatusEnum {
     return String.valueOf(value);
   }
 
-  public static DocumentStatusEnum fromValue(Integer value) {
+  public static DocumentStatusEnum fromValue(String value) {
     for (DocumentStatusEnum b : DocumentStatusEnum.values()) {
       if (b.value.equals(value)) {
         return b;
@@ -86,7 +86,7 @@ public enum DocumentStatusEnum {
 
     @Override
     public DocumentStatusEnum read(final JsonReader jsonReader) throws IOException {
-      Integer value = jsonReader.nextInt();
+      String value = jsonReader.nextString();
       return DocumentStatusEnum.fromValue(value);
     }
   }

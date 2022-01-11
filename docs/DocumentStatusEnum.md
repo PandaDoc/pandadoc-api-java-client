@@ -5,31 +5,31 @@
 ## Enum
 
 
-* `NUMBER_0` (value: `0`)
+* `DRAFT` (value: `"document.draft"`)
 
-* `NUMBER_1` (value: `1`)
+* `SENT` (value: `"document.sent"`)
 
-* `NUMBER_2` (value: `2`)
+* `COMPLETED` (value: `"document.completed"`)
 
-* `NUMBER_3` (value: `3`)
+* `UPLOADED` (value: `"document.uploaded"`)
 
-* `NUMBER_4` (value: `4`)
+* `ERROR` (value: `"document.error"`)
 
-* `NUMBER_5` (value: `5`)
+* `VIEWED` (value: `"document.viewed"`)
 
-* `NUMBER_6` (value: `6`)
+* `WAITING_APPROVAL` (value: `"document.waiting_approval"`)
 
-* `NUMBER_7` (value: `7`)
+* `APPROVED` (value: `"document.approved"`)
 
-* `NUMBER_8` (value: `8`)
+* `REJECTED` (value: `"document.rejected"`)
 
-* `NUMBER_9` (value: `9`)
+* `WAITING_PAY` (value: `"document.waiting_pay"`)
 
-* `NUMBER_10` (value: `10`)
+* `PAID` (value: `"document.paid"`)
 
-* `NUMBER_11` (value: `11`)
+* `VOIDED` (value: `"document.voided"`)
 
-* `NUMBER_12` (value: `12`)
+* `DECLINED` (value: `"document.declined"`)
 
 
 
