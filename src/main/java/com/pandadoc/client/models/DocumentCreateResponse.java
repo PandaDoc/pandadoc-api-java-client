@@ -19,10 +19,13 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.DocumentCreateResponseLinks;
 import com.pandadoc.client.models.DocumentStatusEnum;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DocumentCreateResponse
@@ -56,6 +59,14 @@ public class DocumentCreateResponse {
   public static final String SERIALIZED_NAME_UUID = "uuid";
   @SerializedName(SERIALIZED_NAME_UUID)
   private String uuid;
+
+  public static final String SERIALIZED_NAME_LINKS = "links";
+  @SerializedName(SERIALIZED_NAME_LINKS)
+  private List<DocumentCreateResponseLinks> links = null;
+
+  public static final String SERIALIZED_NAME_INFO_MESSAGE = "info_message";
+  @SerializedName(SERIALIZED_NAME_INFO_MESSAGE)
+  private String infoMessage;
 
   public DocumentCreateResponse() { 
   }
@@ -221,6 +232,60 @@ public class DocumentCreateResponse {
   }
 
 
+  public DocumentCreateResponse links(List<DocumentCreateResponseLinks> links) {
+    
+    this.links = links;
+    return this;
+  }
+
+  public DocumentCreateResponse addLinksItem(DocumentCreateResponseLinks linksItem) {
+    if (this.links == null) {
+      this.links = new ArrayList<>();
+    }
+    this.links.add(linksItem);
+    return this;
+  }
+
+   /**
+   * Get links
+   * @return links
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<DocumentCreateResponseLinks> getLinks() {
+    return links;
+  }
+
+
+  public void setLinks(List<DocumentCreateResponseLinks> links) {
+    this.links = links;
+  }
+
+
+  public DocumentCreateResponse infoMessage(String infoMessage) {
+    
+    this.infoMessage = infoMessage;
+    return this;
+  }
+
+   /**
+   * Get infoMessage
+   * @return infoMessage
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "You need to poll the Document Status method until the status will be changed to document.draft", value = "")
+
+  public String getInfoMessage() {
+    return infoMessage;
+  }
+
+
+  public void setInfoMessage(String infoMessage) {
+    this.infoMessage = infoMessage;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -236,12 +301,14 @@ public class DocumentCreateResponse {
         Objects.equals(this.dateCreated, documentCreateResponse.dateCreated) &&
         Objects.equals(this.dateModified, documentCreateResponse.dateModified) &&
         Objects.equals(this.expirationDate, documentCreateResponse.expirationDate) &&
-        Objects.equals(this.uuid, documentCreateResponse.uuid);
+        Objects.equals(this.uuid, documentCreateResponse.uuid) &&
+        Objects.equals(this.links, documentCreateResponse.links) &&
+        Objects.equals(this.infoMessage, documentCreateResponse.infoMessage);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, status, dateCreated, dateModified, expirationDate, uuid);
+    return Objects.hash(id, name, status, dateCreated, dateModified, expirationDate, uuid, links, infoMessage);
   }
 
   @Override
@@ -255,6 +322,8 @@ public class DocumentCreateResponse {
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
+    sb.append("    links: ").append(toIndentedString(links)).append("\n");
+    sb.append("    infoMessage: ").append(toIndentedString(infoMessage)).append("\n");
     sb.append("}");
     return sb.toString();
   }
