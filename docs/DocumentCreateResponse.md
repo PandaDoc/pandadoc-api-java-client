@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **dateModified** | **String** |  |  [optional]
 **expirationDate** | **String** |  |  [optional]
 **uuid** | **String** |  |  [optional]
+**links** | [**List&lt;DocumentCreateResponseLinks&gt;**](DocumentCreateResponseLinks.md) |  |  [optional]
+**infoMessage** | **String** |  |  [optional]
 
 
 

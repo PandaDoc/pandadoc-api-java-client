@@ -105,6 +105,7 @@ null (empty response body)
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -533,6 +534,7 @@ null (empty response body)
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -617,6 +619,7 @@ Name | Type | Description  | Notes
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -714,6 +717,7 @@ Name | Type | Description  | Notes
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -800,6 +804,7 @@ Name | Type | Description  | Notes
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -1028,6 +1033,7 @@ Name | Type | Description  | Notes
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -1115,6 +1121,7 @@ Name | Type | Description  | Notes
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
 
@@ -1368,5 +1375,6 @@ null (empty response body)
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
+| **409** | Conflict |  -  |
 | **429** | Too Many Requests |  -  |
 
