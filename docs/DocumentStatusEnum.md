@@ -31,5 +31,7 @@
 
 * `DECLINED` (value: `"document.declined"`)
 
+* `EXTERNAL_REVIEW` (value: `"document.external_review"`)
+
 
 

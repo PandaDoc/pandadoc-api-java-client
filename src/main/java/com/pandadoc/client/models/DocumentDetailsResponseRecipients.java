@@ -22,6 +22,8 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DocumentDetailsResponseRecipients
@@ -35,6 +37,10 @@ public class DocumentDetailsResponseRecipients {
   public static final String SERIALIZED_NAME_ROLE = "role";
   @SerializedName(SERIALIZED_NAME_ROLE)
   private String role;
+
+  public static final String SERIALIZED_NAME_ROLES = "roles";
+  @SerializedName(SERIALIZED_NAME_ROLES)
+  private List<String> roles = null;
 
   public static final String SERIALIZED_NAME_LAST_NAME = "last_name";
   @SerializedName(SERIALIZED_NAME_LAST_NAME)
@@ -103,7 +109,9 @@ public class DocumentDetailsResponseRecipients {
    /**
    * Get role
    * @return role
+   * @deprecated
   **/
+  @Deprecated
   @javax.annotation.Nullable
   @ApiModelProperty(example = "", value = "")
 
@@ -114,6 +122,37 @@ public class DocumentDetailsResponseRecipients {
 
   public void setRole(String role) {
     this.role = role;
+  }
+
+
+  public DocumentDetailsResponseRecipients roles(List<String> roles) {
+    
+    this.roles = roles;
+    return this;
+  }
+
+  public DocumentDetailsResponseRecipients addRolesItem(String rolesItem) {
+    if (this.roles == null) {
+      this.roles = new ArrayList<>();
+    }
+    this.roles.add(rolesItem);
+    return this;
+  }
+
+   /**
+   * Get roles
+   * @return roles
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "[\"user\"]", value = "")
+
+  public List<String> getRoles() {
+    return roles;
+  }
+
+
+  public void setRoles(List<String> roles) {
+    this.roles = roles;
   }
 
 
@@ -312,6 +351,7 @@ public class DocumentDetailsResponseRecipients {
     DocumentDetailsResponseRecipients documentDetailsResponseRecipients = (DocumentDetailsResponseRecipients) o;
     return Objects.equals(this.recipientType, documentDetailsResponseRecipients.recipientType) &&
         Objects.equals(this.role, documentDetailsResponseRecipients.role) &&
+        Objects.equals(this.roles, documentDetailsResponseRecipients.roles) &&
         Objects.equals(this.lastName, documentDetailsResponseRecipients.lastName) &&
         Objects.equals(this.signingOrder, documentDetailsResponseRecipients.signingOrder) &&
         Objects.equals(this.id, documentDetailsResponseRecipients.id) &&
@@ -324,7 +364,7 @@ public class DocumentDetailsResponseRecipients {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipientType, role, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink);
+    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink);
   }
 
   @Override
@@ -333,6 +373,7 @@ public class DocumentDetailsResponseRecipients {
     sb.append("class DocumentDetailsResponseRecipients {\n");
     sb.append("    recipientType: ").append(toIndentedString(recipientType)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
+    sb.append("    roles: ").append(toIndentedString(roles)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    signingOrder: ").append(toIndentedString(signingOrder)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");

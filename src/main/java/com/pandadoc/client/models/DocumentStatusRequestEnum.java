@@ -52,7 +52,9 @@ public enum DocumentStatusRequestEnum {
   
   NUMBER_11(11),
   
-  NUMBER_12(12);
+  NUMBER_12(12),
+  
+  NUMBER_13(13);
 
   private Integer value;
 
