@@ -146,7 +146,7 @@ public class Example {
         // oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         DocumentsApi apiInstance = new DocumentsApi(defaultClient);
-        // DocumentCreateRequest | Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest) 
+        // DocumentCreateRequest | Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](/schemas/DocumentCreateByTemplateRequest) and [by pdf](/schemas/DocumentCreateByPdfRequest) 
         DocumentCreateRequest documentCreateRequest = new DocumentCreateRequest();
         // String | Set this parameter as `ev1` if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace.
         String editorVer = "ev2";
@@ -169,7 +169,7 @@ public class Example {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **documentCreateRequest** | [**DocumentCreateRequest**](DocumentCreateRequest.md)| Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](#/schemas/DocumentCreateByTemplateRequest) and [by pdf](#/schemas/DocumentCreateByPdfRequest)  |
+ **documentCreateRequest** | [**DocumentCreateRequest**](DocumentCreateRequest.md)| Use a PandaDoc template or an existing PDF to create a document. See the creation request examples [by template](/schemas/DocumentCreateByTemplateRequest) and [by pdf](/schemas/DocumentCreateByPdfRequest)  |
  **editorVer** | **String**| Set this parameter as &#x60;ev1&#x60; if you want to create a document from PDF with Classic Editor when both editors are enabled for the workspace. | [optional]
 
 ### Return type
@@ -879,9 +879,9 @@ public class Example {
         Integer page = 1;
         // String | Search query. Filter by document reference number (this token is stored on the template level) or name.
         String q = "Sample Document";
-        // DocumentStatusRequestEnum | Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined 
+        // DocumentStatusRequestEnum | Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined   * 13: document.external_review 
         DocumentStatusRequestEnum status = DocumentStatusRequestEnum.fromValue("0");
-        // DocumentStatusRequestEnum | Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined 
+        // DocumentStatusRequestEnum | Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined   * 13: document.external_review 
         DocumentStatusRequestEnum statusNe = DocumentStatusRequestEnum.fromValue("0");
         // String | Search tag. Filter by document tag.
         String tag = "tag_1";
@@ -923,8 +923,8 @@ Name | Type | Description  | Notes
  **orderBy** | [**DocumentOrderingFieldsEnum**](.md)| Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. | [optional] [enum: name, date_created, date_status_changed, date_of_last_action, date_modified, date_sent, date_completed, date_expiration, date_declined, status, -name, -date_created, -date_status_changed, -date_of_last_action, -date_modified, -date_sent, -date_completed, -date_expiration, -date_declined, -status]
  **page** | **Integer**| Specify which page of the dataset to return. | [optional]
  **q** | **String**| Search query. Filter by document reference number (this token is stored on the template level) or name. | [optional]
- **status** | [**DocumentStatusRequestEnum**](.md)| Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  | [optional] [enum: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
- **statusNe** | [**DocumentStatusRequestEnum**](.md)| Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined  | [optional] [enum: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
+ **status** | [**DocumentStatusRequestEnum**](.md)| Specify the status of documents to return.   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined   * 13: document.external_review  | [optional] [enum: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
+ **statusNe** | [**DocumentStatusRequestEnum**](.md)| Specify the status of documents to return (exclude).   * 0: document.draft   * 1: document.sent   * 2: document.completed   * 3: document.uploaded   * 4: document.error   * 5: document.viewed   * 6: document.waiting_approval   * 7: document.approved   * 8: document.rejected   * 9: document.waiting_pay   * 10: document.paid   * 11: document.voided   * 12: document.declined   * 13: document.external_review  | [optional] [enum: 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13]
  **tag** | **String**| Search tag. Filter by document tag. | [optional]
  **templateId** | **String**| Specify the template used for documents creation. Parameter can&#39;t be used with form_id. | [optional]
 

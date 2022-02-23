@@ -14,7 +14,7 @@ Method | HTTP request | Description
 
 ## createDocumentAttachment
 
-> DocumentAttachmentResponse createDocumentAttachment(id, file, source, name)
+> DocumentAttachmentResponse createDocumentAttachment(id, _file, source, name)
 
 Document Attachment Create
 
@@ -54,13 +54,13 @@ public class Example {
         // String | Document UUID
         String id = "BhVzRcxH9Z2LgfPPGXFUBa";
         // File | Binary file to be attached to a document
-        File file = new File("/path/to/file");
+        File _file = new File("/path/to/file");
         // String | URL link to the file to be attached to a document
         String source = "source_example";
         // String | Optional name to set for uploaded file
         String name = "name_example";
         try {
-            DocumentAttachmentResponse result = apiInstance.createDocumentAttachment(id, file, source, name);
+            DocumentAttachmentResponse result = apiInstance.createDocumentAttachment(id, _file, source, name);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentAttachmentsApi#createDocumentAttachment");
@@ -79,7 +79,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Document UUID |
- **file** | **File**| Binary file to be attached to a document | [optional]
+ **_file** | **File**| Binary file to be attached to a document | [optional]
  **source** | **String**| URL link to the file to be attached to a document | [optional]
  **name** | **String**| Optional name to set for uploaded file | [optional]
 

@@ -52,7 +52,9 @@ public enum DocumentStatusEnum {
   
   VOIDED("document.voided"),
   
-  DECLINED("document.declined");
+  DECLINED("document.declined"),
+  
+  EXTERNAL_REVIEW("document.external_review");
 
   private String value;
 

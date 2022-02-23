@@ -75,7 +75,7 @@ public class DocumentAttachmentsApi {
     /**
      * Build call for createDocumentAttachment
      * @param id Document UUID (required)
-     * @param file Binary file to be attached to a document (optional)
+     * @param _file Binary file to be attached to a document (optional)
      * @param source URL link to the file to be attached to a document (optional)
      * @param name Optional name to set for uploaded file (optional)
      * @param _callback Callback for upload/download progress
@@ -91,7 +91,7 @@ public class DocumentAttachmentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDocumentAttachmentCall(String id, File file, String source, String name, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call createDocumentAttachmentCall(String id, File _file, String source, String name, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -118,8 +118,8 @@ public class DocumentAttachmentsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
-        if (file != null) {
-            localVarFormParams.put("file", file);
+        if (_file != null) {
+            localVarFormParams.put("file", _file);
         }
 
         if (source != null) {
@@ -142,7 +142,7 @@ public class DocumentAttachmentsApi {
             "multipart/form-data"
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
+        if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
@@ -151,7 +151,7 @@ public class DocumentAttachmentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call createDocumentAttachmentValidateBeforeCall(String id, File file, String source, String name, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call createDocumentAttachmentValidateBeforeCall(String id, File _file, String source, String name, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
@@ -159,7 +159,7 @@ public class DocumentAttachmentsApi {
         }
         
 
-        okhttp3.Call localVarCall = createDocumentAttachmentCall(id, file, source, name, _callback);
+        okhttp3.Call localVarCall = createDocumentAttachmentCall(id, _file, source, name, _callback);
         return localVarCall;
 
     }
@@ -168,7 +168,7 @@ public class DocumentAttachmentsApi {
      * Document Attachment Create
      * Creates an attachment for a particular document
      * @param id Document UUID (required)
-     * @param file Binary file to be attached to a document (optional)
+     * @param _file Binary file to be attached to a document (optional)
      * @param source URL link to the file to be attached to a document (optional)
      * @param name Optional name to set for uploaded file (optional)
      * @return DocumentAttachmentResponse
@@ -183,8 +183,8 @@ public class DocumentAttachmentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentAttachmentResponse createDocumentAttachment(String id, File file, String source, String name) throws ApiException {
-        ApiResponse<DocumentAttachmentResponse> localVarResp = createDocumentAttachmentWithHttpInfo(id, file, source, name);
+    public DocumentAttachmentResponse createDocumentAttachment(String id, File _file, String source, String name) throws ApiException {
+        ApiResponse<DocumentAttachmentResponse> localVarResp = createDocumentAttachmentWithHttpInfo(id, _file, source, name);
         return localVarResp.getData();
     }
 
@@ -192,7 +192,7 @@ public class DocumentAttachmentsApi {
      * Document Attachment Create
      * Creates an attachment for a particular document
      * @param id Document UUID (required)
-     * @param file Binary file to be attached to a document (optional)
+     * @param _file Binary file to be attached to a document (optional)
      * @param source URL link to the file to be attached to a document (optional)
      * @param name Optional name to set for uploaded file (optional)
      * @return ApiResponse&lt;DocumentAttachmentResponse&gt;
@@ -207,8 +207,8 @@ public class DocumentAttachmentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentAttachmentResponse> createDocumentAttachmentWithHttpInfo(String id, File file, String source, String name) throws ApiException {
-        okhttp3.Call localVarCall = createDocumentAttachmentValidateBeforeCall(id, file, source, name, null);
+    public ApiResponse<DocumentAttachmentResponse> createDocumentAttachmentWithHttpInfo(String id, File _file, String source, String name) throws ApiException {
+        okhttp3.Call localVarCall = createDocumentAttachmentValidateBeforeCall(id, _file, source, name, null);
         Type localVarReturnType = new TypeToken<DocumentAttachmentResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -217,7 +217,7 @@ public class DocumentAttachmentsApi {
      * Document Attachment Create (asynchronously)
      * Creates an attachment for a particular document
      * @param id Document UUID (required)
-     * @param file Binary file to be attached to a document (optional)
+     * @param _file Binary file to be attached to a document (optional)
      * @param source URL link to the file to be attached to a document (optional)
      * @param name Optional name to set for uploaded file (optional)
      * @param _callback The callback to be executed when the API call finishes
@@ -233,9 +233,9 @@ public class DocumentAttachmentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call createDocumentAttachmentAsync(String id, File file, String source, String name, final ApiCallback<DocumentAttachmentResponse> _callback) throws ApiException {
+    public okhttp3.Call createDocumentAttachmentAsync(String id, File _file, String source, String name, final ApiCallback<DocumentAttachmentResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = createDocumentAttachmentValidateBeforeCall(id, file, source, name, _callback);
+        okhttp3.Call localVarCall = createDocumentAttachmentValidateBeforeCall(id, _file, source, name, _callback);
         Type localVarReturnType = new TypeToken<DocumentAttachmentResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -296,7 +296,7 @@ public class DocumentAttachmentsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
+        if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
@@ -443,7 +443,7 @@ public class DocumentAttachmentsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
+        if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
@@ -597,7 +597,7 @@ public class DocumentAttachmentsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
+        if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
@@ -749,7 +749,7 @@ public class DocumentAttachmentsApi {
             
         };
         final String localVarContentType = localVarApiClient.selectHeaderContentType(localVarContentTypes);
-        if (localVarHeaderParams != null) {
+        if (localVarContentType != null) {
             localVarHeaderParams.put("Content-Type", localVarContentType);
         }
 
