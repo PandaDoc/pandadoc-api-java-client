@@ -1,5 +1,8 @@
 package com.pandadoc.client;
 
+import com.pandadoc.client.ApiClient;
+import com.pandadoc.client.ApiException;
+import com.pandadoc.client.Configuration;
 import com.pandadoc.client.api.DocumentsApi;
 import com.pandadoc.client.auth.ApiKeyAuth;
 import com.pandadoc.client.models.*;
@@ -8,6 +11,7 @@ import java.math.BigDecimal;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.TimeUnit;
 
 
@@ -32,38 +36,20 @@ public class CreateFromTemplateAndSend {
 
         List<DocumentCreateRequestRecipients> recipients = Collections.singletonList(recipient);
 
-        PricingTableRequestOptionsDiscount discount = new PricingTableRequestOptionsDiscount()
-                .type(PricingTableRequestOptionsDiscount.TypeEnum.ABSOLUTE)
-                .name("Global discount")
-                .value(new BigDecimal("2.26"));
-
-        PricingTableRequestOptionsTaxFirst taxFirst = new PricingTableRequestOptionsTaxFirst()
-                .type(PricingTableRequestOptionsTaxFirst.TypeEnum.PERCENT)
-                .name("tax first")
-                .value(new BigDecimal("2.26"));
-
-        PricingTableRequestOptionsTaxSecond taxSecond = new PricingTableRequestOptionsTaxSecond()
-                .type(PricingTableRequestOptionsTaxSecond.TypeEnum.PERCENT)
-                .name("tax second")
-                .value(new BigDecimal("2.26"));
-
         PricingTableRequestRowOptions sectionOption = new PricingTableRequestRowOptions()
                 .qtyEditable(true)
                 .optionalSelected(true)
                 .optional(true);
 
-        PricingTableRequestRowDataDiscount tableDataDiscount = new PricingTableRequestRowDataDiscount()
-                .value(new BigDecimal("7.5"))
-                .type("percent");
-
-        PricingTableRequestRowData pricingTableData = new PricingTableRequestRowData()
-                .name("Toy Panda")
-                .description("Fluffy!")
-                .price(new BigDecimal("10.0"))
-                .cost(new BigDecimal("8.5"))
-                .qty(3)
-                .sku("toy_panda")
-                .discount(tableDataDiscount);
+        Map<String, Object> pricingTableData = Map.of(
+                "Name", "Toy Panda",
+                "Description", "Fluffy",
+                "Price", new BigDecimal("10.0"),
+                "Cost", new BigDecimal("8.0"),
+                "QTY", new BigDecimal("3.0"),
+                "Discount", Map.of("type", "percent", "value", new BigDecimal("10.0")),
+                "Tax", Map.of("type", "percent", "value", new BigDecimal("10.0"))
+        );
 
         PricingTableRequestRows pricingTableRow = new PricingTableRequestRows()
                 .options(sectionOption)
@@ -77,14 +63,14 @@ public class CreateFromTemplateAndSend {
                 .rows(pricingTableRows);
         List<PricingTableRequestSections> pricingTableSections = Collections.singletonList(pricingTableSection);
 
-        PricingTableRequestOptions pricingTableOptions = new PricingTableRequestOptions()
-                .currency("USD")
-                .discount(discount)
-                .taxFirst(taxFirst)
-                .taxSecond(taxSecond);
+        Map<String, Map<String, Object>> pricingTableOptions = Map.of(
+                "Discount", Map.of("type", "absolute", "name", "Global Discount", "value", new BigDecimal("10.0")),
+                "Tax", Map.of("type", "percent", "name", "Tax First", "value", new BigDecimal("10.0"))
+        );
 
         PricingTableRequest pricingTable = new PricingTableRequest()
                 .name("Pricing Table 1")
+                .dataMerge(true)
                 .options(pricingTableOptions)
                 .sections(pricingTableSections);
         List<PricingTableRequest> pricingTables = Collections.singletonList(pricingTable);
@@ -100,7 +86,8 @@ public class CreateFromTemplateAndSend {
         List<DocumentCreateRequestImages> documentImages = Collections.singletonList(documentImage);
 
         DocumentCreateRequestContentLibraryItems contentLibraryItem = new DocumentCreateRequestContentLibraryItems()
-                .id(CONTENT_LIBRARY_ITEM);
+                .id(CONTENT_LIBRARY_ITEM)
+                .pricingTables(pricingTables);
         List<DocumentCreateRequestContentLibraryItems> contentLibraryItems = Collections.singletonList(contentLibraryItem);
 
         DocumentCreateRequestContentPlaceholders documentPlaceholder = new DocumentCreateRequestContentPlaceholders()
@@ -109,7 +96,7 @@ public class CreateFromTemplateAndSend {
         List<DocumentCreateRequestContentPlaceholders> documentPlaceholders = Collections.singletonList(documentPlaceholder);
 
         DocumentCreateRequest documentRequest = new DocumentCreateRequest()
-                .name("Sample Document from PDF with Field Tags")
+                .name("API Sample Document from PandaDoc Template")
                 .templateUuid(TEMPLATE_UUID)
                 .recipients(recipients)
                 .tokens(documentTokens)
@@ -158,7 +145,7 @@ public class CreateFromTemplateAndSend {
         throw new RuntimeException("Document was not sent");
     }
 
-    public static void sendDocument (DocumentsApi apiInstance, DocumentCreateResponse document) throws ApiException {
+    public static void sendDocument(DocumentsApi apiInstance, DocumentCreateResponse document) throws ApiException {
         DocumentSendRequest sendRequest = new DocumentSendRequest()
                 .silent(true)
                 .subject("This doc was send via java SDK");

@@ -1,5 +1,8 @@
 package com.pandadoc.client;
 
+import com.pandadoc.client.ApiClient;
+import com.pandadoc.client.ApiException;
+import com.pandadoc.client.Configuration;
 import com.pandadoc.client.api.DocumentsApi;
 import com.pandadoc.client.auth.ApiKeyAuth;
 import com.pandadoc.client.models.*;

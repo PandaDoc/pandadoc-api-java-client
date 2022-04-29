@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.PricingTableRequestRowData;
 import com.pandadoc.client.models.PricingTableRequestRowOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -36,7 +35,7 @@ public class PricingTableRequestRows {
 
   public static final String SERIALIZED_NAME_DATA = "data";
   @SerializedName(SERIALIZED_NAME_DATA)
-  private PricingTableRequestRowData data;
+  private Object data;
 
   public static final String SERIALIZED_NAME_CUSTOM_FIELDS = "custom_fields";
   @SerializedName(SERIALIZED_NAME_CUSTOM_FIELDS)
@@ -68,7 +67,7 @@ public class PricingTableRequestRows {
   }
 
 
-  public PricingTableRequestRows data(PricingTableRequestRowData data) {
+  public PricingTableRequestRows data(Object data) {
     
     this.data = data;
     return this;
@@ -79,14 +78,14 @@ public class PricingTableRequestRows {
    * @return data
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "{\"Name\":\"Toy Panda\",\"Description\":\"Fluffy\",\"Price\":10,\"Cost\":8.5,\"QTY\":3,\"SKU\":\"toy_panda\",\"Discount\":{\"value\":10,\"type\":\"percent\"},\"Tax\":{\"value\":10,\"type\":\"percent\"}}", value = "")
 
-  public PricingTableRequestRowData getData() {
+  public Object getData() {
     return data;
   }
 
 
-  public void setData(PricingTableRequestRowData data) {
+  public void setData(Object data) {
     this.data = data;
   }
 
