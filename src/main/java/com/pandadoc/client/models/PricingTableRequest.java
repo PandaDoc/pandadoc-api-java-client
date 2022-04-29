@@ -19,7 +19,6 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.PricingTableRequestOptions;
 import com.pandadoc.client.models.PricingTableRequestSections;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -42,7 +41,7 @@ public class PricingTableRequest {
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
-  private PricingTableRequestOptions options;
+  private Object options;
 
   public static final String SERIALIZED_NAME_SECTIONS = "sections";
   @SerializedName(SERIALIZED_NAME_SECTIONS)
@@ -97,7 +96,7 @@ public class PricingTableRequest {
   }
 
 
-  public PricingTableRequest options(PricingTableRequestOptions options) {
+  public PricingTableRequest options(Object options) {
     
     this.options = options;
     return this;
@@ -108,14 +107,14 @@ public class PricingTableRequest {
    * @return options
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "{\"currency\":\"USD\",\"Discount\":{\"type\":\"absolute\",\"name\":\"Global Discount\",\"value\":10},\"Tax\":{\"type\":\"percent\",\"name\":\"Tax First\",\"value\":15}}", value = "")
 
-  public PricingTableRequestOptions getOptions() {
+  public Object getOptions() {
     return options;
   }
 
 
-  public void setOptions(PricingTableRequestOptions options) {
+  public void setOptions(Object options) {
     this.options = options;
   }
 

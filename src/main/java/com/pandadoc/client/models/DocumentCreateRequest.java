@@ -28,7 +28,9 @@ import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * DocumentCreateRequest
@@ -46,6 +48,10 @@ public class DocumentCreateRequest {
   public static final String SERIALIZED_NAME_FOLDER_UUID = "folder_uuid";
   @SerializedName(SERIALIZED_NAME_FOLDER_UUID)
   private String folderUuid;
+
+  public static final String SERIALIZED_NAME_OWNER = "owner";
+  @SerializedName(SERIALIZED_NAME_OWNER)
+  private Map<String, String> owner = null;
 
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
@@ -156,6 +162,37 @@ public class DocumentCreateRequest {
 
   public void setFolderUuid(String folderUuid) {
     this.folderUuid = folderUuid;
+  }
+
+
+  public DocumentCreateRequest owner(Map<String, String> owner) {
+    
+    this.owner = owner;
+    return this;
+  }
+
+  public DocumentCreateRequest putOwnerItem(String key, String ownerItem) {
+    if (this.owner == null) {
+      this.owner = new HashMap<>();
+    }
+    this.owner.put(key, ownerItem);
+    return this;
+  }
+
+   /**
+   * You can set an owner of a document as an &#x60;email&#x60; or &#x60;membership_id&#x60;
+   * @return owner
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"membership_id\":\"QMDSzwabfFzTgjW6KijHyu\"}", value = "You can set an owner of a document as an `email` or `membership_id`")
+
+  public Map<String, String> getOwner() {
+    return owner;
+  }
+
+
+  public void setOwner(Map<String, String> owner) {
+    this.owner = owner;
   }
 
 
@@ -449,6 +486,7 @@ public class DocumentCreateRequest {
     return Objects.equals(this.name, documentCreateRequest.name) &&
         Objects.equals(this.templateUuid, documentCreateRequest.templateUuid) &&
         Objects.equals(this.folderUuid, documentCreateRequest.folderUuid) &&
+        Objects.equals(this.owner, documentCreateRequest.owner) &&
         Objects.equals(this.recipients, documentCreateRequest.recipients) &&
         Objects.equals(this.tokens, documentCreateRequest.tokens) &&
         Objects.equals(this.fields, documentCreateRequest.fields) &&
@@ -463,7 +501,7 @@ public class DocumentCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, templateUuid, folderUuid, recipients, tokens, fields, metadata, tags, images, pricingTables, contentPlaceholders, url, parseFormFields);
+    return Objects.hash(name, templateUuid, folderUuid, owner, recipients, tokens, fields, metadata, tags, images, pricingTables, contentPlaceholders, url, parseFormFields);
   }
 
   @Override
@@ -473,6 +511,7 @@ public class DocumentCreateRequest {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    templateUuid: ").append(toIndentedString(templateUuid)).append("\n");
     sb.append("    folderUuid: ").append(toIndentedString(folderUuid)).append("\n");
+    sb.append("    owner: ").append(toIndentedString(owner)).append("\n");
     sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
