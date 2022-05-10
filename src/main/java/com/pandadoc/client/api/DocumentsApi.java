@@ -1500,7 +1500,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDocumentsCall(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listDocumentsCall(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, List<String> metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -1571,7 +1571,7 @@ public class DocumentsApi {
         }
 
         if (metadata != null) {
-            localVarQueryParams.addAll(localVarApiClient.parameterToPair("metadata", metadata));
+            localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "metadata", metadata));
         }
 
         if (modifiedFrom != null) {
@@ -1631,7 +1631,7 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listDocumentsValidateBeforeCall(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listDocumentsValidateBeforeCall(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, List<String> metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId, final ApiCallback _callback) throws ApiException {
         
 
         okhttp3.Call localVarCall = listDocumentsCall(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, _callback);
@@ -1675,7 +1675,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public DocumentListResponse listDocuments(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId) throws ApiException {
+    public DocumentListResponse listDocuments(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, List<String> metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId) throws ApiException {
         ApiResponse<DocumentListResponse> localVarResp = listDocumentsWithHttpInfo(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId);
         return localVarResp.getData();
     }
@@ -1716,7 +1716,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<DocumentListResponse> listDocumentsWithHttpInfo(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId) throws ApiException {
+    public ApiResponse<DocumentListResponse> listDocumentsWithHttpInfo(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, List<String> metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId) throws ApiException {
         okhttp3.Call localVarCall = listDocumentsValidateBeforeCall(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, null);
         Type localVarReturnType = new TypeToken<DocumentListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
@@ -1759,7 +1759,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listDocumentsAsync(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, String metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId, final ApiCallback<DocumentListResponse> _callback) throws ApiException {
+    public okhttp3.Call listDocumentsAsync(String completedFrom, String completedTo, String contactId, Integer count, String createdFrom, String createdTo, Boolean deleted, String id, String folderUuid, String formId, String membershipId, List<String> metadata, String modifiedFrom, String modifiedTo, DocumentOrderingFieldsEnum orderBy, Integer page, String q, DocumentStatusRequestEnum status, DocumentStatusRequestEnum statusNe, String tag, String templateId, final ApiCallback<DocumentListResponse> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = listDocumentsValidateBeforeCall(completedFrom, completedTo, contactId, count, createdFrom, createdTo, deleted, id, folderUuid, formId, membershipId, metadata, modifiedFrom, modifiedTo, orderBy, page, q, status, statusNe, tag, templateId, _callback);
         Type localVarReturnType = new TypeToken<DocumentListResponse>(){}.getType();

@@ -867,8 +867,8 @@ public class Example {
         String formId = "BhVzRcxH9Z2LgfPPGXFUBa";
         // String | Returns results where 'membership_id' is present in document as owner (should be member uuid)
         String membershipId = "BhVzRcxH9Z2LgfPPGXFUBa";
-        // String | Specify metadata to filter by in the format of `metadata_{metadata-key}={metadata-value}` such as `metadata_opportunity_id=2181432`. The `metadata_` prefix is always required.
-        String metadata = "metadata_example";
+        // List<String> | Specify metadata to filter by in the format of `metadata_{metadata-key}={metadata-value}` such as `metadata_opportunity_id=2181432`. The `metadata_` prefix is always required.
+        List<String> metadata = Arrays.asList();
         // String | Return results where the `date_modified` field (iso-8601) is greater than or equal to this value.
         String modifiedFrom = "2021-10-27T15:22:23.132757Z";
         // String | Return results where the `date_modified` field (iso-8601) is less than this value.
@@ -917,7 +917,7 @@ Name | Type | Description  | Notes
  **folderUuid** | **String**| The UUID of the folder where the documents are stored. | [optional]
  **formId** | **String**| Specify the form used for documents creation. This parameter can&#39;t be used with template_id. | [optional]
  **membershipId** | **String**| Returns results where &#39;membership_id&#39; is present in document as owner (should be member uuid) | [optional]
- **metadata** | **String**| Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. | [optional]
+ **metadata** | [**List&lt;String&gt;**](String.md)| Specify metadata to filter by in the format of &#x60;metadata_{metadata-key}&#x3D;{metadata-value}&#x60; such as &#x60;metadata_opportunity_id&#x3D;2181432&#x60;. The &#x60;metadata_&#x60; prefix is always required. | [optional]
  **modifiedFrom** | **String**| Return results where the &#x60;date_modified&#x60; field (iso-8601) is greater than or equal to this value. | [optional]
  **modifiedTo** | **String**| Return results where the &#x60;date_modified&#x60; field (iso-8601) is less than this value. | [optional]
  **orderBy** | [**DocumentOrderingFieldsEnum**](.md)| Specify the order of documents to return. Use &#x60;value&#x60; (for example, &#x60;date_created&#x60;) for ASC and &#x60;-value&#x60; (for example, &#x60;-date_created&#x60;) for DESC. | [optional] [enum: name, date_created, date_status_changed, date_of_last_action, date_modified, date_sent, date_completed, date_expiration, date_declined, status, -name, -date_created, -date_status_changed, -date_of_last_action, -date_modified, -date_sent, -date_completed, -date_expiration, -date_declined, -status]
