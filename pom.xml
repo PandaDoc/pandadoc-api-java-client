@@ -5,13 +5,13 @@
     <artifactId>pandadoc-java-client</artifactId>
     <packaging>jar</packaging>
     <name>pandadoc-java-client</name>
-    <version>5.0.1</version>
+    <version>5.0.2</version>
     <url>https://github.com/PandaDoc/pandadoc-api-java-client</url>
     <description>PandaDoc SDK spans a broad range of functionality to help you build incredible documents automation experiences inside your product.</description>
     <scm>
-        <connection></connection>
-        <developerConnection></developerConnection>
-        <url></url>
+        <connection>scm:git:git://github.com/PandaDoc/pandadoc-api-java-client</connection>
+        <developerConnection>scm:git:ssh://github.com/PandaDoc/pandadoc-api-java-client.git</developerConnection>
+        <url>https://github.com/PandaDoc/pandadoc-api-java-client/tree/main</url>
     </scm>
 
     <licenses>
@@ -24,8 +24,8 @@
 
     <developers>
         <developer>
-            <name></name>
-            <email></email>
+            <name>PandaDoc</name>
+            <email>devops+sonatype@pandadoc.com</email>
             <organization>PandaDoc</organization>
             <organizationUrl>https://www.pandadoc.com/</organizationUrl>
         </developer>
