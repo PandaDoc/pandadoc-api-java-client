@@ -1139,6 +1139,7 @@ public class DocumentsApi {
      * @param watermarkFontSize Font size of the watermark. (optional)
      * @param watermarkOpacity In range 0.0-1.0 (optional)
      * @param watermarkText Specify watermark text. (optional)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1154,7 +1155,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadDocumentCall(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call downloadDocumentCall(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, Boolean separateFiles, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -1197,6 +1198,10 @@ public class DocumentsApi {
             localVarQueryParams.addAll(localVarApiClient.parameterToPair("watermark_text", watermarkText));
         }
 
+        if (separateFiles != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("separate_files", separateFiles));
+        }
+
         final String[] localVarAccepts = {
             "application/pdf", "application/json"
         };
@@ -1218,7 +1223,7 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call downloadDocumentValidateBeforeCall(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call downloadDocumentValidateBeforeCall(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, Boolean separateFiles, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
@@ -1226,7 +1231,7 @@ public class DocumentsApi {
         }
         
 
-        okhttp3.Call localVarCall = downloadDocumentCall(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, _callback);
+        okhttp3.Call localVarCall = downloadDocumentCall(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, separateFiles, _callback);
         return localVarCall;
 
     }
@@ -1239,6 +1244,7 @@ public class DocumentsApi {
      * @param watermarkFontSize Font size of the watermark. (optional)
      * @param watermarkOpacity In range 0.0-1.0 (optional)
      * @param watermarkText Specify watermark text. (optional)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1253,8 +1259,8 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public File downloadDocument(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText) throws ApiException {
-        ApiResponse<File> localVarResp = downloadDocumentWithHttpInfo(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText);
+    public File downloadDocument(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, Boolean separateFiles) throws ApiException {
+        ApiResponse<File> localVarResp = downloadDocumentWithHttpInfo(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, separateFiles);
         return localVarResp.getData();
     }
 
@@ -1266,6 +1272,7 @@ public class DocumentsApi {
      * @param watermarkFontSize Font size of the watermark. (optional)
      * @param watermarkOpacity In range 0.0-1.0 (optional)
      * @param watermarkText Specify watermark text. (optional)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1280,8 +1287,8 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> downloadDocumentWithHttpInfo(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText) throws ApiException {
-        okhttp3.Call localVarCall = downloadDocumentValidateBeforeCall(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, null);
+    public ApiResponse<File> downloadDocumentWithHttpInfo(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, Boolean separateFiles) throws ApiException {
+        okhttp3.Call localVarCall = downloadDocumentValidateBeforeCall(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, separateFiles, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1294,6 +1301,7 @@ public class DocumentsApi {
      * @param watermarkFontSize Font size of the watermark. (optional)
      * @param watermarkOpacity In range 0.0-1.0 (optional)
      * @param watermarkText Specify watermark text. (optional)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1309,9 +1317,9 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadDocumentAsync(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call downloadDocumentAsync(String id, String watermarkColor, Integer watermarkFontSize, Float watermarkOpacity, String watermarkText, Boolean separateFiles, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = downloadDocumentValidateBeforeCall(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, _callback);
+        okhttp3.Call localVarCall = downloadDocumentValidateBeforeCall(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, separateFiles, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
@@ -1319,6 +1327,7 @@ public class DocumentsApi {
     /**
      * Build call for downloadProtectedDocument
      * @param id Specify document ID. (required)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -1333,7 +1342,7 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadProtectedDocumentCall(String id, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call downloadProtectedDocumentCall(String id, Boolean separateFiles, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -1360,6 +1369,10 @@ public class DocumentsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (separateFiles != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("separate_files", separateFiles));
+        }
+
         final String[] localVarAccepts = {
             "application/pdf", "application/json"
         };
@@ -1381,7 +1394,7 @@ public class DocumentsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call downloadProtectedDocumentValidateBeforeCall(String id, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call downloadProtectedDocumentValidateBeforeCall(String id, Boolean separateFiles, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'id' is set
         if (id == null) {
@@ -1389,7 +1402,7 @@ public class DocumentsApi {
         }
         
 
-        okhttp3.Call localVarCall = downloadProtectedDocumentCall(id, _callback);
+        okhttp3.Call localVarCall = downloadProtectedDocumentCall(id, separateFiles, _callback);
         return localVarCall;
 
     }
@@ -1398,6 +1411,7 @@ public class DocumentsApi {
      * Download document protected
      * Download a signed PDF of a completed document
      * @param id Specify document ID. (required)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @return File
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1411,8 +1425,8 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public File downloadProtectedDocument(String id) throws ApiException {
-        ApiResponse<File> localVarResp = downloadProtectedDocumentWithHttpInfo(id);
+    public File downloadProtectedDocument(String id, Boolean separateFiles) throws ApiException {
+        ApiResponse<File> localVarResp = downloadProtectedDocumentWithHttpInfo(id, separateFiles);
         return localVarResp.getData();
     }
 
@@ -1420,6 +1434,7 @@ public class DocumentsApi {
      * Download document protected
      * Download a signed PDF of a completed document
      * @param id Specify document ID. (required)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @return ApiResponse&lt;File&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -1433,8 +1448,8 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<File> downloadProtectedDocumentWithHttpInfo(String id) throws ApiException {
-        okhttp3.Call localVarCall = downloadProtectedDocumentValidateBeforeCall(id, null);
+    public ApiResponse<File> downloadProtectedDocumentWithHttpInfo(String id, Boolean separateFiles) throws ApiException {
+        okhttp3.Call localVarCall = downloadProtectedDocumentValidateBeforeCall(id, separateFiles, null);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -1443,6 +1458,7 @@ public class DocumentsApi {
      * Download document protected (asynchronously)
      * Download a signed PDF of a completed document
      * @param id Specify document ID. (required)
+     * @param separateFiles Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -1457,9 +1473,9 @@ public class DocumentsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call downloadProtectedDocumentAsync(String id, final ApiCallback<File> _callback) throws ApiException {
+    public okhttp3.Call downloadProtectedDocumentAsync(String id, Boolean separateFiles, final ApiCallback<File> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = downloadProtectedDocumentValidateBeforeCall(id, _callback);
+        okhttp3.Call localVarCall = downloadProtectedDocumentValidateBeforeCall(id, separateFiles, _callback);
         Type localVarReturnType = new TypeToken<File>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
