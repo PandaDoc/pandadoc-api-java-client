@@ -625,7 +625,7 @@ Name | Type | Description  | Notes
 
 ## downloadDocument
 
-> File downloadDocument(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText)
+> File downloadDocument(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, separateFiles)
 
 Document download
 
@@ -670,8 +670,10 @@ public class Example {
         Float watermarkOpacity = 0.5F;
         // String | Specify watermark text.
         String watermarkText = "John Doe inc.";
+        // Boolean | Set as `true` if you want to receive a zip file with all documents in separate when document transaction contains more than 1.
+        Boolean separateFiles = true;
         try {
-            File result = apiInstance.downloadDocument(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText);
+            File result = apiInstance.downloadDocument(id, watermarkColor, watermarkFontSize, watermarkOpacity, watermarkText, separateFiles);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentsApi#downloadDocument");
@@ -694,6 +696,7 @@ Name | Type | Description  | Notes
  **watermarkFontSize** | **Integer**| Font size of the watermark. | [optional]
  **watermarkOpacity** | **Float**| In range 0.0-1.0 | [optional]
  **watermarkText** | **String**| Specify watermark text. | [optional]
+ **separateFiles** | **Boolean**| Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. | [optional]
 
 ### Return type
 
@@ -723,7 +726,7 @@ Name | Type | Description  | Notes
 
 ## downloadProtectedDocument
 
-> File downloadProtectedDocument(id)
+> File downloadProtectedDocument(id, separateFiles)
 
 Download document protected
 
@@ -762,8 +765,10 @@ public class Example {
         DocumentsApi apiInstance = new DocumentsApi(defaultClient);
         // String | Specify document ID.
         String id = "Mebvyy3NGsGBnY2rPLkH84";
+        // Boolean | Set as `true` if you want to receive a zip file with all documents in separate when document transaction contains more than 1.
+        Boolean separateFiles = true;
         try {
-            File result = apiInstance.downloadProtectedDocument(id);
+            File result = apiInstance.downloadProtectedDocument(id, separateFiles);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentsApi#downloadProtectedDocument");
@@ -782,6 +787,7 @@ public class Example {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **String**| Specify document ID. |
+ **separateFiles** | **Boolean**| Set as &#x60;true&#x60; if you want to receive a zip file with all documents in separate when document transaction contains more than 1. | [optional]
 
 ### Return type
 

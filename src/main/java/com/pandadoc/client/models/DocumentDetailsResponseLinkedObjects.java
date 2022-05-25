@@ -40,6 +40,10 @@ public class DocumentDetailsResponseLinkedObjects {
   @SerializedName(SERIALIZED_NAME_ENTITY_ID)
   private String entityId;
 
+  public static final String SERIALIZED_NAME_ID = "id";
+  @SerializedName(SERIALIZED_NAME_ID)
+  private String id;
+
   public DocumentDetailsResponseLinkedObjects() { 
   }
 
@@ -112,6 +116,29 @@ public class DocumentDetailsResponseLinkedObjects {
   }
 
 
+  public DocumentDetailsResponseLinkedObjects id(String id) {
+    
+    this.id = id;
+    return this;
+  }
+
+   /**
+   * Get id
+   * @return id
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "ea88ed1dc8094dd3a57754aa643a1954", value = "")
+
+  public String getId() {
+    return id;
+  }
+
+
+  public void setId(String id) {
+    this.id = id;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,12 +150,13 @@ public class DocumentDetailsResponseLinkedObjects {
     DocumentDetailsResponseLinkedObjects documentDetailsResponseLinkedObjects = (DocumentDetailsResponseLinkedObjects) o;
     return Objects.equals(this.provider, documentDetailsResponseLinkedObjects.provider) &&
         Objects.equals(this.entityType, documentDetailsResponseLinkedObjects.entityType) &&
-        Objects.equals(this.entityId, documentDetailsResponseLinkedObjects.entityId);
+        Objects.equals(this.entityId, documentDetailsResponseLinkedObjects.entityId) &&
+        Objects.equals(this.id, documentDetailsResponseLinkedObjects.id);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(provider, entityType, entityId);
+    return Objects.hash(provider, entityType, entityId, id);
   }
 
   @Override
@@ -138,6 +166,7 @@ public class DocumentDetailsResponseLinkedObjects {
     sb.append("    provider: ").append(toIndentedString(provider)).append("\n");
     sb.append("    entityType: ").append(toIndentedString(entityType)).append("\n");
     sb.append("    entityId: ").append(toIndentedString(entityId)).append("\n");
+    sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("}");
     return sb.toString();
   }
