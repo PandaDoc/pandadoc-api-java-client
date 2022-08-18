@@ -19,6 +19,7 @@ Method | HTTP request | Description
 [**statusDocument**](DocumentsApi.md#statusDocument) | **GET** /public/v1/documents/{id} | Document status
 [**transferAllDocumentsOwnership**](DocumentsApi.md#transferAllDocumentsOwnership) | **PATCH** /public/v1/documents/ownership | Transfer all documents ownership
 [**transferDocumentOwnership**](DocumentsApi.md#transferDocumentOwnership) | **PATCH** /public/v1/documents/{id}/ownership | Update document ownership
+[**updateDocument**](DocumentsApi.md#updateDocument) | **PATCH** /public/v1/documents/{id} | Update Document only in the draft status
 
 
 
@@ -1382,5 +1383,92 @@ null (empty response body)
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
 | **409** | Conflict |  -  |
+| **429** | Too Many Requests |  -  |
+
+
+## updateDocument
+
+> updateDocument(id, documentUpdateRequest)
+
+Update Document only in the draft status
+
+### Example
+
+```java
+// Import classes:
+import com.pandadoc.client.ApiClient;
+import com.pandadoc.client.ApiException;
+import com.pandadoc.client.Configuration;
+import com.pandadoc.client.auth.*;
+import com.pandadoc.client.models.*;
+import com.pandadoc.client.api.DocumentsApi;
+
+import java.util.Arrays;
+import java.io.File;
+import java.util.List;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.pandadoc.com");
+        
+        // Configure API key authorization: apiKey
+        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
+        apiKey.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "API-Key" (defaults to null)
+        //apiKey.setApiKeyPrefix("API-Key");
+
+        // Configure OAuth2 access token for authorization: oauth2
+        // OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        // oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        DocumentsApi apiInstance = new DocumentsApi(defaultClient);
+        // String | Document ID
+        String id = "BhVzRcxH9Z2LgfPPGXFUBa";
+        // DocumentUpdateRequest | 
+        DocumentUpdateRequest documentUpdateRequest = new DocumentUpdateRequest();
+        try {
+            apiInstance.updateDocument(id, documentUpdateRequest);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DocumentsApi#updateDocument");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Document ID |
+ **documentUpdateRequest** | [**DocumentUpdateRequest**](DocumentUpdateRequest.md)|  |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: application/json
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **400** | Bad Request |  -  |
+| **401** | Authentication error |  -  |
+| **403** | Permission error |  -  |
+| **404** | Not found |  -  |
 | **429** | Too Many Requests |  -  |
 

@@ -22,6 +22,9 @@ import com.google.gson.stream.JsonWriter;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * DocumentSendRequest
@@ -39,6 +42,10 @@ public class DocumentSendRequest {
   public static final String SERIALIZED_NAME_SILENT = "silent";
   @SerializedName(SERIALIZED_NAME_SILENT)
   private Boolean silent;
+
+  public static final String SERIALIZED_NAME_SENDER = "sender";
+  @SerializedName(SERIALIZED_NAME_SENDER)
+  private Map<String, String> sender = null;
 
   public DocumentSendRequest() { 
   }
@@ -112,6 +119,37 @@ public class DocumentSendRequest {
   }
 
 
+  public DocumentSendRequest sender(Map<String, String> sender) {
+    
+    this.sender = sender;
+    return this;
+  }
+
+  public DocumentSendRequest putSenderItem(String key, String senderItem) {
+    if (this.sender == null) {
+      this.sender = new HashMap<>();
+    }
+    this.sender.put(key, senderItem);
+    return this;
+  }
+
+   /**
+   * You can set a sender of a document as an &#x60;email&#x60; or &#x60;membership_id&#x60;
+   * @return sender
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "{\"membership_id\":\"QMDSzwabfFzTgjW6KijHyu\",\"email\":\"john.doe@example.com\"}", value = "You can set a sender of a document as an `email` or `membership_id`")
+
+  public Map<String, String> getSender() {
+    return sender;
+  }
+
+
+  public void setSender(Map<String, String> sender) {
+    this.sender = sender;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -123,12 +161,13 @@ public class DocumentSendRequest {
     DocumentSendRequest documentSendRequest = (DocumentSendRequest) o;
     return Objects.equals(this.message, documentSendRequest.message) &&
         Objects.equals(this.subject, documentSendRequest.subject) &&
-        Objects.equals(this.silent, documentSendRequest.silent);
+        Objects.equals(this.silent, documentSendRequest.silent) &&
+        Objects.equals(this.sender, documentSendRequest.sender);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, subject, silent);
+    return Objects.hash(message, subject, silent, sender);
   }
 
   @Override
@@ -138,6 +177,7 @@ public class DocumentSendRequest {
     sb.append("    message: ").append(toIndentedString(message)).append("\n");
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    silent: ").append(toIndentedString(silent)).append("\n");
+    sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
     sb.append("}");
     return sb.toString();
   }
