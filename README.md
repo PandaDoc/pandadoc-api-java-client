@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.pandadoc</groupId>
   <artifactId>pandadoc-java-client</artifactId>
-  <version>5.2.0</version>
+  <version>5.3.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.pandadoc:pandadoc-java-client:5.2.0"
+compile "com.pandadoc:pandadoc-java-client:5.3.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/pandadoc-java-client-5.2.0.jar`
+- `target/pandadoc-java-client-5.3.0.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -145,6 +145,7 @@ Class | Method | HTTP request | Description
 *DocumentsApi* | [**statusDocument**](docs/DocumentsApi.md#statusDocument) | **GET** /public/v1/documents/{id} | Document status
 *DocumentsApi* | [**transferAllDocumentsOwnership**](docs/DocumentsApi.md#transferAllDocumentsOwnership) | **PATCH** /public/v1/documents/ownership | Transfer all documents ownership
 *DocumentsApi* | [**transferDocumentOwnership**](docs/DocumentsApi.md#transferDocumentOwnership) | **PATCH** /public/v1/documents/{id}/ownership | Update document ownership
+*DocumentsApi* | [**updateDocument**](docs/DocumentsApi.md#updateDocument) | **PATCH** /public/v1/documents/{id} | Update Document only in the draft status
 *FoldersApiApi* | [**createDocumentFolder**](docs/FoldersApiApi.md#createDocumentFolder) | **POST** /public/v1/documents/folders | Create Documents Folder
 *FoldersApiApi* | [**createTemplateFolder**](docs/FoldersApiApi.md#createTemplateFolder) | **POST** /public/v1/templates/folders | Create Templates Folder
 *FoldersApiApi* | [**listDocumentFolders**](docs/FoldersApiApi.md#listDocumentFolders) | **GET** /public/v1/documents/folders | List Documents Folders

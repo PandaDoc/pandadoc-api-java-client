@@ -184,7 +184,7 @@ public class DocumentCreateRequest {
    * @return owner
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"membership_id\":\"QMDSzwabfFzTgjW6KijHyu\"}", value = "You can set an owner of a document as an `email` or `membership_id`")
+  @ApiModelProperty(example = "{\"membership_id\":\"QMDSzwabfFzTgjW6KijHyu\",\"email\":\"john.doe@example.com\"}", value = "You can set an owner of a document as an `email` or `membership_id`")
 
   public Map<String, String> getOwner() {
     return owner;
