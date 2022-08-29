@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.pandadoc</groupId>
   <artifactId>pandadoc-java-client</artifactId>
-  <version>5.4.0</version>
+  <version>5.4.1</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.pandadoc:pandadoc-java-client:5.4.0"
+compile "com.pandadoc:pandadoc-java-client:5.4.1"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/pandadoc-java-client-5.4.0.jar`
+- `target/pandadoc-java-client-5.4.1.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -137,7 +137,7 @@ Class | Method | HTTP request | Description
 *DocumentsApi* | [**deleteDocument**](docs/DocumentsApi.md#deleteDocument) | **DELETE** /public/v1/documents/{id} | Delete document by id
 *DocumentsApi* | [**deleteLinkedObject**](docs/DocumentsApi.md#deleteLinkedObject) | **DELETE** /public/v1/documents/{id}/linked-objects/{linked_object_id} | Delete Linked Object
 *DocumentsApi* | [**detailsDocument**](docs/DocumentsApi.md#detailsDocument) | **GET** /public/v1/documents/{id}/details | Document details
-*DocumentsApi* | [**documentMoveToFolder**](docs/DocumentsApi.md#documentMoveToFolder) | **DELETE** /public/v1/documents/{id}/move-to-folder/{folder_id} | Document move to folder
+*DocumentsApi* | [**documentMoveToFolder**](docs/DocumentsApi.md#documentMoveToFolder) | **POST** /public/v1/documents/{id}/move-to-folder/{folder_id} | Document move to folder
 *DocumentsApi* | [**downloadDocument**](docs/DocumentsApi.md#downloadDocument) | **GET** /public/v1/documents/{id}/download | Document download
 *DocumentsApi* | [**downloadProtectedDocument**](docs/DocumentsApi.md#downloadProtectedDocument) | **GET** /public/v1/documents/{id}/download-protected | Download document protected
 *DocumentsApi* | [**listDocuments**](docs/DocumentsApi.md#listDocuments) | **GET** /public/v1/documents | List documents
