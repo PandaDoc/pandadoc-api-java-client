@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**deleteDocument**](DocumentsApi.md#deleteDocument) | **DELETE** /public/v1/documents/{id} | Delete document by id
 [**deleteLinkedObject**](DocumentsApi.md#deleteLinkedObject) | **DELETE** /public/v1/documents/{id}/linked-objects/{linked_object_id} | Delete Linked Object
 [**detailsDocument**](DocumentsApi.md#detailsDocument) | **GET** /public/v1/documents/{id}/details | Document details
+[**documentMoveToFolder**](DocumentsApi.md#documentMoveToFolder) | **DELETE** /public/v1/documents/{id}/move-to-folder/{folder_id} | Document move to folder
 [**downloadDocument**](DocumentsApi.md#downloadDocument) | **GET** /public/v1/documents/{id}/download | Document download
 [**downloadProtectedDocument**](DocumentsApi.md#downloadProtectedDocument) | **GET** /public/v1/documents/{id}/download-protected | Download document protected
 [**listDocuments**](DocumentsApi.md#listDocuments) | **GET** /public/v1/documents | List documents
@@ -621,6 +622,92 @@ Name | Type | Description  | Notes
 | **403** | Permission error |  -  |
 | **404** | Not found |  -  |
 | **409** | Conflict |  -  |
+| **429** | Too Many Requests |  -  |
+
+
+## documentMoveToFolder
+
+> documentMoveToFolder(id, folderId)
+
+Document move to folder
+
+### Example
+
+```java
+// Import classes:
+import com.pandadoc.client.ApiClient;
+import com.pandadoc.client.ApiException;
+import com.pandadoc.client.Configuration;
+import com.pandadoc.client.auth.*;
+import com.pandadoc.client.models.*;
+import com.pandadoc.client.api.DocumentsApi;
+
+import java.util.Arrays;
+import java.io.File;
+import java.util.List;
+
+public class Example {
+    public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
+        defaultClient.setBasePath("https://api.pandadoc.com");
+        
+        // Configure API key authorization: apiKey
+        ApiKeyAuth apiKey = (ApiKeyAuth) defaultClient.getAuthentication("apiKey");
+        apiKey.setApiKey("YOUR API KEY");
+        // Uncomment the following line to set a prefix for the API key, e.g. "API-Key" (defaults to null)
+        //apiKey.setApiKeyPrefix("API-Key");
+
+        // Configure OAuth2 access token for authorization: oauth2
+        // OAuth oauth2 = (OAuth) defaultClient.getAuthentication("oauth2");
+        // oauth2.setAccessToken("YOUR ACCESS TOKEN");
+
+        DocumentsApi apiInstance = new DocumentsApi(defaultClient);
+        // String | Specify document ID.
+        String id = "ZPeAfcpzr9aiVs5vqUf6jg";
+        // String | Specify folder ID.
+        String folderId = "ZPeAfcpzr9aiVs5vqUf6jg";
+        try {
+            apiInstance.documentMoveToFolder(id, folderId);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling DocumentsApi#documentMoveToFolder");
+            System.err.println("Status code: " + e.getCode());
+            System.err.println("Reason: " + e.getResponseBody());
+            System.err.println("Response headers: " + e.getResponseHeaders());
+            e.printStackTrace();
+        }
+    }
+}
+```
+
+### Parameters
+
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **String**| Specify document ID. |
+ **folderId** | **String**| Specify folder ID. |
+
+### Return type
+
+null (empty response body)
+
+### Authorization
+
+[apiKey](../README.md#apiKey), [oauth2](../README.md#oauth2)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: application/json
+
+
+### HTTP response details
+| Status code | Description | Response headers |
+|-------------|-------------|------------------|
+| **204** | No content |  -  |
+| **401** | Authentication error |  -  |
+| **403** | Permission error |  -  |
+| **404** | Not found |  -  |
 | **429** | Too Many Requests |  -  |
 
 
