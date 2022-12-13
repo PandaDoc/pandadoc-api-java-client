@@ -36,6 +36,14 @@ public class TemplateDetailsResponsePreassignedPerson {
   @SerializedName(SERIALIZED_NAME_TYPE)
   private String type;
 
+  public static final String SERIALIZED_NAME_PLACEHOLDER_NAME = "placeholder_name";
+  @SerializedName(SERIALIZED_NAME_PLACEHOLDER_NAME)
+  private String placeholderName;
+
+  public static final String SERIALIZED_NAME_PLACEHOLDER_SOURCE = "placeholder_source";
+  @SerializedName(SERIALIZED_NAME_PLACEHOLDER_SOURCE)
+  private String placeholderSource;
+
   public TemplateDetailsResponsePreassignedPerson() { 
   }
 
@@ -85,6 +93,52 @@ public class TemplateDetailsResponsePreassignedPerson {
   }
 
 
+  public TemplateDetailsResponsePreassignedPerson placeholderName(String placeholderName) {
+    
+    this.placeholderName = placeholderName;
+    return this;
+  }
+
+   /**
+   * Get placeholderName
+   * @return placeholderName
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Employee", value = "")
+
+  public String getPlaceholderName() {
+    return placeholderName;
+  }
+
+
+  public void setPlaceholderName(String placeholderName) {
+    this.placeholderName = placeholderName;
+  }
+
+
+  public TemplateDetailsResponsePreassignedPerson placeholderSource(String placeholderSource) {
+    
+    this.placeholderSource = placeholderSource;
+    return this;
+  }
+
+   /**
+   * Get placeholderSource
+   * @return placeholderSource
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "bamboohr", value = "")
+
+  public String getPlaceholderSource() {
+    return placeholderSource;
+  }
+
+
+  public void setPlaceholderSource(String placeholderSource) {
+    this.placeholderSource = placeholderSource;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -95,12 +149,14 @@ public class TemplateDetailsResponsePreassignedPerson {
     }
     TemplateDetailsResponsePreassignedPerson templateDetailsResponsePreassignedPerson = (TemplateDetailsResponsePreassignedPerson) o;
     return Objects.equals(this.email, templateDetailsResponsePreassignedPerson.email) &&
-        Objects.equals(this.type, templateDetailsResponsePreassignedPerson.type);
+        Objects.equals(this.type, templateDetailsResponsePreassignedPerson.type) &&
+        Objects.equals(this.placeholderName, templateDetailsResponsePreassignedPerson.placeholderName) &&
+        Objects.equals(this.placeholderSource, templateDetailsResponsePreassignedPerson.placeholderSource);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, type);
+    return Objects.hash(email, type, placeholderName, placeholderSource);
   }
 
   @Override
@@ -109,6 +165,8 @@ public class TemplateDetailsResponsePreassignedPerson {
     sb.append("class TemplateDetailsResponsePreassignedPerson {\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    type: ").append(toIndentedString(type)).append("\n");
+    sb.append("    placeholderName: ").append(toIndentedString(placeholderName)).append("\n");
+    sb.append("    placeholderSource: ").append(toIndentedString(placeholderSource)).append("\n");
     sb.append("}");
     return sb.toString();
   }
