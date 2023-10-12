@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.pandadoc</groupId>
   <artifactId>pandadoc-java-client</artifactId>
-  <version>5.5.0</version>
+  <version>5.7.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.pandadoc:pandadoc-java-client:5.5.0"
+compile "com.pandadoc:pandadoc-java-client:5.7.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/pandadoc-java-client-5.5.0.jar`
+- `target/pandadoc-java-client-5.7.0.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -130,6 +130,10 @@ Class | Method | HTTP request | Description
 *DocumentAttachmentsApi* | [**detailsDocumentAttachment**](docs/DocumentAttachmentsApi.md#detailsDocumentAttachment) | **GET** /public/v1/documents/{id}/attachments/{attachment_id} | Document Attachment Details
 *DocumentAttachmentsApi* | [**downloadDocumentAttachment**](docs/DocumentAttachmentsApi.md#downloadDocumentAttachment) | **GET** /public/v1/documents/{id}/attachments/{attachment_id}/download | Document Attachment Download
 *DocumentAttachmentsApi* | [**listDocumentAttachments**](docs/DocumentAttachmentsApi.md#listDocumentAttachments) | **GET** /public/v1/documents/{id}/attachments | Document Attachment List
+*DocumentRecipientsApi* | [**addDocumentRecipient**](docs/DocumentRecipientsApi.md#addDocumentRecipient) | **POST** /public/v1/documents/{id}/recipients | Add Document Recipient
+*DocumentRecipientsApi* | [**deleteDocumentRecipient**](docs/DocumentRecipientsApi.md#deleteDocumentRecipient) | **DELETE** /public/v1/documents/{id}/recipients/{recipient_id} | Delete Document Recipient
+*DocumentRecipientsApi* | [**editDocumentRecipient**](docs/DocumentRecipientsApi.md#editDocumentRecipient) | **PATCH** /public/v1/documents/{id}/recipients/{recipient_id} | Edit Document Recipient
+*DocumentRecipientsApi* | [**reassignDocumentRecipient**](docs/DocumentRecipientsApi.md#reassignDocumentRecipient) | **POST** /public/v1/documents/{id}/recipients/{recipient_id}/reassign | Reassign Document Recipient
 *DocumentsApi* | [**changeDocumentStatus**](docs/DocumentsApi.md#changeDocumentStatus) | **PATCH** /public/v1/documents/{id}/status | Document status change
 *DocumentsApi* | [**createDocument**](docs/DocumentsApi.md#createDocument) | **POST** /public/v1/documents | Create document
 *DocumentsApi* | [**createDocumentLink**](docs/DocumentsApi.md#createDocumentLink) | **POST** /public/v1/documents/{id}/session | Create a Document Link
