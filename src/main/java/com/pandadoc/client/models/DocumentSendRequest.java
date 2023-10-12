@@ -19,6 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.DocumentSendRequestForwardingSettings;
+import com.pandadoc.client.models.DocumentSendRequestSelectedApprovers;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -46,6 +48,14 @@ public class DocumentSendRequest {
   public static final String SERIALIZED_NAME_SENDER = "sender";
   @SerializedName(SERIALIZED_NAME_SENDER)
   private Map<String, String> sender = null;
+
+  public static final String SERIALIZED_NAME_FORWARDING_SETTINGS = "forwarding_settings";
+  @SerializedName(SERIALIZED_NAME_FORWARDING_SETTINGS)
+  private DocumentSendRequestForwardingSettings forwardingSettings;
+
+  public static final String SERIALIZED_NAME_SELECTED_APPROVERS = "selected_approvers";
+  @SerializedName(SERIALIZED_NAME_SELECTED_APPROVERS)
+  private DocumentSendRequestSelectedApprovers selectedApprovers;
 
   public DocumentSendRequest() { 
   }
@@ -150,6 +160,52 @@ public class DocumentSendRequest {
   }
 
 
+  public DocumentSendRequest forwardingSettings(DocumentSendRequestForwardingSettings forwardingSettings) {
+    
+    this.forwardingSettings = forwardingSettings;
+    return this;
+  }
+
+   /**
+   * Get forwardingSettings
+   * @return forwardingSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public DocumentSendRequestForwardingSettings getForwardingSettings() {
+    return forwardingSettings;
+  }
+
+
+  public void setForwardingSettings(DocumentSendRequestForwardingSettings forwardingSettings) {
+    this.forwardingSettings = forwardingSettings;
+  }
+
+
+  public DocumentSendRequest selectedApprovers(DocumentSendRequestSelectedApprovers selectedApprovers) {
+    
+    this.selectedApprovers = selectedApprovers;
+    return this;
+  }
+
+   /**
+   * Get selectedApprovers
+   * @return selectedApprovers
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public DocumentSendRequestSelectedApprovers getSelectedApprovers() {
+    return selectedApprovers;
+  }
+
+
+  public void setSelectedApprovers(DocumentSendRequestSelectedApprovers selectedApprovers) {
+    this.selectedApprovers = selectedApprovers;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -162,12 +218,14 @@ public class DocumentSendRequest {
     return Objects.equals(this.message, documentSendRequest.message) &&
         Objects.equals(this.subject, documentSendRequest.subject) &&
         Objects.equals(this.silent, documentSendRequest.silent) &&
-        Objects.equals(this.sender, documentSendRequest.sender);
+        Objects.equals(this.sender, documentSendRequest.sender) &&
+        Objects.equals(this.forwardingSettings, documentSendRequest.forwardingSettings) &&
+        Objects.equals(this.selectedApprovers, documentSendRequest.selectedApprovers);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(message, subject, silent, sender);
+    return Objects.hash(message, subject, silent, sender, forwardingSettings, selectedApprovers);
   }
 
   @Override
@@ -178,6 +236,8 @@ public class DocumentSendRequest {
     sb.append("    subject: ").append(toIndentedString(subject)).append("\n");
     sb.append("    silent: ").append(toIndentedString(silent)).append("\n");
     sb.append("    sender: ").append(toIndentedString(sender)).append("\n");
+    sb.append("    forwardingSettings: ").append(toIndentedString(forwardingSettings)).append("\n");
+    sb.append("    selectedApprovers: ").append(toIndentedString(selectedApprovers)).append("\n");
     sb.append("}");
     return sb.toString();
   }
