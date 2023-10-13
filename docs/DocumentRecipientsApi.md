@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## addDocumentRecipient
 
-> addDocumentRecipient(id, documentRecipientCreateRequest)
+> InlineResponse200 addDocumentRecipient(id, documentRecipientCreateRequest)
 
 Add Document Recipient
 
@@ -55,7 +55,8 @@ public class Example {
         // DocumentRecipientCreateRequest | 
         DocumentRecipientCreateRequest documentRecipientCreateRequest = new DocumentRecipientCreateRequest();
         try {
-            apiInstance.addDocumentRecipient(id, documentRecipientCreateRequest);
+            InlineResponse200 result = apiInstance.addDocumentRecipient(id, documentRecipientCreateRequest);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentRecipientsApi#addDocumentRecipient");
             System.err.println("Status code: " + e.getCode());
@@ -77,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+[**InlineResponse200**](InlineResponse200.md)
 
 ### Authorization
 
@@ -92,7 +93,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No content |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |
@@ -282,7 +283,7 @@ null (empty response body)
 
 ## reassignDocumentRecipient
 
-> reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest)
+> Object reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest)
 
 Reassign Document Recipient
 
@@ -326,7 +327,8 @@ public class Example {
         // DocumentRecipientCreateRequest | 
         DocumentRecipientCreateRequest documentRecipientCreateRequest = new DocumentRecipientCreateRequest();
         try {
-            apiInstance.reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest);
+            Object result = apiInstance.reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest);
+            System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentRecipientsApi#reassignDocumentRecipient");
             System.err.println("Status code: " + e.getCode());
@@ -349,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-null (empty response body)
+**Object**
 
 ### Authorization
 
@@ -364,7 +366,7 @@ null (empty response body)
 ### HTTP response details
 | Status code | Description | Response headers |
 |-------------|-------------|------------------|
-| **204** | No content |  -  |
+| **200** | OK |  -  |
 | **400** | Bad Request |  -  |
 | **401** | Authentication error |  -  |
 | **403** | Permission error |  -  |

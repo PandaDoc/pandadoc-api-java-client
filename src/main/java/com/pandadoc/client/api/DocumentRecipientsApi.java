@@ -28,6 +28,7 @@ import java.io.IOException;
 
 import com.pandadoc.client.models.DocumentRecipientCreateRequest;
 import com.pandadoc.client.models.DocumentRecipientEditRequest;
+import com.pandadoc.client.models.InlineResponse200;
 
 import java.lang.reflect.Type;
 import java.util.ArrayList;
@@ -82,7 +83,7 @@ public class DocumentRecipientsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -161,11 +162,12 @@ public class DocumentRecipientsApi {
      * Adds recipient as CC to document
      * @param id Document UUID (required)
      * @param documentRecipientCreateRequest  (required)
+     * @return InlineResponse200
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -173,8 +175,9 @@ public class DocumentRecipientsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public void addDocumentRecipient(String id, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
-        addDocumentRecipientWithHttpInfo(id, documentRecipientCreateRequest);
+    public InlineResponse200 addDocumentRecipient(String id, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
+        ApiResponse<InlineResponse200> localVarResp = addDocumentRecipientWithHttpInfo(id, documentRecipientCreateRequest);
+        return localVarResp.getData();
     }
 
     /**
@@ -182,12 +185,12 @@ public class DocumentRecipientsApi {
      * Adds recipient as CC to document
      * @param id Document UUID (required)
      * @param documentRecipientCreateRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;InlineResponse200&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -195,9 +198,10 @@ public class DocumentRecipientsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> addDocumentRecipientWithHttpInfo(String id, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
+    public ApiResponse<InlineResponse200> addDocumentRecipientWithHttpInfo(String id, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = addDocumentRecipientValidateBeforeCall(id, documentRecipientCreateRequest, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -211,7 +215,7 @@ public class DocumentRecipientsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -219,10 +223,11 @@ public class DocumentRecipientsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call addDocumentRecipientAsync(String id, DocumentRecipientCreateRequest documentRecipientCreateRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call addDocumentRecipientAsync(String id, DocumentRecipientCreateRequest documentRecipientCreateRequest, final ApiCallback<InlineResponse200> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = addDocumentRecipientValidateBeforeCall(id, documentRecipientCreateRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<InlineResponse200>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
     /**
@@ -549,7 +554,7 @@ public class DocumentRecipientsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -635,11 +640,12 @@ public class DocumentRecipientsApi {
      * @param id Document UUID (required)
      * @param recipientId Recipient UUID (required)
      * @param documentRecipientCreateRequest  (required)
+     * @return Object
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -647,8 +653,9 @@ public class DocumentRecipientsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public void reassignDocumentRecipient(String id, String recipientId, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
-        reassignDocumentRecipientWithHttpInfo(id, recipientId, documentRecipientCreateRequest);
+    public Object reassignDocumentRecipient(String id, String recipientId, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
+        ApiResponse<Object> localVarResp = reassignDocumentRecipientWithHttpInfo(id, recipientId, documentRecipientCreateRequest);
+        return localVarResp.getData();
     }
 
     /**
@@ -657,12 +664,12 @@ public class DocumentRecipientsApi {
      * @param id Document UUID (required)
      * @param recipientId Recipient UUID (required)
      * @param documentRecipientCreateRequest  (required)
-     * @return ApiResponse&lt;Void&gt;
+     * @return ApiResponse&lt;Object&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -670,9 +677,10 @@ public class DocumentRecipientsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<Void> reassignDocumentRecipientWithHttpInfo(String id, String recipientId, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
+    public ApiResponse<Object> reassignDocumentRecipientWithHttpInfo(String id, String recipientId, DocumentRecipientCreateRequest documentRecipientCreateRequest) throws ApiException {
         okhttp3.Call localVarCall = reassignDocumentRecipientValidateBeforeCall(id, recipientId, documentRecipientCreateRequest, null);
-        return localVarApiClient.execute(localVarCall);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
 
     /**
@@ -687,7 +695,7 @@ public class DocumentRecipientsApi {
      * @http.response.details
      <table summary="Response Details" border="1">
         <tr><td> Status Code </td><td> Description </td><td> Response Headers </td></tr>
-        <tr><td> 204 </td><td> No content </td><td>  -  </td></tr>
+        <tr><td> 200 </td><td> OK </td><td>  -  </td></tr>
         <tr><td> 400 </td><td> Bad Request </td><td>  -  </td></tr>
         <tr><td> 401 </td><td> Authentication error </td><td>  -  </td></tr>
         <tr><td> 403 </td><td> Permission error </td><td>  -  </td></tr>
@@ -695,10 +703,11 @@ public class DocumentRecipientsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call reassignDocumentRecipientAsync(String id, String recipientId, DocumentRecipientCreateRequest documentRecipientCreateRequest, final ApiCallback<Void> _callback) throws ApiException {
+    public okhttp3.Call reassignDocumentRecipientAsync(String id, String recipientId, DocumentRecipientCreateRequest documentRecipientCreateRequest, final ApiCallback<Object> _callback) throws ApiException {
 
         okhttp3.Call localVarCall = reassignDocumentRecipientValidateBeforeCall(id, recipientId, documentRecipientCreateRequest, _callback);
-        localVarApiClient.executeAsync(localVarCall, _callback);
+        Type localVarReturnType = new TypeToken<Object>(){}.getType();
+        localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
     }
 }
