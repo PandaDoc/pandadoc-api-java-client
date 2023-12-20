@@ -20,7 +20,7 @@ import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.pandadoc.client.models.ContentLibraryItemResponseCreatedBy;
-import com.pandadoc.client.models.PricingTablesResponse;
+import com.pandadoc.client.models.PricingResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -48,6 +48,10 @@ public class ContentLibraryItemResponse {
   @SerializedName(SERIALIZED_NAME_DATE_MODIFIED)
   private String dateModified;
 
+  public static final String SERIALIZED_NAME_CONTENT_DATE_MODIFIED = "content_date_modified";
+  @SerializedName(SERIALIZED_NAME_CONTENT_DATE_MODIFIED)
+  private String contentDateModified;
+
   public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private ContentLibraryItemResponseCreatedBy createdBy;
@@ -66,7 +70,7 @@ public class ContentLibraryItemResponse {
 
   public static final String SERIALIZED_NAME_PRICING = "pricing";
   @SerializedName(SERIALIZED_NAME_PRICING)
-  private PricingTablesResponse pricing;
+  private PricingResponse pricing;
 
   public static final String SERIALIZED_NAME_TAGS = "tags";
   @SerializedName(SERIALIZED_NAME_TAGS)
@@ -183,6 +187,29 @@ public class ContentLibraryItemResponse {
   }
 
 
+  public ContentLibraryItemResponse contentDateModified(String contentDateModified) {
+    
+    this.contentDateModified = contentDateModified;
+    return this;
+  }
+
+   /**
+   * Get contentDateModified
+   * @return contentDateModified
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-10-23T21:07:04.147345Z", value = "")
+
+  public String getContentDateModified() {
+    return contentDateModified;
+  }
+
+
+  public void setContentDateModified(String contentDateModified) {
+    this.contentDateModified = contentDateModified;
+  }
+
+
   public ContentLibraryItemResponse createdBy(ContentLibraryItemResponseCreatedBy createdBy) {
     
     this.createdBy = createdBy;
@@ -291,7 +318,7 @@ public class ContentLibraryItemResponse {
   }
 
 
-  public ContentLibraryItemResponse pricing(PricingTablesResponse pricing) {
+  public ContentLibraryItemResponse pricing(PricingResponse pricing) {
     
     this.pricing = pricing;
     return this;
@@ -304,12 +331,12 @@ public class ContentLibraryItemResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponse getPricing() {
+  public PricingResponse getPricing() {
     return pricing;
   }
 
 
-  public void setPricing(PricingTablesResponse pricing) {
+  public void setPricing(PricingResponse pricing) {
     this.pricing = pricing;
   }
 
@@ -474,6 +501,7 @@ public class ContentLibraryItemResponse {
         Objects.equals(this.name, contentLibraryItemResponse.name) &&
         Objects.equals(this.dateCreated, contentLibraryItemResponse.dateCreated) &&
         Objects.equals(this.dateModified, contentLibraryItemResponse.dateModified) &&
+        Objects.equals(this.contentDateModified, contentLibraryItemResponse.contentDateModified) &&
         Objects.equals(this.createdBy, contentLibraryItemResponse.createdBy) &&
         Objects.equals(this.metadata, contentLibraryItemResponse.metadata) &&
         Objects.equals(this.tokens, contentLibraryItemResponse.tokens) &&
@@ -488,7 +516,7 @@ public class ContentLibraryItemResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, dateCreated, dateModified, createdBy, metadata, tokens, fields, pricing, tags, roles, version, contentPlaceholders, images);
+    return Objects.hash(id, name, dateCreated, dateModified, contentDateModified, createdBy, metadata, tokens, fields, pricing, tags, roles, version, contentPlaceholders, images);
   }
 
   @Override
@@ -499,6 +527,7 @@ public class ContentLibraryItemResponse {
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
+    sb.append("    contentDateModified: ").append(toIndentedString(contentDateModified)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    metadata: ").append(toIndentedString(metadata)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");

@@ -1,6 +1,6 @@
 
 
-# PricingTablesResponseItems
+# PricingTableResponseItems
 
 
 ## Properties
@@ -16,11 +16,11 @@ Name | Type | Description | Notes
 **description** | **String** |  |  [optional]
 **customFields** | **Object** |  |  [optional]
 **customColumns** | **Object** |  |  [optional]
-**discount** | [**PricingTablesResponseDiscount**](PricingTablesResponseDiscount.md) |  |  [optional]
-**taxFirst** | [**PricingTablesResponseDiscount**](PricingTablesResponseDiscount.md) |  |  [optional]
-**taxSecond** | [**PricingTablesResponseDiscount**](PricingTablesResponseDiscount.md) |  |  [optional]
+**discount** | [**PricingTableResponseDiscount**](PricingTableResponseDiscount.md) |  |  [optional]
+**taxFirst** | [**PricingTableResponseDiscount**](PricingTableResponseDiscount.md) |  |  [optional]
+**taxSecond** | [**PricingTableResponseDiscount**](PricingTableResponseDiscount.md) |  |  [optional]
 **subtotal** | **String** |  |  [optional]
-**options** | [**PricingTablesResponseOptions**](PricingTablesResponseOptions.md) |  |  [optional]
+**options** | [**PricingTableResponseOptions**](PricingTableResponseOptions.md) |  |  [optional]
 **salePrice** | **String** |  |  [optional]
 **taxes** | **Object** |  |  [optional]
 **discounts** | **Object** |  |  [optional]

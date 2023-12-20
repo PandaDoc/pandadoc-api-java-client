@@ -39,6 +39,10 @@ public class DocumentCreateByTemplateRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_DETECT_TITLE_VARIABLES = "detect_title_variables";
+  @SerializedName(SERIALIZED_NAME_DETECT_TITLE_VARIABLES)
+  private Boolean detectTitleVariables;
+
   public static final String SERIALIZED_NAME_TEMPLATE_UUID = "template_uuid";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_UUID)
   private String templateUuid;
@@ -89,11 +93,11 @@ public class DocumentCreateByTemplateRequest {
   }
 
    /**
-   * Name the document you are creating.
+   * Name the document you are creating. If name is not passed, the template name is used.
    * @return name
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "API Sample Document from PandaDoc Template", required = true, value = "Name the document you are creating.")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "API Sample Document from PandaDoc Template", value = "Name the document you are creating. If name is not passed, the template name is used.")
 
   public String getName() {
     return name;
@@ -102,6 +106,29 @@ public class DocumentCreateByTemplateRequest {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public DocumentCreateByTemplateRequest detectTitleVariables(Boolean detectTitleVariables) {
+    
+    this.detectTitleVariables = detectTitleVariables;
+    return this;
+  }
+
+   /**
+   * Set this parameter as true if you want to detect title variables in the document.
+   * @return detectTitleVariables
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "true", value = "Set this parameter as true if you want to detect title variables in the document.")
+
+  public Boolean getDetectTitleVariables() {
+    return detectTitleVariables;
+  }
+
+
+  public void setDetectTitleVariables(Boolean detectTitleVariables) {
+    this.detectTitleVariables = detectTitleVariables;
   }
 
 
@@ -390,6 +417,7 @@ public class DocumentCreateByTemplateRequest {
     }
     DocumentCreateByTemplateRequest documentCreateByTemplateRequest = (DocumentCreateByTemplateRequest) o;
     return Objects.equals(this.name, documentCreateByTemplateRequest.name) &&
+        Objects.equals(this.detectTitleVariables, documentCreateByTemplateRequest.detectTitleVariables) &&
         Objects.equals(this.templateUuid, documentCreateByTemplateRequest.templateUuid) &&
         Objects.equals(this.folderUuid, documentCreateByTemplateRequest.folderUuid) &&
         Objects.equals(this.recipients, documentCreateByTemplateRequest.recipients) &&
@@ -404,7 +432,7 @@ public class DocumentCreateByTemplateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, templateUuid, folderUuid, recipients, tokens, fields, metadata, tags, images, pricingTables, contentPlaceholders);
+    return Objects.hash(name, detectTitleVariables, templateUuid, folderUuid, recipients, tokens, fields, metadata, tags, images, pricingTables, contentPlaceholders);
   }
 
   @Override
@@ -412,6 +440,7 @@ public class DocumentCreateByTemplateRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentCreateByTemplateRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    detectTitleVariables: ").append(toIndentedString(detectTitleVariables)).append("\n");
     sb.append("    templateUuid: ").append(toIndentedString(templateUuid)).append("\n");
     sb.append("    folderUuid: ").append(toIndentedString(folderUuid)).append("\n");
     sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");

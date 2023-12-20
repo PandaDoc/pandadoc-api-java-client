@@ -41,6 +41,10 @@ public class DocumentCreateRequest {
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
 
+  public static final String SERIALIZED_NAME_DETECT_TITLE_VARIABLES = "detect_title_variables";
+  @SerializedName(SERIALIZED_NAME_DETECT_TITLE_VARIABLES)
+  private Boolean detectTitleVariables;
+
   public static final String SERIALIZED_NAME_TEMPLATE_UUID = "template_uuid";
   @SerializedName(SERIALIZED_NAME_TEMPLATE_UUID)
   private String templateUuid;
@@ -116,6 +120,29 @@ public class DocumentCreateRequest {
 
   public void setName(String name) {
     this.name = name;
+  }
+
+
+  public DocumentCreateRequest detectTitleVariables(Boolean detectTitleVariables) {
+    
+    this.detectTitleVariables = detectTitleVariables;
+    return this;
+  }
+
+   /**
+   * Set this parameter as true if you want to detect title variables in the document.
+   * @return detectTitleVariables
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "Set this parameter as true if you want to detect title variables in the document.")
+
+  public Boolean getDetectTitleVariables() {
+    return detectTitleVariables;
+  }
+
+
+  public void setDetectTitleVariables(Boolean detectTitleVariables) {
+    this.detectTitleVariables = detectTitleVariables;
   }
 
 
@@ -484,6 +511,7 @@ public class DocumentCreateRequest {
     }
     DocumentCreateRequest documentCreateRequest = (DocumentCreateRequest) o;
     return Objects.equals(this.name, documentCreateRequest.name) &&
+        Objects.equals(this.detectTitleVariables, documentCreateRequest.detectTitleVariables) &&
         Objects.equals(this.templateUuid, documentCreateRequest.templateUuid) &&
         Objects.equals(this.folderUuid, documentCreateRequest.folderUuid) &&
         Objects.equals(this.owner, documentCreateRequest.owner) &&
@@ -501,7 +529,7 @@ public class DocumentCreateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(name, templateUuid, folderUuid, owner, recipients, tokens, fields, metadata, tags, images, pricingTables, contentPlaceholders, url, parseFormFields);
+    return Objects.hash(name, detectTitleVariables, templateUuid, folderUuid, owner, recipients, tokens, fields, metadata, tags, images, pricingTables, contentPlaceholders, url, parseFormFields);
   }
 
   @Override
@@ -509,6 +537,7 @@ public class DocumentCreateRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentCreateRequest {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
+    sb.append("    detectTitleVariables: ").append(toIndentedString(detectTitleVariables)).append("\n");
     sb.append("    templateUuid: ").append(toIndentedString(templateUuid)).append("\n");
     sb.append("    folderUuid: ").append(toIndentedString(folderUuid)).append("\n");
     sb.append("    owner: ").append(toIndentedString(owner)).append("\n");

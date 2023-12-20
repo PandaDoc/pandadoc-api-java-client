@@ -18,6 +18,7 @@ Name | Type | Description | Notes
 **email** | **String** |  |  [optional]
 **hasCompleted** | **Boolean** |  |  [optional]
 **sharedLink** | **String** |  |  [optional]
+**signatureDate** | **String** |  |  [optional]
 
 
 

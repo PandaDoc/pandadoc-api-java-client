@@ -19,17 +19,17 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.PricingTablesResponseDiscount;
-import com.pandadoc.client.models.PricingTablesResponseOptions;
+import com.pandadoc.client.models.PricingTableResponseDiscount;
+import com.pandadoc.client.models.PricingTableResponseOptions;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PricingTablesResponseItems
+ * PricingTableResponseItems
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTablesResponseItems {
+public class PricingTableResponseItems {
   public static final String SERIALIZED_NAME_ID = "id";
   @SerializedName(SERIALIZED_NAME_ID)
   private String id;
@@ -68,15 +68,15 @@ public class PricingTablesResponseItems {
 
   public static final String SERIALIZED_NAME_DISCOUNT = "discount";
   @SerializedName(SERIALIZED_NAME_DISCOUNT)
-  private PricingTablesResponseDiscount discount;
+  private PricingTableResponseDiscount discount;
 
   public static final String SERIALIZED_NAME_TAX_FIRST = "tax_first";
   @SerializedName(SERIALIZED_NAME_TAX_FIRST)
-  private PricingTablesResponseDiscount taxFirst;
+  private PricingTableResponseDiscount taxFirst;
 
   public static final String SERIALIZED_NAME_TAX_SECOND = "tax_second";
   @SerializedName(SERIALIZED_NAME_TAX_SECOND)
-  private PricingTablesResponseDiscount taxSecond;
+  private PricingTableResponseDiscount taxSecond;
 
   public static final String SERIALIZED_NAME_SUBTOTAL = "subtotal";
   @SerializedName(SERIALIZED_NAME_SUBTOTAL)
@@ -84,7 +84,7 @@ public class PricingTablesResponseItems {
 
   public static final String SERIALIZED_NAME_OPTIONS = "options";
   @SerializedName(SERIALIZED_NAME_OPTIONS)
-  private PricingTablesResponseOptions options;
+  private PricingTableResponseOptions options;
 
   public static final String SERIALIZED_NAME_SALE_PRICE = "sale_price";
   @SerializedName(SERIALIZED_NAME_SALE_PRICE)
@@ -106,10 +106,10 @@ public class PricingTablesResponseItems {
   @SerializedName(SERIALIZED_NAME_MERGED_DATA)
   private Object mergedData;
 
-  public PricingTablesResponseItems() { 
+  public PricingTableResponseItems() { 
   }
 
-  public PricingTablesResponseItems id(String id) {
+  public PricingTableResponseItems id(String id) {
     
     this.id = id;
     return this;
@@ -132,7 +132,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems sku(String sku) {
+  public PricingTableResponseItems sku(String sku) {
     
     this.sku = sku;
     return this;
@@ -155,7 +155,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems qty(String qty) {
+  public PricingTableResponseItems qty(String qty) {
     
     this.qty = qty;
     return this;
@@ -178,7 +178,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems name(String name) {
+  public PricingTableResponseItems name(String name) {
     
     this.name = name;
     return this;
@@ -201,7 +201,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems cost(String cost) {
+  public PricingTableResponseItems cost(String cost) {
     
     this.cost = cost;
     return this;
@@ -224,7 +224,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems price(String price) {
+  public PricingTableResponseItems price(String price) {
     
     this.price = price;
     return this;
@@ -247,7 +247,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems description(String description) {
+  public PricingTableResponseItems description(String description) {
     
     this.description = description;
     return this;
@@ -270,7 +270,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems customFields(Object customFields) {
+  public PricingTableResponseItems customFields(Object customFields) {
     
     this.customFields = customFields;
     return this;
@@ -293,7 +293,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems customColumns(Object customColumns) {
+  public PricingTableResponseItems customColumns(Object customColumns) {
     
     this.customColumns = customColumns;
     return this;
@@ -316,7 +316,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems discount(PricingTablesResponseDiscount discount) {
+  public PricingTableResponseItems discount(PricingTableResponseDiscount discount) {
     
     this.discount = discount;
     return this;
@@ -329,17 +329,17 @@ public class PricingTablesResponseItems {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponseDiscount getDiscount() {
+  public PricingTableResponseDiscount getDiscount() {
     return discount;
   }
 
 
-  public void setDiscount(PricingTablesResponseDiscount discount) {
+  public void setDiscount(PricingTableResponseDiscount discount) {
     this.discount = discount;
   }
 
 
-  public PricingTablesResponseItems taxFirst(PricingTablesResponseDiscount taxFirst) {
+  public PricingTableResponseItems taxFirst(PricingTableResponseDiscount taxFirst) {
     
     this.taxFirst = taxFirst;
     return this;
@@ -352,17 +352,17 @@ public class PricingTablesResponseItems {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponseDiscount getTaxFirst() {
+  public PricingTableResponseDiscount getTaxFirst() {
     return taxFirst;
   }
 
 
-  public void setTaxFirst(PricingTablesResponseDiscount taxFirst) {
+  public void setTaxFirst(PricingTableResponseDiscount taxFirst) {
     this.taxFirst = taxFirst;
   }
 
 
-  public PricingTablesResponseItems taxSecond(PricingTablesResponseDiscount taxSecond) {
+  public PricingTableResponseItems taxSecond(PricingTableResponseDiscount taxSecond) {
     
     this.taxSecond = taxSecond;
     return this;
@@ -375,17 +375,17 @@ public class PricingTablesResponseItems {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponseDiscount getTaxSecond() {
+  public PricingTableResponseDiscount getTaxSecond() {
     return taxSecond;
   }
 
 
-  public void setTaxSecond(PricingTablesResponseDiscount taxSecond) {
+  public void setTaxSecond(PricingTableResponseDiscount taxSecond) {
     this.taxSecond = taxSecond;
   }
 
 
-  public PricingTablesResponseItems subtotal(String subtotal) {
+  public PricingTableResponseItems subtotal(String subtotal) {
     
     this.subtotal = subtotal;
     return this;
@@ -408,7 +408,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems options(PricingTablesResponseOptions options) {
+  public PricingTableResponseItems options(PricingTableResponseOptions options) {
     
     this.options = options;
     return this;
@@ -421,17 +421,17 @@ public class PricingTablesResponseItems {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponseOptions getOptions() {
+  public PricingTableResponseOptions getOptions() {
     return options;
   }
 
 
-  public void setOptions(PricingTablesResponseOptions options) {
+  public void setOptions(PricingTableResponseOptions options) {
     this.options = options;
   }
 
 
-  public PricingTablesResponseItems salePrice(String salePrice) {
+  public PricingTableResponseItems salePrice(String salePrice) {
     
     this.salePrice = salePrice;
     return this;
@@ -454,7 +454,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems taxes(Object taxes) {
+  public PricingTableResponseItems taxes(Object taxes) {
     
     this.taxes = taxes;
     return this;
@@ -477,7 +477,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems discounts(Object discounts) {
+  public PricingTableResponseItems discounts(Object discounts) {
     
     this.discounts = discounts;
     return this;
@@ -500,7 +500,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems fees(Object fees) {
+  public PricingTableResponseItems fees(Object fees) {
     
     this.fees = fees;
     return this;
@@ -523,7 +523,7 @@ public class PricingTablesResponseItems {
   }
 
 
-  public PricingTablesResponseItems mergedData(Object mergedData) {
+  public PricingTableResponseItems mergedData(Object mergedData) {
     
     this.mergedData = mergedData;
     return this;
@@ -554,26 +554,26 @@ public class PricingTablesResponseItems {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTablesResponseItems pricingTablesResponseItems = (PricingTablesResponseItems) o;
-    return Objects.equals(this.id, pricingTablesResponseItems.id) &&
-        Objects.equals(this.sku, pricingTablesResponseItems.sku) &&
-        Objects.equals(this.qty, pricingTablesResponseItems.qty) &&
-        Objects.equals(this.name, pricingTablesResponseItems.name) &&
-        Objects.equals(this.cost, pricingTablesResponseItems.cost) &&
-        Objects.equals(this.price, pricingTablesResponseItems.price) &&
-        Objects.equals(this.description, pricingTablesResponseItems.description) &&
-        Objects.equals(this.customFields, pricingTablesResponseItems.customFields) &&
-        Objects.equals(this.customColumns, pricingTablesResponseItems.customColumns) &&
-        Objects.equals(this.discount, pricingTablesResponseItems.discount) &&
-        Objects.equals(this.taxFirst, pricingTablesResponseItems.taxFirst) &&
-        Objects.equals(this.taxSecond, pricingTablesResponseItems.taxSecond) &&
-        Objects.equals(this.subtotal, pricingTablesResponseItems.subtotal) &&
-        Objects.equals(this.options, pricingTablesResponseItems.options) &&
-        Objects.equals(this.salePrice, pricingTablesResponseItems.salePrice) &&
-        Objects.equals(this.taxes, pricingTablesResponseItems.taxes) &&
-        Objects.equals(this.discounts, pricingTablesResponseItems.discounts) &&
-        Objects.equals(this.fees, pricingTablesResponseItems.fees) &&
-        Objects.equals(this.mergedData, pricingTablesResponseItems.mergedData);
+    PricingTableResponseItems pricingTableResponseItems = (PricingTableResponseItems) o;
+    return Objects.equals(this.id, pricingTableResponseItems.id) &&
+        Objects.equals(this.sku, pricingTableResponseItems.sku) &&
+        Objects.equals(this.qty, pricingTableResponseItems.qty) &&
+        Objects.equals(this.name, pricingTableResponseItems.name) &&
+        Objects.equals(this.cost, pricingTableResponseItems.cost) &&
+        Objects.equals(this.price, pricingTableResponseItems.price) &&
+        Objects.equals(this.description, pricingTableResponseItems.description) &&
+        Objects.equals(this.customFields, pricingTableResponseItems.customFields) &&
+        Objects.equals(this.customColumns, pricingTableResponseItems.customColumns) &&
+        Objects.equals(this.discount, pricingTableResponseItems.discount) &&
+        Objects.equals(this.taxFirst, pricingTableResponseItems.taxFirst) &&
+        Objects.equals(this.taxSecond, pricingTableResponseItems.taxSecond) &&
+        Objects.equals(this.subtotal, pricingTableResponseItems.subtotal) &&
+        Objects.equals(this.options, pricingTableResponseItems.options) &&
+        Objects.equals(this.salePrice, pricingTableResponseItems.salePrice) &&
+        Objects.equals(this.taxes, pricingTableResponseItems.taxes) &&
+        Objects.equals(this.discounts, pricingTableResponseItems.discounts) &&
+        Objects.equals(this.fees, pricingTableResponseItems.fees) &&
+        Objects.equals(this.mergedData, pricingTableResponseItems.mergedData);
   }
 
   @Override
@@ -584,7 +584,7 @@ public class PricingTablesResponseItems {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTablesResponseItems {\n");
+    sb.append("class PricingTableResponseItems {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    sku: ").append(toIndentedString(sku)).append("\n");
     sb.append("    qty: ").append(toIndentedString(qty)).append("\n");

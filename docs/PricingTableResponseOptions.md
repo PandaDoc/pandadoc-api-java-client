@@ -1,6 +1,6 @@
 
 
-# PricingTablesResponseOptions
+# PricingTableResponseOptions
 
 
 ## Properties

@@ -24,22 +24,45 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PricingTablesResponseDiscount
+ * QuoteResponseSummaryRecurringSubtotal
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTablesResponseDiscount {
+public class QuoteResponseSummaryRecurringSubtotal {
+  public static final String SERIALIZED_NAME_BILLING_CYCLE = "billing_cycle";
+  @SerializedName(SERIALIZED_NAME_BILLING_CYCLE)
+  private String billingCycle;
+
   public static final String SERIALIZED_NAME_VALUE = "value";
   @SerializedName(SERIALIZED_NAME_VALUE)
   private String value;
 
-  public static final String SERIALIZED_NAME_TYPE = "type";
-  @SerializedName(SERIALIZED_NAME_TYPE)
-  private String type;
-
-  public PricingTablesResponseDiscount() { 
+  public QuoteResponseSummaryRecurringSubtotal() { 
   }
 
-  public PricingTablesResponseDiscount value(String value) {
+  public QuoteResponseSummaryRecurringSubtotal billingCycle(String billingCycle) {
+    
+    this.billingCycle = billingCycle;
+    return this;
+  }
+
+   /**
+   * Get billingCycle
+   * @return billingCycle
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "monthly", value = "")
+
+  public String getBillingCycle() {
+    return billingCycle;
+  }
+
+
+  public void setBillingCycle(String billingCycle) {
+    this.billingCycle = billingCycle;
+  }
+
+
+  public QuoteResponseSummaryRecurringSubtotal value(String value) {
     
     this.value = value;
     return this;
@@ -50,7 +73,7 @@ public class PricingTablesResponseDiscount {
    * @return value
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
+  @ApiModelProperty(example = "500", value = "")
 
   public String getValue() {
     return value;
@@ -62,29 +85,6 @@ public class PricingTablesResponseDiscount {
   }
 
 
-  public PricingTablesResponseDiscount type(String type) {
-    
-    this.type = type;
-    return this;
-  }
-
-   /**
-   * Get type
-   * @return type
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(value = "")
-
-  public String getType() {
-    return type;
-  }
-
-
-  public void setType(String type) {
-    this.type = type;
-  }
-
-
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -93,22 +93,22 @@ public class PricingTablesResponseDiscount {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTablesResponseDiscount pricingTablesResponseDiscount = (PricingTablesResponseDiscount) o;
-    return Objects.equals(this.value, pricingTablesResponseDiscount.value) &&
-        Objects.equals(this.type, pricingTablesResponseDiscount.type);
+    QuoteResponseSummaryRecurringSubtotal quoteResponseSummaryRecurringSubtotal = (QuoteResponseSummaryRecurringSubtotal) o;
+    return Objects.equals(this.billingCycle, quoteResponseSummaryRecurringSubtotal.billingCycle) &&
+        Objects.equals(this.value, quoteResponseSummaryRecurringSubtotal.value);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(value, type);
+    return Objects.hash(billingCycle, value);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTablesResponseDiscount {\n");
+    sb.append("class QuoteResponseSummaryRecurringSubtotal {\n");
+    sb.append("    billingCycle: ").append(toIndentedString(billingCycle)).append("\n");
     sb.append("    value: ").append(toIndentedString(value)).append("\n");
-    sb.append("    type: ").append(toIndentedString(type)).append("\n");
     sb.append("}");
     return sb.toString();
   }

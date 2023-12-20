@@ -1,13 +1,14 @@
 
 
-# InlineResponse200
+# PricingTableResponseDiscount
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**actorId** | **String** |  |  [optional]
+**value** | **String** |  |  [optional]
+**type** | **String** |  |  [optional]
 
 
 

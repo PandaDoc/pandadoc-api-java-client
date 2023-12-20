@@ -1,14 +1,16 @@
 
 
-# PricingTablesResponse
+# PricingTableResponseSummary
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tables** | [**List&lt;PricingTablesResponseTables&gt;**](PricingTablesResponseTables.md) |  |  [optional]
+**subtotal** | **String** |  |  [optional]
 **total** | **String** |  |  [optional]
+**discount** | **String** |  |  [optional]
+**tax** | **String** |  |  [optional]
 
 
 

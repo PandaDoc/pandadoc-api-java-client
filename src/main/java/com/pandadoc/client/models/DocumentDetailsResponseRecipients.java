@@ -74,6 +74,10 @@ public class DocumentDetailsResponseRecipients {
   @SerializedName(SERIALIZED_NAME_SHARED_LINK)
   private String sharedLink;
 
+  public static final String SERIALIZED_NAME_SIGNATURE_DATE = "signature_date";
+  @SerializedName(SERIALIZED_NAME_SIGNATURE_DATE)
+  private String signatureDate;
+
   public DocumentDetailsResponseRecipients() { 
   }
 
@@ -340,6 +344,29 @@ public class DocumentDetailsResponseRecipients {
   }
 
 
+  public DocumentDetailsResponseRecipients signatureDate(String signatureDate) {
+    
+    this.signatureDate = signatureDate;
+    return this;
+  }
+
+   /**
+   * Get signatureDate
+   * @return signatureDate
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-10-23T21:07:04.147Z", value = "")
+
+  public String getSignatureDate() {
+    return signatureDate;
+  }
+
+
+  public void setSignatureDate(String signatureDate) {
+    this.signatureDate = signatureDate;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -359,12 +386,13 @@ public class DocumentDetailsResponseRecipients {
         Objects.equals(this.firstName, documentDetailsResponseRecipients.firstName) &&
         Objects.equals(this.email, documentDetailsResponseRecipients.email) &&
         Objects.equals(this.hasCompleted, documentDetailsResponseRecipients.hasCompleted) &&
-        Objects.equals(this.sharedLink, documentDetailsResponseRecipients.sharedLink);
+        Objects.equals(this.sharedLink, documentDetailsResponseRecipients.sharedLink) &&
+        Objects.equals(this.signatureDate, documentDetailsResponseRecipients.signatureDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink);
+    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink, signatureDate);
   }
 
   @Override
@@ -382,6 +410,7 @@ public class DocumentDetailsResponseRecipients {
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
     sb.append("    hasCompleted: ").append(toIndentedString(hasCompleted)).append("\n");
     sb.append("    sharedLink: ").append(toIndentedString(sharedLink)).append("\n");
+    sb.append("    signatureDate: ").append(toIndentedString(signatureDate)).append("\n");
     sb.append("}");
     return sb.toString();
   }

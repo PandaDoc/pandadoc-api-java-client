@@ -24,7 +24,7 @@ import com.pandadoc.client.models.DocumentDetailsResponseGrandTotal;
 import com.pandadoc.client.models.DocumentDetailsResponseLinkedObjects;
 import com.pandadoc.client.models.DocumentDetailsResponseRecipients;
 import com.pandadoc.client.models.DocumentDetailsResponseTemplate;
-import com.pandadoc.client.models.PricingTablesResponse;
+import com.pandadoc.client.models.PricingResponse;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -60,6 +60,10 @@ public class DocumentDetailsResponse {
   @SerializedName(SERIALIZED_NAME_DATE_COMPLETED)
   private String dateCompleted;
 
+  public static final String SERIALIZED_NAME_CONTENT_DATE_MODIFIED = "content_date_modified";
+  @SerializedName(SERIALIZED_NAME_CONTENT_DATE_MODIFIED)
+  private String contentDateModified;
+
   public static final String SERIALIZED_NAME_CREATED_BY = "created_by";
   @SerializedName(SERIALIZED_NAME_CREATED_BY)
   private DocumentDetailsResponseCreatedBy createdBy;
@@ -86,7 +90,7 @@ public class DocumentDetailsResponse {
 
   public static final String SERIALIZED_NAME_PRICING = "pricing";
   @SerializedName(SERIALIZED_NAME_PRICING)
-  private PricingTablesResponse pricing;
+  private PricingResponse pricing;
 
   public static final String SERIALIZED_NAME_VERSION = "version";
   @SerializedName(SERIALIZED_NAME_VERSION)
@@ -257,6 +261,29 @@ public class DocumentDetailsResponse {
   }
 
 
+  public DocumentDetailsResponse contentDateModified(String contentDateModified) {
+    
+    this.contentDateModified = contentDateModified;
+    return this;
+  }
+
+   /**
+   * Get contentDateModified
+   * @return contentDateModified
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-10-23T21:07:04.147Z", value = "")
+
+  public String getContentDateModified() {
+    return contentDateModified;
+  }
+
+
+  public void setContentDateModified(String contentDateModified) {
+    this.contentDateModified = contentDateModified;
+  }
+
+
   public DocumentDetailsResponse createdBy(DocumentDetailsResponseCreatedBy createdBy) {
     
     this.createdBy = createdBy;
@@ -411,7 +438,7 @@ public class DocumentDetailsResponse {
   }
 
 
-  public DocumentDetailsResponse pricing(PricingTablesResponse pricing) {
+  public DocumentDetailsResponse pricing(PricingResponse pricing) {
     
     this.pricing = pricing;
     return this;
@@ -424,12 +451,12 @@ public class DocumentDetailsResponse {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponse getPricing() {
+  public PricingResponse getPricing() {
     return pricing;
   }
 
 
-  public void setPricing(PricingTablesResponse pricing) {
+  public void setPricing(PricingResponse pricing) {
     this.pricing = pricing;
   }
 
@@ -634,6 +661,7 @@ public class DocumentDetailsResponse {
         Objects.equals(this.dateCreated, documentDetailsResponse.dateCreated) &&
         Objects.equals(this.dateModified, documentDetailsResponse.dateModified) &&
         Objects.equals(this.dateCompleted, documentDetailsResponse.dateCompleted) &&
+        Objects.equals(this.contentDateModified, documentDetailsResponse.contentDateModified) &&
         Objects.equals(this.createdBy, documentDetailsResponse.createdBy) &&
         Objects.equals(this.template, documentDetailsResponse.template) &&
         Objects.equals(this.expirationDate, documentDetailsResponse.expirationDate) &&
@@ -652,7 +680,7 @@ public class DocumentDetailsResponse {
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, autonumberingSequenceNamePrefix, dateCreated, dateModified, dateCompleted, createdBy, template, expirationDate, metadata, tokens, fields, pricing, version, tags, sentBy, recipients, grandTotal, linkedObjects, status);
+    return Objects.hash(id, name, autonumberingSequenceNamePrefix, dateCreated, dateModified, dateCompleted, contentDateModified, createdBy, template, expirationDate, metadata, tokens, fields, pricing, version, tags, sentBy, recipients, grandTotal, linkedObjects, status);
   }
 
   @Override
@@ -665,6 +693,7 @@ public class DocumentDetailsResponse {
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("    dateCompleted: ").append(toIndentedString(dateCompleted)).append("\n");
+    sb.append("    contentDateModified: ").append(toIndentedString(contentDateModified)).append("\n");
     sb.append("    createdBy: ").append(toIndentedString(createdBy)).append("\n");
     sb.append("    template: ").append(toIndentedString(template)).append("\n");
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");

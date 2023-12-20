@@ -36,7 +36,9 @@ public enum WebhookSubscriptionTriggerEnum {
   
   DOCUMENT_STATE_CHANGED("document_state_changed"),
   
-  DOCUMENT_CREATION_FAILED("document_creation_failed");
+  DOCUMENT_CREATION_FAILED("document_creation_failed"),
+  
+  QUOTE_UPDATED("quote_updated");
 
   private String value;
 
