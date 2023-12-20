@@ -19,8 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
-import com.pandadoc.client.models.PricingTablesResponseItems;
-import com.pandadoc.client.models.PricingTablesResponseSummary;
+import com.pandadoc.client.models.PricingTableResponseItems;
+import com.pandadoc.client.models.PricingTableResponseSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -28,10 +28,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * PricingTablesResponseTables
+ * PricingTableResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTablesResponseTables {
+public class PricingTableResponse {
   public static final String SERIALIZED_NAME_NAME = "name";
   @SerializedName(SERIALIZED_NAME_NAME)
   private String name;
@@ -50,20 +50,20 @@ public class PricingTablesResponseTables {
 
   public static final String SERIALIZED_NAME_SUMMARY = "summary";
   @SerializedName(SERIALIZED_NAME_SUMMARY)
-  private PricingTablesResponseSummary summary;
+  private PricingTableResponseSummary summary;
 
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
-  private List<PricingTablesResponseItems> items = null;
+  private List<PricingTableResponseItems> items = null;
 
   public static final String SERIALIZED_NAME_CURRENCY = "currency";
   @SerializedName(SERIALIZED_NAME_CURRENCY)
   private String currency;
 
-  public PricingTablesResponseTables() { 
+  public PricingTableResponse() { 
   }
 
-  public PricingTablesResponseTables name(String name) {
+  public PricingTableResponse name(String name) {
     
     this.name = name;
     return this;
@@ -86,7 +86,7 @@ public class PricingTablesResponseTables {
   }
 
 
-  public PricingTablesResponseTables id(String id) {
+  public PricingTableResponse id(String id) {
     
     this.id = id;
     return this;
@@ -109,7 +109,7 @@ public class PricingTablesResponseTables {
   }
 
 
-  public PricingTablesResponseTables total(String total) {
+  public PricingTableResponse total(String total) {
     
     this.total = total;
     return this;
@@ -132,7 +132,7 @@ public class PricingTablesResponseTables {
   }
 
 
-  public PricingTablesResponseTables isIncludedInTotal(Boolean isIncludedInTotal) {
+  public PricingTableResponse isIncludedInTotal(Boolean isIncludedInTotal) {
     
     this.isIncludedInTotal = isIncludedInTotal;
     return this;
@@ -155,7 +155,7 @@ public class PricingTablesResponseTables {
   }
 
 
-  public PricingTablesResponseTables summary(PricingTablesResponseSummary summary) {
+  public PricingTableResponse summary(PricingTableResponseSummary summary) {
     
     this.summary = summary;
     return this;
@@ -168,23 +168,23 @@ public class PricingTablesResponseTables {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public PricingTablesResponseSummary getSummary() {
+  public PricingTableResponseSummary getSummary() {
     return summary;
   }
 
 
-  public void setSummary(PricingTablesResponseSummary summary) {
+  public void setSummary(PricingTableResponseSummary summary) {
     this.summary = summary;
   }
 
 
-  public PricingTablesResponseTables items(List<PricingTablesResponseItems> items) {
+  public PricingTableResponse items(List<PricingTableResponseItems> items) {
     
     this.items = items;
     return this;
   }
 
-  public PricingTablesResponseTables addItemsItem(PricingTablesResponseItems itemsItem) {
+  public PricingTableResponse addItemsItem(PricingTableResponseItems itemsItem) {
     if (this.items == null) {
       this.items = new ArrayList<>();
     }
@@ -199,17 +199,17 @@ public class PricingTablesResponseTables {
   @javax.annotation.Nullable
   @ApiModelProperty(value = "")
 
-  public List<PricingTablesResponseItems> getItems() {
+  public List<PricingTableResponseItems> getItems() {
     return items;
   }
 
 
-  public void setItems(List<PricingTablesResponseItems> items) {
+  public void setItems(List<PricingTableResponseItems> items) {
     this.items = items;
   }
 
 
-  public PricingTablesResponseTables currency(String currency) {
+  public PricingTableResponse currency(String currency) {
     
     this.currency = currency;
     return this;
@@ -240,14 +240,14 @@ public class PricingTablesResponseTables {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTablesResponseTables pricingTablesResponseTables = (PricingTablesResponseTables) o;
-    return Objects.equals(this.name, pricingTablesResponseTables.name) &&
-        Objects.equals(this.id, pricingTablesResponseTables.id) &&
-        Objects.equals(this.total, pricingTablesResponseTables.total) &&
-        Objects.equals(this.isIncludedInTotal, pricingTablesResponseTables.isIncludedInTotal) &&
-        Objects.equals(this.summary, pricingTablesResponseTables.summary) &&
-        Objects.equals(this.items, pricingTablesResponseTables.items) &&
-        Objects.equals(this.currency, pricingTablesResponseTables.currency);
+    PricingTableResponse pricingTableResponse = (PricingTableResponse) o;
+    return Objects.equals(this.name, pricingTableResponse.name) &&
+        Objects.equals(this.id, pricingTableResponse.id) &&
+        Objects.equals(this.total, pricingTableResponse.total) &&
+        Objects.equals(this.isIncludedInTotal, pricingTableResponse.isIncludedInTotal) &&
+        Objects.equals(this.summary, pricingTableResponse.summary) &&
+        Objects.equals(this.items, pricingTableResponse.items) &&
+        Objects.equals(this.currency, pricingTableResponse.currency);
   }
 
   @Override
@@ -258,7 +258,7 @@ public class PricingTablesResponseTables {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTablesResponseTables {\n");
+    sb.append("class PricingTableResponse {\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");

@@ -33,6 +33,10 @@ import java.util.List;
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
 public class DocumentUpdateRequest {
+  public static final String SERIALIZED_NAME_NAME = "name";
+  @SerializedName(SERIALIZED_NAME_NAME)
+  private String name;
+
   public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
   @SerializedName(SERIALIZED_NAME_RECIPIENTS)
   private List<DocumentUpdateRequestRecipients> recipients = null;
@@ -55,6 +59,29 @@ public class DocumentUpdateRequest {
 
   public DocumentUpdateRequest() { 
   }
+
+  public DocumentUpdateRequest name(String name) {
+    
+    this.name = name;
+    return this;
+  }
+
+   /**
+   * The name of the document.
+   * @return name
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "Contract", value = "The name of the document.")
+
+  public String getName() {
+    return name;
+  }
+
+
+  public void setName(String name) {
+    this.name = name;
+  }
+
 
   public DocumentUpdateRequest recipients(List<DocumentUpdateRequestRecipients> recipients) {
     
@@ -204,7 +231,8 @@ public class DocumentUpdateRequest {
       return false;
     }
     DocumentUpdateRequest documentUpdateRequest = (DocumentUpdateRequest) o;
-    return Objects.equals(this.recipients, documentUpdateRequest.recipients) &&
+    return Objects.equals(this.name, documentUpdateRequest.name) &&
+        Objects.equals(this.recipients, documentUpdateRequest.recipients) &&
         Objects.equals(this.fields, documentUpdateRequest.fields) &&
         Objects.equals(this.tokens, documentUpdateRequest.tokens) &&
         Objects.equals(this.metadata, documentUpdateRequest.metadata) &&
@@ -213,13 +241,14 @@ public class DocumentUpdateRequest {
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipients, fields, tokens, metadata, pricingTables);
+    return Objects.hash(name, recipients, fields, tokens, metadata, pricingTables);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentUpdateRequest {\n");
+    sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
     sb.append("    fields: ").append(toIndentedString(fields)).append("\n");
     sb.append("    tokens: ").append(toIndentedString(tokens)).append("\n");

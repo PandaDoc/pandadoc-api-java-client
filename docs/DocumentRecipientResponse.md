@@ -1,14 +1,13 @@
 
 
-# PricingTablesResponseDiscount
+# DocumentRecipientResponse
 
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**value** | **String** |  |  [optional]
-**type** | **String** |  |  [optional]
+**recipientId** | **String** |  |  [optional]
 
 
 

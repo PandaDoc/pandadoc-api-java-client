@@ -24,37 +24,37 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * InlineResponse200
+ * DocumentRecipientResponse
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class InlineResponse200 {
-  public static final String SERIALIZED_NAME_ACTOR_ID = "actor_id";
-  @SerializedName(SERIALIZED_NAME_ACTOR_ID)
-  private String actorId;
+public class DocumentRecipientResponse {
+  public static final String SERIALIZED_NAME_RECIPIENT_ID = "recipient_id";
+  @SerializedName(SERIALIZED_NAME_RECIPIENT_ID)
+  private String recipientId;
 
-  public InlineResponse200() { 
+  public DocumentRecipientResponse() { 
   }
 
-  public InlineResponse200 actorId(String actorId) {
+  public DocumentRecipientResponse recipientId(String recipientId) {
     
-    this.actorId = actorId;
+    this.recipientId = recipientId;
     return this;
   }
 
    /**
-   * Get actorId
-   * @return actorId
+   * Get recipientId
+   * @return recipientId
   **/
   @javax.annotation.Nullable
   @ApiModelProperty(example = "2eWSKSvVqmuVCnuUK3iWwD", value = "")
 
-  public String getActorId() {
-    return actorId;
+  public String getRecipientId() {
+    return recipientId;
   }
 
 
-  public void setActorId(String actorId) {
-    this.actorId = actorId;
+  public void setRecipientId(String recipientId) {
+    this.recipientId = recipientId;
   }
 
 
@@ -66,20 +66,20 @@ public class InlineResponse200 {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    InlineResponse200 inlineResponse200 = (InlineResponse200) o;
-    return Objects.equals(this.actorId, inlineResponse200.actorId);
+    DocumentRecipientResponse documentRecipientResponse = (DocumentRecipientResponse) o;
+    return Objects.equals(this.recipientId, documentRecipientResponse.recipientId);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(actorId);
+    return Objects.hash(recipientId);
   }
 
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class InlineResponse200 {\n");
-    sb.append("    actorId: ").append(toIndentedString(actorId)).append("\n");
+    sb.append("class DocumentRecipientResponse {\n");
+    sb.append("    recipientId: ").append(toIndentedString(recipientId)).append("\n");
     sb.append("}");
     return sb.toString();
   }

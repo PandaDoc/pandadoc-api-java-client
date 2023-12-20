@@ -13,7 +13,7 @@ Method | HTTP request | Description
 
 ## addDocumentRecipient
 
-> InlineResponse200 addDocumentRecipient(id, documentRecipientCreateRequest)
+> DocumentRecipientResponse addDocumentRecipient(id, documentRecipientCreateRequest)
 
 Add Document Recipient
 
@@ -55,7 +55,7 @@ public class Example {
         // DocumentRecipientCreateRequest | 
         DocumentRecipientCreateRequest documentRecipientCreateRequest = new DocumentRecipientCreateRequest();
         try {
-            InlineResponse200 result = apiInstance.addDocumentRecipient(id, documentRecipientCreateRequest);
+            DocumentRecipientResponse result = apiInstance.addDocumentRecipient(id, documentRecipientCreateRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentRecipientsApi#addDocumentRecipient");
@@ -78,7 +78,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**InlineResponse200**](InlineResponse200.md)
+[**DocumentRecipientResponse**](DocumentRecipientResponse.md)
 
 ### Authorization
 
@@ -283,7 +283,7 @@ null (empty response body)
 
 ## reassignDocumentRecipient
 
-> Object reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest)
+> DocumentRecipientResponse reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest)
 
 Reassign Document Recipient
 
@@ -327,7 +327,7 @@ public class Example {
         // DocumentRecipientCreateRequest | 
         DocumentRecipientCreateRequest documentRecipientCreateRequest = new DocumentRecipientCreateRequest();
         try {
-            Object result = apiInstance.reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest);
+            DocumentRecipientResponse result = apiInstance.reassignDocumentRecipient(id, recipientId, documentRecipientCreateRequest);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling DocumentRecipientsApi#reassignDocumentRecipient");
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**Object**
+[**DocumentRecipientResponse**](DocumentRecipientResponse.md)
 
 ### Authorization
 

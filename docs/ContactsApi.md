@@ -264,7 +264,7 @@ Name | Type | Description  | Notes
 
 ## listContacts
 
-> ContactListResponse listContacts()
+> ContactListResponse listContacts(email)
 
 List contacts
 
@@ -299,8 +299,10 @@ public class Example {
         // oauth2.setAccessToken("YOUR ACCESS TOKEN");
 
         ContactsApi apiInstance = new ContactsApi(defaultClient);
+        // String | Optional search parameter. Filter results by exact match.
+        String email = "josh@example.com";
         try {
-            ContactListResponse result = apiInstance.listContacts();
+            ContactListResponse result = apiInstance.listContacts(email);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling ContactsApi#listContacts");
@@ -315,7 +317,10 @@ public class Example {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **email** | **String**| Optional search parameter. Filter results by exact match. | [optional]
 
 ### Return type
 

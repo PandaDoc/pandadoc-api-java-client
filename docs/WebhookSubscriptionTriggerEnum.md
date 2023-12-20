@@ -15,5 +15,7 @@
 
 * `DOCUMENT_CREATION_FAILED` (value: `"document_creation_failed"`)
 
+* `QUOTE_UPDATED` (value: `"quote_updated"`)
+
 
 

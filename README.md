@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.pandadoc</groupId>
   <artifactId>pandadoc-java-client</artifactId>
-  <version>5.7.1</version>
+  <version>6.0.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.pandadoc:pandadoc-java-client:5.7.1"
+compile "com.pandadoc:pandadoc-java-client:6.0.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/pandadoc-java-client-5.7.1.jar`
+- `target/pandadoc-java-client-6.0.0.jar`
 - `target/lib/*.jar`
 
 ## Getting Started

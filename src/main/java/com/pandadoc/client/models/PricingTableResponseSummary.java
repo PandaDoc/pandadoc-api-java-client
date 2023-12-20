@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PricingTablesResponseSummary
+ * PricingTableResponseSummary
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTablesResponseSummary {
+public class PricingTableResponseSummary {
   public static final String SERIALIZED_NAME_SUBTOTAL = "subtotal";
   @SerializedName(SERIALIZED_NAME_SUBTOTAL)
   private String subtotal;
@@ -44,10 +44,10 @@ public class PricingTablesResponseSummary {
   @SerializedName(SERIALIZED_NAME_TAX)
   private String tax;
 
-  public PricingTablesResponseSummary() { 
+  public PricingTableResponseSummary() { 
   }
 
-  public PricingTablesResponseSummary subtotal(String subtotal) {
+  public PricingTableResponseSummary subtotal(String subtotal) {
     
     this.subtotal = subtotal;
     return this;
@@ -70,7 +70,7 @@ public class PricingTablesResponseSummary {
   }
 
 
-  public PricingTablesResponseSummary total(String total) {
+  public PricingTableResponseSummary total(String total) {
     
     this.total = total;
     return this;
@@ -93,7 +93,7 @@ public class PricingTablesResponseSummary {
   }
 
 
-  public PricingTablesResponseSummary discount(String discount) {
+  public PricingTableResponseSummary discount(String discount) {
     
     this.discount = discount;
     return this;
@@ -116,7 +116,7 @@ public class PricingTablesResponseSummary {
   }
 
 
-  public PricingTablesResponseSummary tax(String tax) {
+  public PricingTableResponseSummary tax(String tax) {
     
     this.tax = tax;
     return this;
@@ -147,11 +147,11 @@ public class PricingTablesResponseSummary {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTablesResponseSummary pricingTablesResponseSummary = (PricingTablesResponseSummary) o;
-    return Objects.equals(this.subtotal, pricingTablesResponseSummary.subtotal) &&
-        Objects.equals(this.total, pricingTablesResponseSummary.total) &&
-        Objects.equals(this.discount, pricingTablesResponseSummary.discount) &&
-        Objects.equals(this.tax, pricingTablesResponseSummary.tax);
+    PricingTableResponseSummary pricingTableResponseSummary = (PricingTableResponseSummary) o;
+    return Objects.equals(this.subtotal, pricingTableResponseSummary.subtotal) &&
+        Objects.equals(this.total, pricingTableResponseSummary.total) &&
+        Objects.equals(this.discount, pricingTableResponseSummary.discount) &&
+        Objects.equals(this.tax, pricingTableResponseSummary.tax);
   }
 
   @Override
@@ -162,7 +162,7 @@ public class PricingTablesResponseSummary {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTablesResponseSummary {\n");
+    sb.append("class PricingTableResponseSummary {\n");
     sb.append("    subtotal: ").append(toIndentedString(subtotal)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
     sb.append("    discount: ").append(toIndentedString(discount)).append("\n");

@@ -24,10 +24,10 @@ import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
 
 /**
- * PricingTablesResponseOptions
+ * PricingTableResponseOptions
  */
 @javax.annotation.Generated(value = "org.openapitools.codegen.languages.JavaClientCodegen")
-public class PricingTablesResponseOptions {
+public class PricingTableResponseOptions {
   public static final String SERIALIZED_NAME_OPTIONAL = "optional";
   @SerializedName(SERIALIZED_NAME_OPTIONAL)
   private Boolean optional;
@@ -44,10 +44,10 @@ public class PricingTablesResponseOptions {
   @SerializedName(SERIALIZED_NAME_MULTICHOICE_SELECTED)
   private Boolean multichoiceSelected;
 
-  public PricingTablesResponseOptions() { 
+  public PricingTableResponseOptions() { 
   }
 
-  public PricingTablesResponseOptions optional(Boolean optional) {
+  public PricingTableResponseOptions optional(Boolean optional) {
     
     this.optional = optional;
     return this;
@@ -70,7 +70,7 @@ public class PricingTablesResponseOptions {
   }
 
 
-  public PricingTablesResponseOptions optionalSelected(Boolean optionalSelected) {
+  public PricingTableResponseOptions optionalSelected(Boolean optionalSelected) {
     
     this.optionalSelected = optionalSelected;
     return this;
@@ -93,7 +93,7 @@ public class PricingTablesResponseOptions {
   }
 
 
-  public PricingTablesResponseOptions multichoiceEnabled(Boolean multichoiceEnabled) {
+  public PricingTableResponseOptions multichoiceEnabled(Boolean multichoiceEnabled) {
     
     this.multichoiceEnabled = multichoiceEnabled;
     return this;
@@ -116,7 +116,7 @@ public class PricingTablesResponseOptions {
   }
 
 
-  public PricingTablesResponseOptions multichoiceSelected(Boolean multichoiceSelected) {
+  public PricingTableResponseOptions multichoiceSelected(Boolean multichoiceSelected) {
     
     this.multichoiceSelected = multichoiceSelected;
     return this;
@@ -147,11 +147,11 @@ public class PricingTablesResponseOptions {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    PricingTablesResponseOptions pricingTablesResponseOptions = (PricingTablesResponseOptions) o;
-    return Objects.equals(this.optional, pricingTablesResponseOptions.optional) &&
-        Objects.equals(this.optionalSelected, pricingTablesResponseOptions.optionalSelected) &&
-        Objects.equals(this.multichoiceEnabled, pricingTablesResponseOptions.multichoiceEnabled) &&
-        Objects.equals(this.multichoiceSelected, pricingTablesResponseOptions.multichoiceSelected);
+    PricingTableResponseOptions pricingTableResponseOptions = (PricingTableResponseOptions) o;
+    return Objects.equals(this.optional, pricingTableResponseOptions.optional) &&
+        Objects.equals(this.optionalSelected, pricingTableResponseOptions.optionalSelected) &&
+        Objects.equals(this.multichoiceEnabled, pricingTableResponseOptions.multichoiceEnabled) &&
+        Objects.equals(this.multichoiceSelected, pricingTableResponseOptions.multichoiceSelected);
   }
 
   @Override
@@ -162,7 +162,7 @@ public class PricingTablesResponseOptions {
   @Override
   public String toString() {
     StringBuilder sb = new StringBuilder();
-    sb.append("class PricingTablesResponseOptions {\n");
+    sb.append("class PricingTableResponseOptions {\n");
     sb.append("    optional: ").append(toIndentedString(optional)).append("\n");
     sb.append("    optionalSelected: ").append(toIndentedString(optionalSelected)).append("\n");
     sb.append("    multichoiceEnabled: ").append(toIndentedString(multichoiceEnabled)).append("\n");

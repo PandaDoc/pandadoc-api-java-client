@@ -499,6 +499,7 @@ public class ContactsApi {
     }
     /**
      * Build call for listContacts
+     * @param email Optional search parameter. Filter results by exact match. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -512,7 +513,7 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listContactsCall(final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listContactsCall(String email, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -538,6 +539,10 @@ public class ContactsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (email != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("email", email));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -559,10 +564,10 @@ public class ContactsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listContactsValidateBeforeCall(final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listContactsValidateBeforeCall(String email, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listContactsCall(_callback);
+        okhttp3.Call localVarCall = listContactsCall(email, _callback);
         return localVarCall;
 
     }
@@ -570,6 +575,7 @@ public class ContactsApi {
     /**
      * List contacts
      * 
+     * @param email Optional search parameter. Filter results by exact match. (optional)
      * @return ContactListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -582,14 +588,15 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ContactListResponse listContacts() throws ApiException {
-        ApiResponse<ContactListResponse> localVarResp = listContactsWithHttpInfo();
+    public ContactListResponse listContacts(String email) throws ApiException {
+        ApiResponse<ContactListResponse> localVarResp = listContactsWithHttpInfo(email);
         return localVarResp.getData();
     }
 
     /**
      * List contacts
      * 
+     * @param email Optional search parameter. Filter results by exact match. (optional)
      * @return ApiResponse&lt;ContactListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -602,8 +609,8 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<ContactListResponse> listContactsWithHttpInfo() throws ApiException {
-        okhttp3.Call localVarCall = listContactsValidateBeforeCall(null);
+    public ApiResponse<ContactListResponse> listContactsWithHttpInfo(String email) throws ApiException {
+        okhttp3.Call localVarCall = listContactsValidateBeforeCall(email, null);
         Type localVarReturnType = new TypeToken<ContactListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -611,6 +618,7 @@ public class ContactsApi {
     /**
      * List contacts (asynchronously)
      * 
+     * @param email Optional search parameter. Filter results by exact match. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -624,9 +632,9 @@ public class ContactsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listContactsAsync(final ApiCallback<ContactListResponse> _callback) throws ApiException {
+    public okhttp3.Call listContactsAsync(String email, final ApiCallback<ContactListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listContactsValidateBeforeCall(_callback);
+        okhttp3.Call localVarCall = listContactsValidateBeforeCall(email, _callback);
         Type localVarReturnType = new TypeToken<ContactListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;
