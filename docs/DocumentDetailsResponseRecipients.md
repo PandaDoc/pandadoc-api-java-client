@@ -19,6 +19,7 @@ Name | Type | Description | Notes
 **hasCompleted** | **Boolean** |  |  [optional]
 **sharedLink** | **String** |  |  [optional]
 **signatureDate** | **String** |  |  [optional]
+**verificationSettings** | [**RecipientVerificationSettings**](RecipientVerificationSettings.md) |  |  [optional]
 
 
 

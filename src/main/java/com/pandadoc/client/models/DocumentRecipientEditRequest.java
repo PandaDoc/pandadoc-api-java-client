@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.RecipientVerificationSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -67,6 +68,10 @@ public class DocumentRecipientEditRequest {
   public static final String SERIALIZED_NAME_POSTAL_CODE = "postal_code";
   @SerializedName(SERIALIZED_NAME_POSTAL_CODE)
   private String postalCode;
+
+  public static final String SERIALIZED_NAME_VERIFICATION_SETTINGS = "verification_settings";
+  @SerializedName(SERIALIZED_NAME_VERIFICATION_SETTINGS)
+  private RecipientVerificationSettings verificationSettings;
 
   public DocumentRecipientEditRequest() { 
   }
@@ -301,6 +306,29 @@ public class DocumentRecipientEditRequest {
   }
 
 
+  public DocumentRecipientEditRequest verificationSettings(RecipientVerificationSettings verificationSettings) {
+    
+    this.verificationSettings = verificationSettings;
+    return this;
+  }
+
+   /**
+   * Get verificationSettings
+   * @return verificationSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RecipientVerificationSettings getVerificationSettings() {
+    return verificationSettings;
+  }
+
+
+  public void setVerificationSettings(RecipientVerificationSettings verificationSettings) {
+    this.verificationSettings = verificationSettings;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -319,12 +347,13 @@ public class DocumentRecipientEditRequest {
         Objects.equals(this.state, documentRecipientEditRequest.state) &&
         Objects.equals(this.streetAddress, documentRecipientEditRequest.streetAddress) &&
         Objects.equals(this.city, documentRecipientEditRequest.city) &&
-        Objects.equals(this.postalCode, documentRecipientEditRequest.postalCode);
+        Objects.equals(this.postalCode, documentRecipientEditRequest.postalCode) &&
+        Objects.equals(this.verificationSettings, documentRecipientEditRequest.verificationSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, firstName, lastName, company, jobTitle, phone, state, streetAddress, city, postalCode);
+    return Objects.hash(email, firstName, lastName, company, jobTitle, phone, state, streetAddress, city, postalCode, verificationSettings);
   }
 
   @Override
@@ -341,6 +370,7 @@ public class DocumentRecipientEditRequest {
     sb.append("    streetAddress: ").append(toIndentedString(streetAddress)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
+    sb.append("    verificationSettings: ").append(toIndentedString(verificationSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

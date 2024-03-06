@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **dateCreated** | **String** |  |  [optional]
 **dateModified** | **String** |  |  [optional]
 **version** | **String** |  |  [optional]
+**contentDateModified** | **String** |  |  [optional]
 
 
 

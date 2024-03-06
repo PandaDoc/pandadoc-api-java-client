@@ -370,6 +370,7 @@ public class TemplatesApi {
      * @param id Optionally, specify template ID. (optional)
      * @param folderUuid UUID of the folder where the templates are stored. (optional)
      * @param tag Optional search tag. Filter by template tag. (optional)
+     * @param fields A comma-separated list of additional fields to include in the response.  Each field must be a valid template property.  Currently, only one additional field, &#x60;content_date_modified&#x60;, is supported.  For example, &#x60;GET /templates?fields&#x3D;content_date_modified&#x60;. (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -381,7 +382,7 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listTemplatesCall(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call listTemplatesCall(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, String fields, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -439,6 +440,10 @@ public class TemplatesApi {
             localVarCollectionQueryParams.addAll(localVarApiClient.parameterToPairs("multi", "tag", tag));
         }
 
+        if (fields != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("fields", fields));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -460,10 +465,10 @@ public class TemplatesApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call listTemplatesValidateBeforeCall(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call listTemplatesValidateBeforeCall(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, String fields, final ApiCallback _callback) throws ApiException {
         
 
-        okhttp3.Call localVarCall = listTemplatesCall(q, shared, deleted, count, page, id, folderUuid, tag, _callback);
+        okhttp3.Call localVarCall = listTemplatesCall(q, shared, deleted, count, page, id, folderUuid, tag, fields, _callback);
         return localVarCall;
 
     }
@@ -479,6 +484,7 @@ public class TemplatesApi {
      * @param id Optionally, specify template ID. (optional)
      * @param folderUuid UUID of the folder where the templates are stored. (optional)
      * @param tag Optional search tag. Filter by template tag. (optional)
+     * @param fields A comma-separated list of additional fields to include in the response.  Each field must be a valid template property.  Currently, only one additional field, &#x60;content_date_modified&#x60;, is supported.  For example, &#x60;GET /templates?fields&#x3D;content_date_modified&#x60;. (optional)
      * @return TemplateListResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -489,8 +495,8 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public TemplateListResponse listTemplates(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag) throws ApiException {
-        ApiResponse<TemplateListResponse> localVarResp = listTemplatesWithHttpInfo(q, shared, deleted, count, page, id, folderUuid, tag);
+    public TemplateListResponse listTemplates(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, String fields) throws ApiException {
+        ApiResponse<TemplateListResponse> localVarResp = listTemplatesWithHttpInfo(q, shared, deleted, count, page, id, folderUuid, tag, fields);
         return localVarResp.getData();
     }
 
@@ -505,6 +511,7 @@ public class TemplatesApi {
      * @param id Optionally, specify template ID. (optional)
      * @param folderUuid UUID of the folder where the templates are stored. (optional)
      * @param tag Optional search tag. Filter by template tag. (optional)
+     * @param fields A comma-separated list of additional fields to include in the response.  Each field must be a valid template property.  Currently, only one additional field, &#x60;content_date_modified&#x60;, is supported.  For example, &#x60;GET /templates?fields&#x3D;content_date_modified&#x60;. (optional)
      * @return ApiResponse&lt;TemplateListResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -515,8 +522,8 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<TemplateListResponse> listTemplatesWithHttpInfo(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag) throws ApiException {
-        okhttp3.Call localVarCall = listTemplatesValidateBeforeCall(q, shared, deleted, count, page, id, folderUuid, tag, null);
+    public ApiResponse<TemplateListResponse> listTemplatesWithHttpInfo(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, String fields) throws ApiException {
+        okhttp3.Call localVarCall = listTemplatesValidateBeforeCall(q, shared, deleted, count, page, id, folderUuid, tag, fields, null);
         Type localVarReturnType = new TypeToken<TemplateListResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -532,6 +539,7 @@ public class TemplatesApi {
      * @param id Optionally, specify template ID. (optional)
      * @param folderUuid UUID of the folder where the templates are stored. (optional)
      * @param tag Optional search tag. Filter by template tag. (optional)
+     * @param fields A comma-separated list of additional fields to include in the response.  Each field must be a valid template property.  Currently, only one additional field, &#x60;content_date_modified&#x60;, is supported.  For example, &#x60;GET /templates?fields&#x3D;content_date_modified&#x60;. (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -543,9 +551,9 @@ public class TemplatesApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call listTemplatesAsync(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, final ApiCallback<TemplateListResponse> _callback) throws ApiException {
+    public okhttp3.Call listTemplatesAsync(String q, Boolean shared, Boolean deleted, Integer count, Integer page, String id, String folderUuid, List<String> tag, String fields, final ApiCallback<TemplateListResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = listTemplatesValidateBeforeCall(q, shared, deleted, count, page, id, folderUuid, tag, _callback);
+        okhttp3.Call localVarCall = listTemplatesValidateBeforeCall(q, shared, deleted, count, page, id, folderUuid, tag, fields, _callback);
         Type localVarReturnType = new TypeToken<TemplateListResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

@@ -184,7 +184,7 @@ Name | Type | Description  | Notes
 
 ## listTemplates
 
-> TemplateListResponse listTemplates(q, shared, deleted, count, page, id, folderUuid, tag)
+> TemplateListResponse listTemplates(q, shared, deleted, count, page, id, folderUuid, tag, fields)
 
 List Templates
 
@@ -237,8 +237,10 @@ public class Example {
         String folderUuid = "xDKHoJ8DkwhiTQSUzNveCJ";
         // List<String> | Optional search tag. Filter by template tag.
         List<String> tag = Arrays.asList();
+        // String | A comma-separated list of additional fields to include in the response.  Each field must be a valid template property.  Currently, only one additional field, `content_date_modified`, is supported.  For example, `GET /templates?fields=content_date_modified`.
+        String fields = "fields_example";
         try {
-            TemplateListResponse result = apiInstance.listTemplates(q, shared, deleted, count, page, id, folderUuid, tag);
+            TemplateListResponse result = apiInstance.listTemplates(q, shared, deleted, count, page, id, folderUuid, tag, fields);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling TemplatesApi#listTemplates");
@@ -264,6 +266,7 @@ Name | Type | Description  | Notes
  **id** | **String**| Optionally, specify template ID. | [optional]
  **folderUuid** | **String**| UUID of the folder where the templates are stored. | [optional]
  **tag** | [**List&lt;String&gt;**](String.md)| Optional search tag. Filter by template tag. | [optional]
+ **fields** | **String**| A comma-separated list of additional fields to include in the response.  Each field must be a valid template property.  Currently, only one additional field, &#x60;content_date_modified&#x60;, is supported.  For example, &#x60;GET /templates?fields&#x3D;content_date_modified&#x60;. | [optional]
 
 ### Return type
 
