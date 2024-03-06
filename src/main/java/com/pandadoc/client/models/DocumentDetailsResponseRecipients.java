@@ -19,6 +19,7 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.RecipientVerificationSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -77,6 +78,10 @@ public class DocumentDetailsResponseRecipients {
   public static final String SERIALIZED_NAME_SIGNATURE_DATE = "signature_date";
   @SerializedName(SERIALIZED_NAME_SIGNATURE_DATE)
   private String signatureDate;
+
+  public static final String SERIALIZED_NAME_VERIFICATION_SETTINGS = "verification_settings";
+  @SerializedName(SERIALIZED_NAME_VERIFICATION_SETTINGS)
+  private RecipientVerificationSettings verificationSettings;
 
   public DocumentDetailsResponseRecipients() { 
   }
@@ -367,6 +372,29 @@ public class DocumentDetailsResponseRecipients {
   }
 
 
+  public DocumentDetailsResponseRecipients verificationSettings(RecipientVerificationSettings verificationSettings) {
+    
+    this.verificationSettings = verificationSettings;
+    return this;
+  }
+
+   /**
+   * Get verificationSettings
+   * @return verificationSettings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RecipientVerificationSettings getVerificationSettings() {
+    return verificationSettings;
+  }
+
+
+  public void setVerificationSettings(RecipientVerificationSettings verificationSettings) {
+    this.verificationSettings = verificationSettings;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -387,12 +415,13 @@ public class DocumentDetailsResponseRecipients {
         Objects.equals(this.email, documentDetailsResponseRecipients.email) &&
         Objects.equals(this.hasCompleted, documentDetailsResponseRecipients.hasCompleted) &&
         Objects.equals(this.sharedLink, documentDetailsResponseRecipients.sharedLink) &&
-        Objects.equals(this.signatureDate, documentDetailsResponseRecipients.signatureDate);
+        Objects.equals(this.signatureDate, documentDetailsResponseRecipients.signatureDate) &&
+        Objects.equals(this.verificationSettings, documentDetailsResponseRecipients.verificationSettings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink, signatureDate);
+    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink, signatureDate, verificationSettings);
   }
 
   @Override
@@ -411,6 +440,7 @@ public class DocumentDetailsResponseRecipients {
     sb.append("    hasCompleted: ").append(toIndentedString(hasCompleted)).append("\n");
     sb.append("    sharedLink: ").append(toIndentedString(sharedLink)).append("\n");
     sb.append("    signatureDate: ").append(toIndentedString(signatureDate)).append("\n");
+    sb.append("    verificationSettings: ").append(toIndentedString(verificationSettings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

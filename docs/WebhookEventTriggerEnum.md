@@ -17,5 +17,9 @@
 
 * `QUOTE_UPDATED` (value: `"quote_updated"`)
 
+* `TEMPLATE_CREATED` (value: `"template_created"`)
+
+* `TEMPLATE_MODIFIED` (value: `"template_modified"`)
+
 
 

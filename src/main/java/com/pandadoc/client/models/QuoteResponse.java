@@ -21,6 +21,7 @@ import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
 import com.pandadoc.client.models.QuoteResponseMergeRules;
 import com.pandadoc.client.models.QuoteResponseSections;
+import com.pandadoc.client.models.QuoteResponseSettings;
 import com.pandadoc.client.models.QuoteResponseSummary;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -56,6 +57,10 @@ public class QuoteResponse {
   public static final String SERIALIZED_NAME_MERGE_RULES = "merge_rules";
   @SerializedName(SERIALIZED_NAME_MERGE_RULES)
   private List<QuoteResponseMergeRules> mergeRules = null;
+
+  public static final String SERIALIZED_NAME_SETTINGS = "settings";
+  @SerializedName(SERIALIZED_NAME_SETTINGS)
+  private QuoteResponseSettings settings;
 
   public QuoteResponse() { 
   }
@@ -214,6 +219,29 @@ public class QuoteResponse {
   }
 
 
+  public QuoteResponse settings(QuoteResponseSettings settings) {
+    
+    this.settings = settings;
+    return this;
+  }
+
+   /**
+   * Get settings
+   * @return settings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public QuoteResponseSettings getSettings() {
+    return settings;
+  }
+
+
+  public void setSettings(QuoteResponseSettings settings) {
+    this.settings = settings;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -228,12 +256,13 @@ public class QuoteResponse {
         Objects.equals(this.total, quoteResponse.total) &&
         Objects.equals(this.summary, quoteResponse.summary) &&
         Objects.equals(this.sections, quoteResponse.sections) &&
-        Objects.equals(this.mergeRules, quoteResponse.mergeRules);
+        Objects.equals(this.mergeRules, quoteResponse.mergeRules) &&
+        Objects.equals(this.settings, quoteResponse.settings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, currency, total, summary, sections, mergeRules);
+    return Objects.hash(id, currency, total, summary, sections, mergeRules, settings);
   }
 
   @Override
@@ -246,6 +275,7 @@ public class QuoteResponse {
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
     sb.append("    sections: ").append(toIndentedString(sections)).append("\n");
     sb.append("    mergeRules: ").append(toIndentedString(mergeRules)).append("\n");
+    sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

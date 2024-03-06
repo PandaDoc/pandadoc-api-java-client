@@ -35,7 +35,7 @@ Add this dependency to your project's POM:
 <dependency>
   <groupId>com.pandadoc</groupId>
   <artifactId>pandadoc-java-client</artifactId>
-  <version>6.0.0</version>
+  <version>6.1.0</version>
   <scope>compile</scope>
 </dependency>
 ```
@@ -45,7 +45,7 @@ Add this dependency to your project's POM:
 Add this dependency to your project's build file:
 
 ```groovy
-compile "com.pandadoc:pandadoc-java-client:6.0.0"
+compile "com.pandadoc:pandadoc-java-client:6.1.0"
 ```
 
 ### Others
@@ -58,7 +58,7 @@ mvn clean package
 
 Then manually install the following JARs:
 
-- `target/pandadoc-java-client-6.0.0.jar`
+- `target/pandadoc-java-client-6.1.0.jar`
 - `target/lib/*.jar`
 
 ## Getting Started
@@ -162,6 +162,11 @@ Class | Method | HTTP request | Description
 *MembersApi* | [**detailsMember**](docs/MembersApi.md#detailsMember) | **GET** /public/v1/members/{id} | Member details
 *MembersApi* | [**listMembers**](docs/MembersApi.md#listMembers) | **GET** /public/v1/members | List members
 *OAuth20AuthenticationApi* | [**accessToken**](docs/OAuth20AuthenticationApi.md#accessToken) | **POST** /oauth2/access_token | Create/Refresh Access Token
+*QuotesApi* | [**quoteUpdate**](docs/QuotesApi.md#quoteUpdate) | **PUT** /public/v1/documents/{document_id}/quotes/{quote_id} | Quote update
+*SectionsApi* | [**listSections**](docs/SectionsApi.md#listSections) | **GET** /public/v1/documents/{document_id}/sections | List sections
+*SectionsApi* | [**sectionDetails**](docs/SectionsApi.md#sectionDetails) | **GET** /public/v1/documents/{document_id}/sections/uploads/{upload_id} | Section details
+*SectionsApi* | [**sectionInfo**](docs/SectionsApi.md#sectionInfo) | **GET** /public/v1/documents/{document_id}/sections/{section_id} | Section Info
+*SectionsApi* | [**uploadSection**](docs/SectionsApi.md#uploadSection) | **POST** /public/v1/documents/{document_id}/sections/uploads | Upload section
 *TemplatesApi* | [**deleteTemplate**](docs/TemplatesApi.md#deleteTemplate) | **DELETE** /public/v1/templates/{id} | Delete Template
 *TemplatesApi* | [**detailsTemplate**](docs/TemplatesApi.md#detailsTemplate) | **GET** /public/v1/templates/{id}/details | Details Template
 *TemplatesApi* | [**listTemplates**](docs/TemplatesApi.md#listTemplates) | **GET** /public/v1/templates | List Templates

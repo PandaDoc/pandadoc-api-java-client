@@ -25,7 +25,7 @@ Name | Type | Description | Notes
 **taxes** | **Object** |  |  [optional]
 **discounts** | **Object** |  |  [optional]
 **fees** | **Object** |  |  [optional]
-**mergedData** | **Object** | Will contain all the fields in flat structure with external field names defined in the template. |  [optional]
+**mergedData** | **Object** | Contains all fields in a flat structure with external field names defined in the template. |  [optional]
 
 
 

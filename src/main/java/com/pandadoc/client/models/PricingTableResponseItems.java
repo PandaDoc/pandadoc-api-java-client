@@ -530,11 +530,11 @@ public class PricingTableResponseItems {
   }
 
    /**
-   * Will contain all the fields in flat structure with external field names defined in the template.
+   * Contains all fields in a flat structure with external field names defined in the template.
    * @return mergedData
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "{\"custom_name\":\"SomeName\",\"custom_description\":\"SomeCustomDescription\",\"custom_price\":\"10.99\",\"custom_qty\":\"1.00\",\"custom_sku\":\"Test\",\"custom_tax\":{\"value\":\"10\",\"type\":\"percent\"},\"custom_fee\":{\"value\":\"10\",\"type\":\"percent\"},\"custom_discount\":{\"value\":\"10\",\"type\":\"percent\"},\"custom_text\":\"Some other\",\"Cost\":null,\"Subtotal\":\"26.38\",\"fluffiness\":\"Fluffiness\",\"Other_field\":\"SomeText\"}", value = "Will contain all the fields in flat structure with external field names defined in the template.")
+  @ApiModelProperty(example = "{\"custom_name\":\"SomeName\",\"custom_description\":\"SomeCustomDescription\",\"custom_price\":\"10.99\",\"custom_qty\":\"1.00\",\"custom_sku\":\"Test\",\"custom_tax\":{\"value\":\"10\",\"type\":\"percent\"},\"custom_fee\":{\"value\":\"10\",\"type\":\"percent\"},\"custom_discount\":{\"value\":\"10\",\"type\":\"percent\"},\"custom_text\":\"Some other\",\"Cost\":null,\"Subtotal\":\"26.38\",\"fluffiness\":\"Fluffiness\",\"Other_field\":\"SomeText\"}", value = "Contains all fields in a flat structure with external field names defined in the template.")
 
   public Object getMergedData() {
     return mergedData;

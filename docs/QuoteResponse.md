@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **summary** | [**QuoteResponseSummary**](QuoteResponseSummary.md) |  |  [optional]
 **sections** | [**List&lt;QuoteResponseSections&gt;**](QuoteResponseSections.md) |  |  [optional]
 **mergeRules** | [**List&lt;QuoteResponseMergeRules&gt;**](QuoteResponseMergeRules.md) |  |  [optional]
+**settings** | [**QuoteResponseSettings**](QuoteResponseSettings.md) |  |  [optional]
 
 
 
