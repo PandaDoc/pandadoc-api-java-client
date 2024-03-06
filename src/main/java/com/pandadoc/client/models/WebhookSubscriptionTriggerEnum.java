@@ -38,7 +38,11 @@ public enum WebhookSubscriptionTriggerEnum {
   
   DOCUMENT_CREATION_FAILED("document_creation_failed"),
   
-  QUOTE_UPDATED("quote_updated");
+  QUOTE_UPDATED("quote_updated"),
+  
+  TEMPLATE_CREATED("template_created"),
+  
+  TEMPLATE_MODIFIED("template_modified");
 
   private String value;
 

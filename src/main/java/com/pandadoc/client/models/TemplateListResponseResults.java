@@ -48,6 +48,10 @@ public class TemplateListResponseResults {
   @SerializedName(SERIALIZED_NAME_VERSION)
   private String version;
 
+  public static final String SERIALIZED_NAME_CONTENT_DATE_MODIFIED = "content_date_modified";
+  @SerializedName(SERIALIZED_NAME_CONTENT_DATE_MODIFIED)
+  private String contentDateModified;
+
   public TemplateListResponseResults() { 
   }
 
@@ -166,6 +170,29 @@ public class TemplateListResponseResults {
   }
 
 
+  public TemplateListResponseResults contentDateModified(String contentDateModified) {
+    
+    this.contentDateModified = contentDateModified;
+    return this;
+  }
+
+   /**
+   * Get contentDateModified
+   * @return contentDateModified
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "2021-06-17T15:51:13.426974Z", value = "")
+
+  public String getContentDateModified() {
+    return contentDateModified;
+  }
+
+
+  public void setContentDateModified(String contentDateModified) {
+    this.contentDateModified = contentDateModified;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -179,12 +206,13 @@ public class TemplateListResponseResults {
         Objects.equals(this.name, templateListResponseResults.name) &&
         Objects.equals(this.dateCreated, templateListResponseResults.dateCreated) &&
         Objects.equals(this.dateModified, templateListResponseResults.dateModified) &&
-        Objects.equals(this.version, templateListResponseResults.version);
+        Objects.equals(this.version, templateListResponseResults.version) &&
+        Objects.equals(this.contentDateModified, templateListResponseResults.contentDateModified);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, dateCreated, dateModified, version);
+    return Objects.hash(id, name, dateCreated, dateModified, version, contentDateModified);
   }
 
   @Override
@@ -196,6 +224,7 @@ public class TemplateListResponseResults {
     sb.append("    dateCreated: ").append(toIndentedString(dateCreated)).append("\n");
     sb.append("    dateModified: ").append(toIndentedString(dateModified)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
+    sb.append("    contentDateModified: ").append(toIndentedString(contentDateModified)).append("\n");
     sb.append("}");
     return sb.toString();
   }

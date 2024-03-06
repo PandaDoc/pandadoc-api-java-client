@@ -19,8 +19,10 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.QuoteResponseSectionColumn;
 import com.pandadoc.client.models.QuoteResponseSectionItem;
 import com.pandadoc.client.models.QuoteResponseSectionSummary;
+import com.pandadoc.client.models.QuoteSectionSettings;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -44,6 +46,10 @@ public class QuoteResponseSections {
   @SerializedName(SERIALIZED_NAME_SUMMARY)
   private QuoteResponseSectionSummary summary;
 
+  public static final String SERIALIZED_NAME_COLUMNS = "columns";
+  @SerializedName(SERIALIZED_NAME_COLUMNS)
+  private List<QuoteResponseSectionColumn> columns = null;
+
   public static final String SERIALIZED_NAME_ITEMS = "items";
   @SerializedName(SERIALIZED_NAME_ITEMS)
   private List<QuoteResponseSectionItem> items = null;
@@ -51,6 +57,10 @@ public class QuoteResponseSections {
   public static final String SERIALIZED_NAME_TOTAL = "total";
   @SerializedName(SERIALIZED_NAME_TOTAL)
   private String total;
+
+  public static final String SERIALIZED_NAME_SETTINGS = "settings";
+  @SerializedName(SERIALIZED_NAME_SETTINGS)
+  private QuoteSectionSettings settings;
 
   public QuoteResponseSections() { 
   }
@@ -124,6 +134,37 @@ public class QuoteResponseSections {
   }
 
 
+  public QuoteResponseSections columns(List<QuoteResponseSectionColumn> columns) {
+    
+    this.columns = columns;
+    return this;
+  }
+
+  public QuoteResponseSections addColumnsItem(QuoteResponseSectionColumn columnsItem) {
+    if (this.columns == null) {
+      this.columns = new ArrayList<>();
+    }
+    this.columns.add(columnsItem);
+    return this;
+  }
+
+   /**
+   * Get columns
+   * @return columns
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public List<QuoteResponseSectionColumn> getColumns() {
+    return columns;
+  }
+
+
+  public void setColumns(List<QuoteResponseSectionColumn> columns) {
+    this.columns = columns;
+  }
+
+
   public QuoteResponseSections items(List<QuoteResponseSectionItem> items) {
     
     this.items = items;
@@ -178,6 +219,29 @@ public class QuoteResponseSections {
   }
 
 
+  public QuoteResponseSections settings(QuoteSectionSettings settings) {
+    
+    this.settings = settings;
+    return this;
+  }
+
+   /**
+   * Get settings
+   * @return settings
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public QuoteSectionSettings getSettings() {
+    return settings;
+  }
+
+
+  public void setSettings(QuoteSectionSettings settings) {
+    this.settings = settings;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -190,13 +254,15 @@ public class QuoteResponseSections {
     return Objects.equals(this.id, quoteResponseSections.id) &&
         Objects.equals(this.name, quoteResponseSections.name) &&
         Objects.equals(this.summary, quoteResponseSections.summary) &&
+        Objects.equals(this.columns, quoteResponseSections.columns) &&
         Objects.equals(this.items, quoteResponseSections.items) &&
-        Objects.equals(this.total, quoteResponseSections.total);
+        Objects.equals(this.total, quoteResponseSections.total) &&
+        Objects.equals(this.settings, quoteResponseSections.settings);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, summary, items, total);
+    return Objects.hash(id, name, summary, columns, items, total, settings);
   }
 
   @Override
@@ -206,8 +272,10 @@ public class QuoteResponseSections {
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    name: ").append(toIndentedString(name)).append("\n");
     sb.append("    summary: ").append(toIndentedString(summary)).append("\n");
+    sb.append("    columns: ").append(toIndentedString(columns)).append("\n");
     sb.append("    items: ").append(toIndentedString(items)).append("\n");
     sb.append("    total: ").append(toIndentedString(total)).append("\n");
+    sb.append("    settings: ").append(toIndentedString(settings)).append("\n");
     sb.append("}");
     return sb.toString();
   }

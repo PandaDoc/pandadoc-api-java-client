@@ -17,6 +17,7 @@ Name | Type | Description | Notes
 **streetAddress** | **String** |  |  [optional]
 **city** | **String** |  |  [optional]
 **postalCode** | **String** |  |  [optional]
+**verificationSettings** | [**RecipientVerificationSettings**](RecipientVerificationSettings.md) |  |  [optional]
 
 
 
