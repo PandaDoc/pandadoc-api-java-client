@@ -19,7 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.RecipientRedirect;
 import com.pandadoc.client.models.RecipientVerificationSettings;
+import com.pandadoc.client.models.RicipientDeliveryMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -32,6 +34,14 @@ public class DocumentRecipientEditRequest {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
+
+  public static final String SERIALIZED_NAME_PHONE = "phone";
+  @SerializedName(SERIALIZED_NAME_PHONE)
+  private String phone;
+
+  public static final String SERIALIZED_NAME_DELIVERY_METHODS = "delivery_methods";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_METHODS)
+  private RicipientDeliveryMethods deliveryMethods;
 
   public static final String SERIALIZED_NAME_FIRST_NAME = "first_name";
   @SerializedName(SERIALIZED_NAME_FIRST_NAME)
@@ -48,10 +58,6 @@ public class DocumentRecipientEditRequest {
   public static final String SERIALIZED_NAME_JOB_TITLE = "job_title";
   @SerializedName(SERIALIZED_NAME_JOB_TITLE)
   private String jobTitle;
-
-  public static final String SERIALIZED_NAME_PHONE = "phone";
-  @SerializedName(SERIALIZED_NAME_PHONE)
-  private String phone;
 
   public static final String SERIALIZED_NAME_STATE = "state";
   @SerializedName(SERIALIZED_NAME_STATE)
@@ -72,6 +78,10 @@ public class DocumentRecipientEditRequest {
   public static final String SERIALIZED_NAME_VERIFICATION_SETTINGS = "verification_settings";
   @SerializedName(SERIALIZED_NAME_VERIFICATION_SETTINGS)
   private RecipientVerificationSettings verificationSettings;
+
+  public static final String SERIALIZED_NAME_REDIRECT = "redirect";
+  @SerializedName(SERIALIZED_NAME_REDIRECT)
+  private RecipientRedirect redirect;
 
   public DocumentRecipientEditRequest() { 
   }
@@ -96,6 +106,52 @@ public class DocumentRecipientEditRequest {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+
+  public DocumentRecipientEditRequest phone(String phone) {
+    
+    this.phone = phone;
+    return this;
+  }
+
+   /**
+   * Get phone
+   * @return phone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "+14842634627", value = "")
+
+  public String getPhone() {
+    return phone;
+  }
+
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+
+  public DocumentRecipientEditRequest deliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    
+    this.deliveryMethods = deliveryMethods;
+    return this;
+  }
+
+   /**
+   * Get deliveryMethods
+   * @return deliveryMethods
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RicipientDeliveryMethods getDeliveryMethods() {
+    return deliveryMethods;
+  }
+
+
+  public void setDeliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    this.deliveryMethods = deliveryMethods;
   }
 
 
@@ -188,29 +244,6 @@ public class DocumentRecipientEditRequest {
 
   public void setJobTitle(String jobTitle) {
     this.jobTitle = jobTitle;
-  }
-
-
-  public DocumentRecipientEditRequest phone(String phone) {
-    
-    this.phone = phone;
-    return this;
-  }
-
-   /**
-   * Get phone
-   * @return phone
-  **/
-  @javax.annotation.Nullable
-  @ApiModelProperty(example = "+14842634627", value = "")
-
-  public String getPhone() {
-    return phone;
-  }
-
-
-  public void setPhone(String phone) {
-    this.phone = phone;
   }
 
 
@@ -329,6 +362,29 @@ public class DocumentRecipientEditRequest {
   }
 
 
+  public DocumentRecipientEditRequest redirect(RecipientRedirect redirect) {
+    
+    this.redirect = redirect;
+    return this;
+  }
+
+   /**
+   * Get redirect
+   * @return redirect
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RecipientRedirect getRedirect() {
+    return redirect;
+  }
+
+
+  public void setRedirect(RecipientRedirect redirect) {
+    this.redirect = redirect;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -339,21 +395,23 @@ public class DocumentRecipientEditRequest {
     }
     DocumentRecipientEditRequest documentRecipientEditRequest = (DocumentRecipientEditRequest) o;
     return Objects.equals(this.email, documentRecipientEditRequest.email) &&
+        Objects.equals(this.phone, documentRecipientEditRequest.phone) &&
+        Objects.equals(this.deliveryMethods, documentRecipientEditRequest.deliveryMethods) &&
         Objects.equals(this.firstName, documentRecipientEditRequest.firstName) &&
         Objects.equals(this.lastName, documentRecipientEditRequest.lastName) &&
         Objects.equals(this.company, documentRecipientEditRequest.company) &&
         Objects.equals(this.jobTitle, documentRecipientEditRequest.jobTitle) &&
-        Objects.equals(this.phone, documentRecipientEditRequest.phone) &&
         Objects.equals(this.state, documentRecipientEditRequest.state) &&
         Objects.equals(this.streetAddress, documentRecipientEditRequest.streetAddress) &&
         Objects.equals(this.city, documentRecipientEditRequest.city) &&
         Objects.equals(this.postalCode, documentRecipientEditRequest.postalCode) &&
-        Objects.equals(this.verificationSettings, documentRecipientEditRequest.verificationSettings);
+        Objects.equals(this.verificationSettings, documentRecipientEditRequest.verificationSettings) &&
+        Objects.equals(this.redirect, documentRecipientEditRequest.redirect);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, firstName, lastName, company, jobTitle, phone, state, streetAddress, city, postalCode, verificationSettings);
+    return Objects.hash(email, phone, deliveryMethods, firstName, lastName, company, jobTitle, state, streetAddress, city, postalCode, verificationSettings, redirect);
   }
 
   @Override
@@ -361,16 +419,18 @@ public class DocumentRecipientEditRequest {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentRecipientEditRequest {\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    deliveryMethods: ").append(toIndentedString(deliveryMethods)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    company: ").append(toIndentedString(company)).append("\n");
     sb.append("    jobTitle: ").append(toIndentedString(jobTitle)).append("\n");
-    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    state: ").append(toIndentedString(state)).append("\n");
     sb.append("    streetAddress: ").append(toIndentedString(streetAddress)).append("\n");
     sb.append("    city: ").append(toIndentedString(city)).append("\n");
     sb.append("    postalCode: ").append(toIndentedString(postalCode)).append("\n");
     sb.append("    verificationSettings: ").append(toIndentedString(verificationSettings)).append("\n");
+    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("}");
     return sb.toString();
   }

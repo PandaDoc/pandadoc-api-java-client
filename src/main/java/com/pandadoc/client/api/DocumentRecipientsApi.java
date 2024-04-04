@@ -417,7 +417,7 @@ public class DocumentRecipientsApi {
         Object localVarPostBody = documentRecipientEditRequest;
 
         // create path and map variables
-        String localVarPath = "/public/v1/documents/{id}/recipients/{recipient_id}"
+        String localVarPath = "/public/v1/documents/{id}/recipients/recipient/{recipient_id}"
             .replaceAll("\\{" + "id" + "\\}", localVarApiClient.escapeString(id.toString()))
             .replaceAll("\\{" + "recipient_id" + "\\}", localVarApiClient.escapeString(recipientId.toString()));
 

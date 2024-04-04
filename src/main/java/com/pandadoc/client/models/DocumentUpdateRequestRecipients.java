@@ -19,6 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.RecipientRedirect;
+import com.pandadoc.client.models.RicipientDeliveryMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -36,6 +38,10 @@ public class DocumentUpdateRequestRecipients {
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
 
+  public static final String SERIALIZED_NAME_PHONE = "phone";
+  @SerializedName(SERIALIZED_NAME_PHONE)
+  private String phone;
+
   public static final String SERIALIZED_NAME_FIRST_NAME = "first_name";
   @SerializedName(SERIALIZED_NAME_FIRST_NAME)
   private String firstName;
@@ -43,6 +49,14 @@ public class DocumentUpdateRequestRecipients {
   public static final String SERIALIZED_NAME_LAST_NAME = "last_name";
   @SerializedName(SERIALIZED_NAME_LAST_NAME)
   private String lastName;
+
+  public static final String SERIALIZED_NAME_DELIVERY_METHODS = "delivery_methods";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_METHODS)
+  private RicipientDeliveryMethods deliveryMethods;
+
+  public static final String SERIALIZED_NAME_REDIRECT = "redirect";
+  @SerializedName(SERIALIZED_NAME_REDIRECT)
+  private RecipientRedirect redirect;
 
   public DocumentUpdateRequestRecipients() { 
   }
@@ -93,6 +107,29 @@ public class DocumentUpdateRequestRecipients {
   }
 
 
+  public DocumentUpdateRequestRecipients phone(String phone) {
+    
+    this.phone = phone;
+    return this;
+  }
+
+   /**
+   * Get phone
+   * @return phone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "+14842634627", value = "")
+
+  public String getPhone() {
+    return phone;
+  }
+
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+
   public DocumentUpdateRequestRecipients firstName(String firstName) {
     
     this.firstName = firstName;
@@ -139,6 +176,52 @@ public class DocumentUpdateRequestRecipients {
   }
 
 
+  public DocumentUpdateRequestRecipients deliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    
+    this.deliveryMethods = deliveryMethods;
+    return this;
+  }
+
+   /**
+   * Get deliveryMethods
+   * @return deliveryMethods
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RicipientDeliveryMethods getDeliveryMethods() {
+    return deliveryMethods;
+  }
+
+
+  public void setDeliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    this.deliveryMethods = deliveryMethods;
+  }
+
+
+  public DocumentUpdateRequestRecipients redirect(RecipientRedirect redirect) {
+    
+    this.redirect = redirect;
+    return this;
+  }
+
+   /**
+   * Get redirect
+   * @return redirect
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RecipientRedirect getRedirect() {
+    return redirect;
+  }
+
+
+  public void setRedirect(RecipientRedirect redirect) {
+    this.redirect = redirect;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -150,13 +233,16 @@ public class DocumentUpdateRequestRecipients {
     DocumentUpdateRequestRecipients documentUpdateRequestRecipients = (DocumentUpdateRequestRecipients) o;
     return Objects.equals(this.id, documentUpdateRequestRecipients.id) &&
         Objects.equals(this.email, documentUpdateRequestRecipients.email) &&
+        Objects.equals(this.phone, documentUpdateRequestRecipients.phone) &&
         Objects.equals(this.firstName, documentUpdateRequestRecipients.firstName) &&
-        Objects.equals(this.lastName, documentUpdateRequestRecipients.lastName);
+        Objects.equals(this.lastName, documentUpdateRequestRecipients.lastName) &&
+        Objects.equals(this.deliveryMethods, documentUpdateRequestRecipients.deliveryMethods) &&
+        Objects.equals(this.redirect, documentUpdateRequestRecipients.redirect);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, email, firstName, lastName);
+    return Objects.hash(id, email, phone, firstName, lastName, deliveryMethods, redirect);
   }
 
   @Override
@@ -165,8 +251,11 @@ public class DocumentUpdateRequestRecipients {
     sb.append("class DocumentUpdateRequestRecipients {\n");
     sb.append("    id: ").append(toIndentedString(id)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
+    sb.append("    deliveryMethods: ").append(toIndentedString(deliveryMethods)).append("\n");
+    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("}");
     return sb.toString();
   }
