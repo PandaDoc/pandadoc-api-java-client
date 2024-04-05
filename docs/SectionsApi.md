@@ -273,7 +273,7 @@ Name | Type | Description  | Notes
 
 ## uploadSection
 
-> UploadSectionResponse uploadSection(documentId, uploadSectionRequest)
+> UploadSectionResponse uploadSection(documentId, uploadSectionRequest, mergeFieldScope)
 
 Upload section
 
@@ -312,8 +312,10 @@ public class Example {
         String documentId = "BhVzRcxH9Z2LgfPPGXFUBa";
         // UploadSectionRequest | Use a PandaDoc template or an existing PDF to upload a section. See the creation request examples [by template](/schemas/UploadSectionByTemplateRequest) and [by pdf](/schemas/UploadSectionByPdfRequest) 
         UploadSectionRequest uploadSectionRequest = new UploadSectionRequest();
+        // String | Determines how the fields are mapped when creating a section.   * document: Default value. The fields of the entire document are updated.   * upload: Only the fields from the created section are updated. The merge field is appended with the upload ID. 
+        String mergeFieldScope = "document";
         try {
-            UploadSectionResponse result = apiInstance.uploadSection(documentId, uploadSectionRequest);
+            UploadSectionResponse result = apiInstance.uploadSection(documentId, uploadSectionRequest, mergeFieldScope);
             System.out.println(result);
         } catch (ApiException e) {
             System.err.println("Exception when calling SectionsApi#uploadSection");
@@ -333,6 +335,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **documentId** | **String**| Document ID |
  **uploadSectionRequest** | [**UploadSectionRequest**](UploadSectionRequest.md)| Use a PandaDoc template or an existing PDF to upload a section. See the creation request examples [by template](/schemas/UploadSectionByTemplateRequest) and [by pdf](/schemas/UploadSectionByPdfRequest)  |
+ **mergeFieldScope** | **String**| Determines how the fields are mapped when creating a section.   * document: Default value. The fields of the entire document are updated.   * upload: Only the fields from the created section are updated. The merge field is appended with the upload ID.  | [optional] [enum: document, upload]
 
 ### Return type
 

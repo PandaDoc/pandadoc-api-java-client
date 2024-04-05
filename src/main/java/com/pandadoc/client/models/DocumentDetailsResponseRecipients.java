@@ -19,7 +19,9 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.RecipientRedirect;
 import com.pandadoc.client.models.RecipientVerificationSettings;
+import com.pandadoc.client.models.RicipientDeliveryMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -67,6 +69,14 @@ public class DocumentDetailsResponseRecipients {
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
 
+  public static final String SERIALIZED_NAME_PHONE = "phone";
+  @SerializedName(SERIALIZED_NAME_PHONE)
+  private String phone;
+
+  public static final String SERIALIZED_NAME_DELIVERY_METHODS = "delivery_methods";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_METHODS)
+  private RicipientDeliveryMethods deliveryMethods;
+
   public static final String SERIALIZED_NAME_HAS_COMPLETED = "has_completed";
   @SerializedName(SERIALIZED_NAME_HAS_COMPLETED)
   private Boolean hasCompleted;
@@ -82,6 +92,10 @@ public class DocumentDetailsResponseRecipients {
   public static final String SERIALIZED_NAME_VERIFICATION_SETTINGS = "verification_settings";
   @SerializedName(SERIALIZED_NAME_VERIFICATION_SETTINGS)
   private RecipientVerificationSettings verificationSettings;
+
+  public static final String SERIALIZED_NAME_REDIRECT = "redirect";
+  @SerializedName(SERIALIZED_NAME_REDIRECT)
+  private RecipientRedirect redirect;
 
   public DocumentDetailsResponseRecipients() { 
   }
@@ -303,6 +317,52 @@ public class DocumentDetailsResponseRecipients {
   }
 
 
+  public DocumentDetailsResponseRecipients phone(String phone) {
+    
+    this.phone = phone;
+    return this;
+  }
+
+   /**
+   * Get phone
+   * @return phone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "+14842634627", value = "")
+
+  public String getPhone() {
+    return phone;
+  }
+
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+
+  public DocumentDetailsResponseRecipients deliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    
+    this.deliveryMethods = deliveryMethods;
+    return this;
+  }
+
+   /**
+   * Get deliveryMethods
+   * @return deliveryMethods
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RicipientDeliveryMethods getDeliveryMethods() {
+    return deliveryMethods;
+  }
+
+
+  public void setDeliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    this.deliveryMethods = deliveryMethods;
+  }
+
+
   public DocumentDetailsResponseRecipients hasCompleted(Boolean hasCompleted) {
     
     this.hasCompleted = hasCompleted;
@@ -395,6 +455,29 @@ public class DocumentDetailsResponseRecipients {
   }
 
 
+  public DocumentDetailsResponseRecipients redirect(RecipientRedirect redirect) {
+    
+    this.redirect = redirect;
+    return this;
+  }
+
+   /**
+   * Get redirect
+   * @return redirect
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RecipientRedirect getRedirect() {
+    return redirect;
+  }
+
+
+  public void setRedirect(RecipientRedirect redirect) {
+    this.redirect = redirect;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -413,15 +496,18 @@ public class DocumentDetailsResponseRecipients {
         Objects.equals(this.contactId, documentDetailsResponseRecipients.contactId) &&
         Objects.equals(this.firstName, documentDetailsResponseRecipients.firstName) &&
         Objects.equals(this.email, documentDetailsResponseRecipients.email) &&
+        Objects.equals(this.phone, documentDetailsResponseRecipients.phone) &&
+        Objects.equals(this.deliveryMethods, documentDetailsResponseRecipients.deliveryMethods) &&
         Objects.equals(this.hasCompleted, documentDetailsResponseRecipients.hasCompleted) &&
         Objects.equals(this.sharedLink, documentDetailsResponseRecipients.sharedLink) &&
         Objects.equals(this.signatureDate, documentDetailsResponseRecipients.signatureDate) &&
-        Objects.equals(this.verificationSettings, documentDetailsResponseRecipients.verificationSettings);
+        Objects.equals(this.verificationSettings, documentDetailsResponseRecipients.verificationSettings) &&
+        Objects.equals(this.redirect, documentDetailsResponseRecipients.redirect);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, hasCompleted, sharedLink, signatureDate, verificationSettings);
+    return Objects.hash(recipientType, role, roles, lastName, signingOrder, id, contactId, firstName, email, phone, deliveryMethods, hasCompleted, sharedLink, signatureDate, verificationSettings, redirect);
   }
 
   @Override
@@ -437,10 +523,13 @@ public class DocumentDetailsResponseRecipients {
     sb.append("    contactId: ").append(toIndentedString(contactId)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    deliveryMethods: ").append(toIndentedString(deliveryMethods)).append("\n");
     sb.append("    hasCompleted: ").append(toIndentedString(hasCompleted)).append("\n");
     sb.append("    sharedLink: ").append(toIndentedString(sharedLink)).append("\n");
     sb.append("    signatureDate: ").append(toIndentedString(signatureDate)).append("\n");
     sb.append("    verificationSettings: ").append(toIndentedString(verificationSettings)).append("\n");
+    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("}");
     return sb.toString();
   }

@@ -19,6 +19,8 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.RecipientRedirect;
+import com.pandadoc.client.models.RicipientDeliveryMethods;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
@@ -31,6 +33,14 @@ public class DocumentCreateByTemplateRequestRecipients {
   public static final String SERIALIZED_NAME_EMAIL = "email";
   @SerializedName(SERIALIZED_NAME_EMAIL)
   private String email;
+
+  public static final String SERIALIZED_NAME_PHONE = "phone";
+  @SerializedName(SERIALIZED_NAME_PHONE)
+  private String phone;
+
+  public static final String SERIALIZED_NAME_DELIVERY_METHODS = "delivery_methods";
+  @SerializedName(SERIALIZED_NAME_DELIVERY_METHODS)
+  private RicipientDeliveryMethods deliveryMethods;
 
   public static final String SERIALIZED_NAME_FIRST_NAME = "first_name";
   @SerializedName(SERIALIZED_NAME_FIRST_NAME)
@@ -48,6 +58,10 @@ public class DocumentCreateByTemplateRequestRecipients {
   @SerializedName(SERIALIZED_NAME_SIGNING_ORDER)
   private Integer signingOrder;
 
+  public static final String SERIALIZED_NAME_REDIRECT = "redirect";
+  @SerializedName(SERIALIZED_NAME_REDIRECT)
+  private RecipientRedirect redirect;
+
   public DocumentCreateByTemplateRequestRecipients() { 
   }
 
@@ -61,8 +75,8 @@ public class DocumentCreateByTemplateRequestRecipients {
    * Get email
    * @return email
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "josh@example.com", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "josh@example.com", value = "")
 
   public String getEmail() {
     return email;
@@ -71,6 +85,52 @@ public class DocumentCreateByTemplateRequestRecipients {
 
   public void setEmail(String email) {
     this.email = email;
+  }
+
+
+  public DocumentCreateByTemplateRequestRecipients phone(String phone) {
+    
+    this.phone = phone;
+    return this;
+  }
+
+   /**
+   * Get phone
+   * @return phone
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "+14842634627", value = "")
+
+  public String getPhone() {
+    return phone;
+  }
+
+
+  public void setPhone(String phone) {
+    this.phone = phone;
+  }
+
+
+  public DocumentCreateByTemplateRequestRecipients deliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    
+    this.deliveryMethods = deliveryMethods;
+    return this;
+  }
+
+   /**
+   * Get deliveryMethods
+   * @return deliveryMethods
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RicipientDeliveryMethods getDeliveryMethods() {
+    return deliveryMethods;
+  }
+
+
+  public void setDeliveryMethods(RicipientDeliveryMethods deliveryMethods) {
+    this.deliveryMethods = deliveryMethods;
   }
 
 
@@ -166,6 +226,29 @@ public class DocumentCreateByTemplateRequestRecipients {
   }
 
 
+  public DocumentCreateByTemplateRequestRecipients redirect(RecipientRedirect redirect) {
+    
+    this.redirect = redirect;
+    return this;
+  }
+
+   /**
+   * Get redirect
+   * @return redirect
+  **/
+  @javax.annotation.Nullable
+  @ApiModelProperty(value = "")
+
+  public RecipientRedirect getRedirect() {
+    return redirect;
+  }
+
+
+  public void setRedirect(RecipientRedirect redirect) {
+    this.redirect = redirect;
+  }
+
+
   @Override
   public boolean equals(Object o) {
     if (this == o) {
@@ -176,15 +259,18 @@ public class DocumentCreateByTemplateRequestRecipients {
     }
     DocumentCreateByTemplateRequestRecipients documentCreateByTemplateRequestRecipients = (DocumentCreateByTemplateRequestRecipients) o;
     return Objects.equals(this.email, documentCreateByTemplateRequestRecipients.email) &&
+        Objects.equals(this.phone, documentCreateByTemplateRequestRecipients.phone) &&
+        Objects.equals(this.deliveryMethods, documentCreateByTemplateRequestRecipients.deliveryMethods) &&
         Objects.equals(this.firstName, documentCreateByTemplateRequestRecipients.firstName) &&
         Objects.equals(this.lastName, documentCreateByTemplateRequestRecipients.lastName) &&
         Objects.equals(this.role, documentCreateByTemplateRequestRecipients.role) &&
-        Objects.equals(this.signingOrder, documentCreateByTemplateRequestRecipients.signingOrder);
+        Objects.equals(this.signingOrder, documentCreateByTemplateRequestRecipients.signingOrder) &&
+        Objects.equals(this.redirect, documentCreateByTemplateRequestRecipients.redirect);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(email, firstName, lastName, role, signingOrder);
+    return Objects.hash(email, phone, deliveryMethods, firstName, lastName, role, signingOrder, redirect);
   }
 
   @Override
@@ -192,10 +278,13 @@ public class DocumentCreateByTemplateRequestRecipients {
     StringBuilder sb = new StringBuilder();
     sb.append("class DocumentCreateByTemplateRequestRecipients {\n");
     sb.append("    email: ").append(toIndentedString(email)).append("\n");
+    sb.append("    phone: ").append(toIndentedString(phone)).append("\n");
+    sb.append("    deliveryMethods: ").append(toIndentedString(deliveryMethods)).append("\n");
     sb.append("    firstName: ").append(toIndentedString(firstName)).append("\n");
     sb.append("    lastName: ").append(toIndentedString(lastName)).append("\n");
     sb.append("    role: ").append(toIndentedString(role)).append("\n");
     sb.append("    signingOrder: ").append(toIndentedString(signingOrder)).append("\n");
+    sb.append("    redirect: ").append(toIndentedString(redirect)).append("\n");
     sb.append("}");
     return sb.toString();
   }

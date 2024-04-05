@@ -540,6 +540,7 @@ public class SectionsApi {
      * Build call for uploadSection
      * @param documentId Document ID (required)
      * @param uploadSectionRequest Use a PandaDoc template or an existing PDF to upload a section. See the creation request examples [by template](/schemas/UploadSectionByTemplateRequest) and [by pdf](/schemas/UploadSectionByPdfRequest)  (required)
+     * @param mergeFieldScope Determines how the fields are mapped when creating a section.   * document: Default value. The fields of the entire document are updated.   * upload: Only the fields from the created section are updated. The merge field is appended with the upload ID.  (optional)
      * @param _callback Callback for upload/download progress
      * @return Call to execute
      * @throws ApiException If fail to serialize the request body object
@@ -552,7 +553,7 @@ public class SectionsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call uploadSectionCall(String documentId, UploadSectionRequest uploadSectionRequest, final ApiCallback _callback) throws ApiException {
+    public okhttp3.Call uploadSectionCall(String documentId, UploadSectionRequest uploadSectionRequest, String mergeFieldScope, final ApiCallback _callback) throws ApiException {
         String basePath = null;
 
         // Operation Servers
@@ -579,6 +580,10 @@ public class SectionsApi {
         Map<String, String> localVarCookieParams = new HashMap<String, String>();
         Map<String, Object> localVarFormParams = new HashMap<String, Object>();
 
+        if (mergeFieldScope != null) {
+            localVarQueryParams.addAll(localVarApiClient.parameterToPair("merge_field_scope", mergeFieldScope));
+        }
+
         final String[] localVarAccepts = {
             "application/json"
         };
@@ -600,7 +605,7 @@ public class SectionsApi {
     }
 
     @SuppressWarnings("rawtypes")
-    private okhttp3.Call uploadSectionValidateBeforeCall(String documentId, UploadSectionRequest uploadSectionRequest, final ApiCallback _callback) throws ApiException {
+    private okhttp3.Call uploadSectionValidateBeforeCall(String documentId, UploadSectionRequest uploadSectionRequest, String mergeFieldScope, final ApiCallback _callback) throws ApiException {
         
         // verify the required parameter 'documentId' is set
         if (documentId == null) {
@@ -613,7 +618,7 @@ public class SectionsApi {
         }
         
 
-        okhttp3.Call localVarCall = uploadSectionCall(documentId, uploadSectionRequest, _callback);
+        okhttp3.Call localVarCall = uploadSectionCall(documentId, uploadSectionRequest, mergeFieldScope, _callback);
         return localVarCall;
 
     }
@@ -623,6 +628,7 @@ public class SectionsApi {
      * 
      * @param documentId Document ID (required)
      * @param uploadSectionRequest Use a PandaDoc template or an existing PDF to upload a section. See the creation request examples [by template](/schemas/UploadSectionByTemplateRequest) and [by pdf](/schemas/UploadSectionByPdfRequest)  (required)
+     * @param mergeFieldScope Determines how the fields are mapped when creating a section.   * document: Default value. The fields of the entire document are updated.   * upload: Only the fields from the created section are updated. The merge field is appended with the upload ID.  (optional)
      * @return UploadSectionResponse
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -634,8 +640,8 @@ public class SectionsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public UploadSectionResponse uploadSection(String documentId, UploadSectionRequest uploadSectionRequest) throws ApiException {
-        ApiResponse<UploadSectionResponse> localVarResp = uploadSectionWithHttpInfo(documentId, uploadSectionRequest);
+    public UploadSectionResponse uploadSection(String documentId, UploadSectionRequest uploadSectionRequest, String mergeFieldScope) throws ApiException {
+        ApiResponse<UploadSectionResponse> localVarResp = uploadSectionWithHttpInfo(documentId, uploadSectionRequest, mergeFieldScope);
         return localVarResp.getData();
     }
 
@@ -644,6 +650,7 @@ public class SectionsApi {
      * 
      * @param documentId Document ID (required)
      * @param uploadSectionRequest Use a PandaDoc template or an existing PDF to upload a section. See the creation request examples [by template](/schemas/UploadSectionByTemplateRequest) and [by pdf](/schemas/UploadSectionByPdfRequest)  (required)
+     * @param mergeFieldScope Determines how the fields are mapped when creating a section.   * document: Default value. The fields of the entire document are updated.   * upload: Only the fields from the created section are updated. The merge field is appended with the upload ID.  (optional)
      * @return ApiResponse&lt;UploadSectionResponse&gt;
      * @throws ApiException If fail to call the API, e.g. server error or cannot deserialize the response body
      * @http.response.details
@@ -655,8 +662,8 @@ public class SectionsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public ApiResponse<UploadSectionResponse> uploadSectionWithHttpInfo(String documentId, UploadSectionRequest uploadSectionRequest) throws ApiException {
-        okhttp3.Call localVarCall = uploadSectionValidateBeforeCall(documentId, uploadSectionRequest, null);
+    public ApiResponse<UploadSectionResponse> uploadSectionWithHttpInfo(String documentId, UploadSectionRequest uploadSectionRequest, String mergeFieldScope) throws ApiException {
+        okhttp3.Call localVarCall = uploadSectionValidateBeforeCall(documentId, uploadSectionRequest, mergeFieldScope, null);
         Type localVarReturnType = new TypeToken<UploadSectionResponse>(){}.getType();
         return localVarApiClient.execute(localVarCall, localVarReturnType);
     }
@@ -666,6 +673,7 @@ public class SectionsApi {
      * 
      * @param documentId Document ID (required)
      * @param uploadSectionRequest Use a PandaDoc template or an existing PDF to upload a section. See the creation request examples [by template](/schemas/UploadSectionByTemplateRequest) and [by pdf](/schemas/UploadSectionByPdfRequest)  (required)
+     * @param mergeFieldScope Determines how the fields are mapped when creating a section.   * document: Default value. The fields of the entire document are updated.   * upload: Only the fields from the created section are updated. The merge field is appended with the upload ID.  (optional)
      * @param _callback The callback to be executed when the API call finishes
      * @return The request call
      * @throws ApiException If fail to process the API call, e.g. serializing the request body object
@@ -678,9 +686,9 @@ public class SectionsApi {
         <tr><td> 429 </td><td> Too Many Requests </td><td>  -  </td></tr>
      </table>
      */
-    public okhttp3.Call uploadSectionAsync(String documentId, UploadSectionRequest uploadSectionRequest, final ApiCallback<UploadSectionResponse> _callback) throws ApiException {
+    public okhttp3.Call uploadSectionAsync(String documentId, UploadSectionRequest uploadSectionRequest, String mergeFieldScope, final ApiCallback<UploadSectionResponse> _callback) throws ApiException {
 
-        okhttp3.Call localVarCall = uploadSectionValidateBeforeCall(documentId, uploadSectionRequest, _callback);
+        okhttp3.Call localVarCall = uploadSectionValidateBeforeCall(documentId, uploadSectionRequest, mergeFieldScope, _callback);
         Type localVarReturnType = new TypeToken<UploadSectionResponse>(){}.getType();
         localVarApiClient.executeAsync(localVarCall, localVarReturnType, _callback);
         return localVarCall;

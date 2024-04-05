@@ -16,10 +16,13 @@ Name | Type | Description | Notes
 **contactId** | **String** |  |  [optional]
 **firstName** | **String** |  |  [optional]
 **email** | **String** |  |  [optional]
+**phone** | **String** |  |  [optional]
+**deliveryMethods** | [**RicipientDeliveryMethods**](RicipientDeliveryMethods.md) |  |  [optional]
 **hasCompleted** | **Boolean** |  |  [optional]
 **sharedLink** | **String** |  |  [optional]
 **signatureDate** | **String** |  |  [optional]
 **verificationSettings** | [**RecipientVerificationSettings**](RecipientVerificationSettings.md) |  |  [optional]
+**redirect** | [**RecipientRedirect**](RecipientRedirect.md) |  |  [optional]
 
 
 

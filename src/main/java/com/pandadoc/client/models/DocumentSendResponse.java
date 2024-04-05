@@ -19,9 +19,12 @@ import com.google.gson.annotations.JsonAdapter;
 import com.google.gson.annotations.SerializedName;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonWriter;
+import com.pandadoc.client.models.DocumentSendResponseRecipients;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * DocumentSendResponse
@@ -60,9 +63,9 @@ public class DocumentSendResponse {
   @SerializedName(SERIALIZED_NAME_UUID)
   private String uuid;
 
-  public static final String SERIALIZED_NAME_SHARED_LINK = "shared_link";
-  @SerializedName(SERIALIZED_NAME_SHARED_LINK)
-  private String sharedLink;
+  public static final String SERIALIZED_NAME_RECIPIENTS = "recipients";
+  @SerializedName(SERIALIZED_NAME_RECIPIENTS)
+  private List<DocumentSendResponseRecipients> recipients = null;
 
   public DocumentSendResponse() { 
   }
@@ -251,26 +254,34 @@ public class DocumentSendResponse {
   }
 
 
-  public DocumentSendResponse sharedLink(String sharedLink) {
+  public DocumentSendResponse recipients(List<DocumentSendResponseRecipients> recipients) {
     
-    this.sharedLink = sharedLink;
+    this.recipients = recipients;
+    return this;
+  }
+
+  public DocumentSendResponse addRecipientsItem(DocumentSendResponseRecipients recipientsItem) {
+    if (this.recipients == null) {
+      this.recipients = new ArrayList<>();
+    }
+    this.recipients.add(recipientsItem);
     return this;
   }
 
    /**
-   * Get sharedLink
-   * @return sharedLink
+   * Get recipients
+   * @return recipients
   **/
   @javax.annotation.Nullable
-  @ApiModelProperty(example = "https://app.pandadoc.com/document/b7f11ea3c09d1c11208cc122457d4f3a2829d364", value = "")
+  @ApiModelProperty(value = "")
 
-  public String getSharedLink() {
-    return sharedLink;
+  public List<DocumentSendResponseRecipients> getRecipients() {
+    return recipients;
   }
 
 
-  public void setSharedLink(String sharedLink) {
-    this.sharedLink = sharedLink;
+  public void setRecipients(List<DocumentSendResponseRecipients> recipients) {
+    this.recipients = recipients;
   }
 
 
@@ -291,12 +302,12 @@ public class DocumentSendResponse {
         Objects.equals(this.expirationDate, documentSendResponse.expirationDate) &&
         Objects.equals(this.version, documentSendResponse.version) &&
         Objects.equals(this.uuid, documentSendResponse.uuid) &&
-        Objects.equals(this.sharedLink, documentSendResponse.sharedLink);
+        Objects.equals(this.recipients, documentSendResponse.recipients);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, name, status, dateCreated, dateModified, expirationDate, version, uuid, sharedLink);
+    return Objects.hash(id, name, status, dateCreated, dateModified, expirationDate, version, uuid, recipients);
   }
 
   @Override
@@ -311,7 +322,7 @@ public class DocumentSendResponse {
     sb.append("    expirationDate: ").append(toIndentedString(expirationDate)).append("\n");
     sb.append("    version: ").append(toIndentedString(version)).append("\n");
     sb.append("    uuid: ").append(toIndentedString(uuid)).append("\n");
-    sb.append("    sharedLink: ").append(toIndentedString(sharedLink)).append("\n");
+    sb.append("    recipients: ").append(toIndentedString(recipients)).append("\n");
     sb.append("}");
     return sb.toString();
   }

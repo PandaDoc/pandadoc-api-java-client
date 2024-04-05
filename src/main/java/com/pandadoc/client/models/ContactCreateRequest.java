@@ -81,8 +81,8 @@ public class ContactCreateRequest {
    * Get email
    * @return email
   **/
-  @javax.annotation.Nonnull
-  @ApiModelProperty(example = "user01@pandadoc.com", required = true, value = "")
+  @javax.annotation.Nullable
+  @ApiModelProperty(example = "user01@pandadoc.com", value = "")
 
   public String getEmail() {
     return email;
